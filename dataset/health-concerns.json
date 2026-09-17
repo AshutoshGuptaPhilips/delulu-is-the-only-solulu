@@ -1,0 +1,287 @@
+[
+  {
+    "id": 8001,
+    "category": "Health Concerns",
+    "event": "I have had a headache for two days.",
+    "emotion": "Anxious",
+    "rawInterpretation": "There must be something seriously wrong with me.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 92,
+    "alternateRealityChecks": [
+      "Headaches can occur for many common reasons including stress, dehydration, poor sleep, or illness.",
+      "A symptom alone does not indicate a serious condition.",
+      "Many possible explanations are less severe than the worst-case scenario.",
+      "It is important to monitor symptoms rather than immediately assuming the most serious cause."
+    ],
+    "revisedInterpretation": "The headache deserves attention, but I do not have enough evidence to conclude that it is serious.",
+    "confidenceAfter": 48,
+    "chosenBehaviour": "Monitor symptoms and seek medical advice if they persist or worsen.",
+    "outcomeOneWeekLater": "The headache resolved after improving sleep and hydration."
+  },
+  {
+    "id": 8002,
+    "category": "Health Concerns",
+    "event": "I noticed a small unfamiliar pain in my chest.",
+    "emotion": "Fearful",
+    "rawInterpretation": "I might be having a heart problem.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 89,
+    "alternateRealityChecks": [
+      "Chest discomfort can have many causes including muscle strain and stress.",
+      "One symptom does not provide enough information for a diagnosis.",
+      "Serious explanations are only one possibility among many.",
+      "Seeking professional evaluation is more useful than guessing."
+    ],
+    "revisedInterpretation": "The symptom should be taken seriously, but I cannot determine the cause myself.",
+    "confidenceAfter": 52,
+    "chosenBehaviour": "Monitor symptoms and consult a healthcare professional if appropriate.",
+    "outcomeOneWeekLater": "The discomfort was attributed to muscle strain."
+  },
+  {
+    "id": 8003,
+    "category": "Health Concerns",
+    "event": "I feel tired more often than usual.",
+    "emotion": "Concerned",
+    "rawInterpretation": "I must have a serious illness.",
+    "cognitiveDistortion": "Jumping to Conclusions",
+    "confidenceBefore": 87,
+    "alternateRealityChecks": [
+      "Fatigue can have many causes including sleep, stress, workload, and lifestyle factors.",
+      "One symptom rarely provides enough information to identify a cause.",
+      "Many explanations are relatively common and manageable.",
+      "A professional assessment is more reliable than speculation."
+    ],
+    "revisedInterpretation": "There are many possible explanations for the fatigue and more information is needed.",
+    "confidenceAfter": 43,
+    "chosenBehaviour": "Review sleep, stress, and lifestyle habits while monitoring symptoms.",
+    "outcomeOneWeekLater": "Improved sleep habits reduced fatigue."
+  },
+  {
+    "id": 8004,
+    "category": "Health Concerns",
+    "event": "I found health-related information online that matches some of my symptoms.",
+    "emotion": "Worried",
+    "rawInterpretation": "I definitely have that condition.",
+    "cognitiveDistortion": "Confirmation Bias",
+    "confidenceBefore": 91,
+    "alternateRealityChecks": [
+      "Many conditions share similar symptoms.",
+      "Online information is not a medical diagnosis.",
+      "It is easy to focus on information that confirms fears.",
+      "Professional evaluation is required to determine the actual cause."
+    ],
+    "revisedInterpretation": "The information is interesting but does not confirm a diagnosis.",
+    "confidenceAfter": 39,
+    "chosenBehaviour": "Avoid self-diagnosis and seek professional guidance if needed.",
+    "outcomeOneWeekLater": "The symptoms were linked to a common, non-serious issue."
+  },
+  {
+    "id": 8005,
+    "category": "Health Concerns",
+    "event": "My doctor recommended additional testing.",
+    "emotion": "Nervous",
+    "rawInterpretation": "The doctor must believe something is seriously wrong.",
+    "cognitiveDistortion": "Mind Reading",
+    "confidenceBefore": 90,
+    "alternateRealityChecks": [
+      "Additional tests are often used to gather information and rule out possibilities.",
+      "Doctors frequently order tests when symptoms are unclear.",
+      "The recommendation does not reveal the doctor's conclusions.",
+      "Testing can be part of routine caution."
+    ],
+    "revisedInterpretation": "The additional testing is intended to improve understanding, not necessarily confirm a serious problem.",
+    "confidenceAfter": 45,
+    "chosenBehaviour": "Complete the testing and wait for results.",
+    "outcomeOneWeekLater": "The tests did not reveal any serious issues."
+  },
+  {
+    "id": 8006,
+    "category": "Health Concerns",
+    "event": "I missed several workouts this week.",
+    "emotion": "Guilty",
+    "rawInterpretation": "I am ruining my health.",
+    "cognitiveDistortion": "All-or-Nothing Thinking",
+    "confidenceBefore": 84,
+    "alternateRealityChecks": [
+      "Health is influenced by long-term habits rather than a single week.",
+      "Temporary interruptions are common.",
+      "Missing workouts does not erase previous progress.",
+      "Consistency matters more than perfection."
+    ],
+    "revisedInterpretation": "Missing a few workouts is unlikely to have a major impact on my long-term health.",
+    "confidenceAfter": 29,
+    "chosenBehaviour": "Resume exercise without self-criticism.",
+    "outcomeOneWeekLater": "Exercise habits returned to normal."
+  },
+  {
+    "id": 8007,
+    "category": "Health Concerns",
+    "event": "I gained a few kilograms over the past several months.",
+    "emotion": "Frustrated",
+    "rawInterpretation": "I have completely lost control of my health.",
+    "cognitiveDistortion": "Overgeneralization",
+    "confidenceBefore": 88,
+    "alternateRealityChecks": [
+      "Weight naturally fluctuates over time.",
+      "Health involves many factors beyond a single measurement.",
+      "Small changes do not define overall wellbeing.",
+      "Long-term patterns are more important than isolated changes."
+    ],
+    "revisedInterpretation": "The weight gain may indicate changes worth understanding, but it does not define my overall health.",
+    "confidenceAfter": 36,
+    "chosenBehaviour": "Review habits objectively rather than reacting emotionally.",
+    "outcomeOneWeekLater": "A practical health plan was created."
+  },
+  {
+    "id": 8008,
+    "category": "Health Concerns",
+    "event": "A family member was diagnosed with a health condition that runs in families.",
+    "emotion": "Scared",
+    "rawInterpretation": "I will probably develop the same condition.",
+    "cognitiveDistortion": "Fortune Telling",
+    "confidenceBefore": 93,
+    "alternateRealityChecks": [
+      "Family history can influence risk but does not determine outcomes.",
+      "Many factors contribute to health conditions.",
+      "Risk is not the same as certainty.",
+      "Preventive care and healthy habits can be beneficial."
+    ],
+    "revisedInterpretation": "I may have some increased risk, but that does not mean the condition is inevitable.",
+    "confidenceAfter": 47,
+    "chosenBehaviour": "Discuss family history with a healthcare professional.",
+    "outcomeOneWeekLater": "A screening plan was established."
+  },
+  {
+    "id": 8009,
+    "category": "Health Concerns",
+    "event": "I occasionally struggle to fall asleep.",
+    "emotion": "Concerned",
+    "rawInterpretation": "My sleep is permanently damaged.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 85,
+    "alternateRealityChecks": [
+      "Temporary sleep difficulties are common.",
+      "Sleep quality often fluctuates due to stress and life circumstances.",
+      "One difficult period does not predict the future.",
+      "Sleep habits can often be improved."
+    ],
+    "revisedInterpretation": "The sleep difficulties are frustrating but not necessarily permanent.",
+    "confidenceAfter": 32,
+    "chosenBehaviour": "Focus on healthy sleep habits.",
+    "outcomeOneWeekLater": "Sleep quality gradually improved."
+  },
+  {
+    "id": 8010,
+    "category": "Health Concerns",
+    "event": "I got out of breath while exercising.",
+    "emotion": "Worried",
+    "rawInterpretation": "There must be something seriously wrong with me.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 87,
+    "alternateRealityChecks": [
+      "Breathlessness during exercise can have many explanations.",
+      "Fitness level, intensity, and environment all play a role.",
+      "One observation does not provide enough information for conclusions.",
+      "Further observation may provide useful context."
+    ],
+    "revisedInterpretation": "The experience may be related to several factors and should be evaluated in context.",
+    "confidenceAfter": 39,
+    "chosenBehaviour": "Pay attention to patterns and consult a professional if concerns continue.",
+    "outcomeOneWeekLater": "Fitness improved with regular exercise."
+  },
+  {
+    "id": 8011,
+    "category": "Health Concerns",
+    "event": "Several members of my family have developed diabetes.",
+    "emotion": "Concerned",
+    "rawInterpretation": "I am destined to develop diabetes too.",
+    "cognitiveDistortion": "Fortune Telling",
+    "confidenceBefore": 91,
+    "alternateRealityChecks": [
+      "Family history influences risk but does not determine outcomes.",
+      "Lifestyle, environment, and preventive care also play important roles.",
+      "Risk and certainty are not the same thing.",
+      "Medical guidance can help manage known risks."
+    ],
+    "revisedInterpretation": "My risk may be higher, but the future is not predetermined.",
+    "confidenceAfter": 48,
+    "chosenBehaviour": "Focus on healthy habits and regular check-ups.",
+    "outcomeOneWeekLater": "I developed a clearer understanding of preventive actions."
+  },
+  {
+    "id": 8012,
+    "category": "Health Concerns",
+    "event": "My test results showed one value slightly outside the normal range.",
+    "emotion": "Anxious",
+    "rawInterpretation": "This proves that I have a serious disease.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 94,
+    "alternateRealityChecks": [
+      "Test results need to be interpreted in context.",
+      "Minor deviations can occur for many reasons.",
+      "One result does not automatically indicate a major problem.",
+      "Professional interpretation is necessary."
+    ],
+    "revisedInterpretation": "The result deserves attention, but it does not support a definite conclusion on its own.",
+    "confidenceAfter": 51,
+    "chosenBehaviour": "Review the results with my healthcare provider.",
+    "outcomeOneWeekLater": "The variation was not considered clinically significant."
+  },
+  {
+    "id": 8013,
+    "category": "Health Concerns",
+    "event": "I occasionally forget small things.",
+    "emotion": "Worried",
+    "rawInterpretation": "I must be developing a serious memory problem.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 88,
+    "alternateRealityChecks": [
+      "Minor forgetfulness is common, particularly during busy or stressful periods.",
+      "One symptom alone is not enough to draw conclusions.",
+      "Stress, fatigue, and attention can affect memory.",
+      "Professional evaluation is more reliable than self-diagnosis."
+    ],
+    "revisedInterpretation": "The forgetfulness may have many ordinary explanations.",
+    "confidenceAfter": 37,
+    "chosenBehaviour": "Monitor patterns rather than assuming the worst.",
+    "outcomeOneWeekLater": "Improved rest appeared to help concentration."
+  },
+  {
+    "id": 8014,
+    "category": "Health Concerns",
+    "event": "I have experienced increasing stress and occasional stomach discomfort for several months.",
+    "emotion": "Concerned",
+    "rawInterpretation": "I probably have a serious illness.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 90,
+    "alternateRealityChecks": [
+      "The symptoms deserve attention because they have persisted.",
+      "Stress can affect physical health in meaningful ways.",
+      "Many possible explanations remain open.",
+      "The evidence supports seeking evaluation rather than assuming a diagnosis."
+    ],
+    "revisedInterpretation": "The symptoms are worth discussing with a healthcare professional, but I do not know the cause.",
+    "confidenceAfter": 60,
+    "chosenBehaviour": "Schedule a medical appointment and track symptoms.",
+    "outcomeOneWeekLater": "A plan was established to investigate and address possible causes."
+  },
+  {
+    "id": 8015,
+    "category": "Health Concerns",
+    "event": "A doctor told me that some lifestyle changes would improve my health.",
+    "emotion": "Discouraged",
+    "rawInterpretation": "I have already damaged my health beyond repair.",
+    "cognitiveDistortion": "All-or-Nothing Thinking",
+    "confidenceBefore": 87,
+    "alternateRealityChecks": [
+      "Lifestyle recommendations are often intended to improve future outcomes.",
+      "Health usually exists on a spectrum rather than being permanently damaged or perfectly healthy.",
+      "Positive changes can have meaningful benefits.",
+      "The recommendation suggests improvement is possible."
+    ],
+    "revisedInterpretation": "There are areas I can improve, and positive changes may still have a meaningful impact.",
+    "confidenceAfter": 34,
+    "chosenBehaviour": "Focus on gradual and sustainable improvements.",
+    "outcomeOneWeekLater": "I began implementing healthier habits."
+  }
+]

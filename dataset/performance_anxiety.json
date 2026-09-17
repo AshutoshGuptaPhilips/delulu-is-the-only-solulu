@@ -1,0 +1,287 @@
+[
+  {
+    "id": 2001,
+    "category": "Performance Anxiety",
+    "event": "I am responsible for an important release next week.",
+    "emotion": "Anxious, tense",
+    "rawInterpretation": "Something will go wrong and everyone will blame me.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 93,
+    "alternateRealityChecks": [
+      "Large releases involve multiple safeguards and reviewers.",
+      "Potential issues can be addressed through preparation and monitoring.",
+      "Responsibility is usually shared across the team.",
+      "The worst-case scenario is only one possible outcome."
+    ],
+    "revisedInterpretation": "There are risks, but many controls exist to reduce them.",
+    "confidenceAfter": 42,
+    "chosenBehaviour": "Focus on release preparation and mitigation plans.",
+    "outcomeOneWeekLater": "The release completed successfully with only minor issues."
+  },
+  {
+    "id": 2002,
+    "category": "Performance Anxiety",
+    "event": "My work will be reviewed by senior leadership.",
+    "emotion": "Nervous",
+    "rawInterpretation": "They will find major flaws that I missed.",
+    "cognitiveDistortion": "Fortune Telling",
+    "confidenceBefore": 89,
+    "alternateRealityChecks": [
+      "Leadership reviews are often intended to provide guidance.",
+      "Senior stakeholders understand that no work is perfect.",
+      "Feedback does not necessarily imply failure.",
+      "There is no evidence that major flaws exist."
+    ],
+    "revisedInterpretation": "The review may provide useful feedback rather than expose failure.",
+    "confidenceAfter": 36,
+    "chosenBehaviour": "Prepare thoroughly and remain open to feedback.",
+    "outcomeOneWeekLater": "Leadership provided constructive suggestions and supported the proposal."
+  },
+  {
+    "id": 2003,
+    "category": "Performance Anxiety",
+    "event": "I made a small mistake in a status report.",
+    "emotion": "Embarrassed",
+    "rawInterpretation": "People will lose confidence in me.",
+    "cognitiveDistortion": "Overgeneralization",
+    "confidenceBefore": 85,
+    "alternateRealityChecks": [
+      "Everyone makes occasional mistakes.",
+      "A single error rarely defines professional reputation.",
+      "Correcting mistakes often matters more than avoiding them entirely.",
+      "There is no evidence people have lost trust."
+    ],
+    "revisedInterpretation": "The mistake is unlikely to have a major impact on how I am perceived.",
+    "confidenceAfter": 32,
+    "chosenBehaviour": "Correct the issue and move forward.",
+    "outcomeOneWeekLater": "Nobody referenced the mistake again."
+  },
+  {
+    "id": 2004,
+    "category": "Performance Anxiety",
+    "event": "I am starting a project involving technology I have never used before.",
+    "emotion": "Overwhelmed",
+    "rawInterpretation": "I am not capable enough for this project.",
+    "cognitiveDistortion": "Labeling",
+    "confidenceBefore": 88,
+    "alternateRealityChecks": [
+      "Learning new technologies is a normal part of growth.",
+      "Lack of experience does not mean lack of capability.",
+      "Support and learning resources are available.",
+      "Many experts were once beginners."
+    ],
+    "revisedInterpretation": "This is a learning challenge rather than evidence of incompetence.",
+    "confidenceAfter": 39,
+    "chosenBehaviour": "Create a learning plan and seek help when needed.",
+    "outcomeOneWeekLater": "Initial learning progressed faster than expected."
+  },
+  {
+    "id": 2005,
+    "category": "Performance Anxiety",
+    "event": "My code received several review comments.",
+    "emotion": "Uneasy",
+    "rawInterpretation": "I am a weak engineer.",
+    "cognitiveDistortion": "Labeling",
+    "confidenceBefore": 84,
+    "alternateRealityChecks": [
+      "Code reviews are designed to improve quality.",
+      "Experienced engineers also receive comments.",
+      "Comments focus on code, not personal worth.",
+      "Collaboration often produces better outcomes."
+    ],
+    "revisedInterpretation": "The feedback is part of the engineering process.",
+    "confidenceAfter": 25,
+    "chosenBehaviour": "Address comments objectively.",
+    "outcomeOneWeekLater": "The code was approved and merged."
+  },
+  {
+    "id": 2006,
+    "category": "Performance Anxiety",
+    "event": "I have been asked to lead a workshop for the first time.",
+    "emotion": "Anxious",
+    "rawInterpretation": "People will realise I do not know enough.",
+    "cognitiveDistortion": "Imposter Syndrome",
+    "confidenceBefore": 91,
+    "alternateRealityChecks": [
+      "You were likely selected because others believe you can contribute.",
+      "Facilitators do not need to know everything.",
+      "Workshops are collaborative by nature.",
+      "Uncertainty does not mean lack of competence."
+    ],
+    "revisedInterpretation": "I can facilitate effectively even if I do not have all the answers.",
+    "confidenceAfter": 38,
+    "chosenBehaviour": "Prepare the agenda and focus on facilitating discussion.",
+    "outcomeOneWeekLater": "Participants provided positive feedback."
+  },
+  {
+    "id": 2007,
+    "category": "Performance Anxiety",
+    "event": "The project is taking longer than originally estimated.",
+    "emotion": "Stressed",
+    "rawInterpretation": "I am failing as a project lead.",
+    "cognitiveDistortion": "Personalization",
+    "confidenceBefore": 87,
+    "alternateRealityChecks": [
+      "Project delays often have multiple contributing factors.",
+      "Complex projects frequently require adjustment.",
+      "One challenge does not define leadership ability.",
+      "Managing uncertainty is part of project work."
+    ],
+    "revisedInterpretation": "The delay is a project issue, not necessarily a personal failure.",
+    "confidenceAfter": 41,
+    "chosenBehaviour": "Reassess plan and communicate transparently.",
+    "outcomeOneWeekLater": "Stakeholders appreciated proactive communication."
+  },
+  {
+    "id": 2008,
+    "category": "Performance Anxiety",
+    "event": "A colleague completed a similar task much faster than I did.",
+    "emotion": "Insecure",
+    "rawInterpretation": "I am falling behind everyone else.",
+    "cognitiveDistortion": "Comparison Bias",
+    "confidenceBefore": 86,
+    "alternateRealityChecks": [
+      "People have different levels of experience and context.",
+      "Speed is not the only measure of value.",
+      "Quality and long-term impact also matter.",
+      "One comparison does not define overall capability."
+    ],
+    "revisedInterpretation": "Their speed does not determine my worth as a professional.",
+    "confidenceAfter": 35,
+    "chosenBehaviour": "Focus on personal improvement rather than comparison.",
+    "outcomeOneWeekLater": "The completed work received positive feedback from stakeholders."
+  },
+  {
+    "id": 2009,
+    "category": "Performance Anxiety",
+    "event": "An important decision depends on my recommendation.",
+    "emotion": "Pressure",
+    "rawInterpretation": "If I choose incorrectly, my reputation will be damaged.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 90,
+    "alternateRealityChecks": [
+      "Decisions are made using available information, not hindsight.",
+      "Reasonable decisions can still have imperfect outcomes.",
+      "People are generally evaluated on process, not just outcomes.",
+      "Mistakes are part of learning and leadership."
+    ],
+    "revisedInterpretation": "My responsibility is to make the best decision possible with current information.",
+    "confidenceAfter": 45,
+    "chosenBehaviour": "Evaluate evidence and document assumptions.",
+    "outcomeOneWeekLater": "The decision was accepted and supported by the team."
+  },
+  {
+    "id": 2010,
+    "category": "Performance Anxiety",
+    "event": "I received little feedback after completing a major task.",
+    "emotion": "Uncertain",
+    "rawInterpretation": "The work must not have been very good.",
+    "cognitiveDistortion": "Mind Reading",
+    "confidenceBefore": 78,
+    "alternateRealityChecks": [
+      "People often provide feedback only when changes are required.",
+      "Silence does not automatically imply dissatisfaction.",
+      "Stakeholders may be satisfied and focused on other priorities.",
+      "The absence of feedback is ambiguous."
+    ],
+    "revisedInterpretation": "There is not enough information to draw conclusions about quality.",
+    "confidenceAfter": 30,
+    "chosenBehaviour": "Actively request feedback.",
+    "outcomeOneWeekLater": "Stakeholders expressed appreciation for the work."
+  },
+  {
+    "id": 2011,
+    "category": "Performance Anxiety",
+    "event": "I have received similar feedback about communication gaps from multiple stakeholders over the last few months.",
+    "emotion": "Concerned, discouraged",
+    "rawInterpretation": "I am bad at communication and will never improve.",
+    "cognitiveDistortion": "Overgeneralization",
+    "confidenceBefore": 92,
+    "alternateRealityChecks": [
+      "Receiving repeated feedback may indicate a genuine area for development.",
+      "A skill gap does not mean a permanent limitation.",
+      "Many communication skills can be learned and improved with deliberate practice.",
+      "The evidence supports improvement being needed, but not the belief that improvement is impossible."
+    ],
+    "revisedInterpretation": "There appears to be a communication issue worth addressing, but it does not define my overall capability.",
+    "confidenceAfter": 55,
+    "chosenBehaviour": "Create an improvement plan and seek targeted feedback.",
+    "outcomeOneWeekLater": "A manager suggested specific techniques and offered coaching opportunities."
+  },
+  {
+    "id": 2012,
+    "category": "Performance Anxiety",
+    "event": "I was asked a technical question during a meeting and could not answer it.",
+    "emotion": "Embarrassed",
+    "rawInterpretation": "Everyone now thinks I am unqualified.",
+    "cognitiveDistortion": "Mind Reading",
+    "confidenceBefore": 88,
+    "alternateRealityChecks": [
+      "No one can know every answer in a complex domain.",
+      "Professionals regularly defer answers and follow up later.",
+      "One unanswered question is not sufficient evidence of incompetence.",
+      "The audience may have focused on the discussion rather than the missing answer."
+    ],
+    "revisedInterpretation": "Not knowing one answer does not determine how others evaluate my expertise.",
+    "confidenceAfter": 33,
+    "chosenBehaviour": "Research the answer and follow up.",
+    "outcomeOneWeekLater": "The follow-up answer was appreciated by the group."
+  },
+  {
+    "id": 2013,
+    "category": "Performance Anxiety",
+    "event": "My project has several unresolved risks and leadership keeps asking about them.",
+    "emotion": "Stressed",
+    "rawInterpretation": "Leadership has lost confidence in me.",
+    "cognitiveDistortion": "Personalization",
+    "confidenceBefore": 85,
+    "alternateRealityChecks": [
+      "Projects with significant risks naturally receive more attention.",
+      "Leadership may be concerned about project outcomes rather than your competence.",
+      "The questions could indicate responsible governance.",
+      "However, addressing the risks promptly is important."
+    ],
+    "revisedInterpretation": "Leadership is appropriately focused on project risks, and I should concentrate on managing them effectively.",
+    "confidenceAfter": 50,
+    "chosenBehaviour": "Strengthen mitigation plans and communicate transparently.",
+    "outcomeOneWeekLater": "Leadership expressed appreciation for improved risk visibility."
+  },
+  {
+    "id": 2014,
+    "category": "Performance Anxiety",
+    "event": "A colleague pointed out an issue in my design that I had overlooked.",
+    "emotion": "Deflated",
+    "rawInterpretation": "I am careless and should not be trusted with important work.",
+    "cognitiveDistortion": "Labeling",
+    "confidenceBefore": 90,
+    "alternateRealityChecks": [
+      "Design reviews exist because individuals naturally miss things.",
+      "Finding issues early improves outcomes.",
+      "One oversight does not justify a broad negative label.",
+      "The process worked as intended by identifying the issue before implementation."
+    ],
+    "revisedInterpretation": "I missed something important, but that does not make me careless overall.",
+    "confidenceAfter": 34,
+    "chosenBehaviour": "Understand why the oversight occurred and improve review practices.",
+    "outcomeOneWeekLater": "The design was updated and approved."
+  },
+  {
+    "id": 2015,
+    "category": "Performance Anxiety",
+    "event": "My manager said my recent performance has been below expectations and discussed a development plan.",
+    "emotion": "Worried, disappointed",
+    "rawInterpretation": "My career here is over.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 95,
+    "alternateRealityChecks": [
+      "The feedback indicates a real concern that should be taken seriously.",
+      "A development plan usually exists to support improvement rather than guarantee failure.",
+      "Performance can change significantly with focused effort and support.",
+      "The evidence supports improvement being necessary, but not the conclusion that your career is over."
+    ],
+    "revisedInterpretation": "There is a legitimate performance concern that requires action, but improvement remains possible.",
+    "confidenceAfter": 60,
+    "chosenBehaviour": "Engage actively with the development plan and seek regular feedback.",
+    "outcomeOneWeekLater": "Concrete improvement goals were established and support resources were provided."
+  }
+]

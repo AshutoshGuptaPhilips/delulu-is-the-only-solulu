@@ -1,0 +1,287 @@
+[
+  {
+    "id": 7001,
+    "category": "Public Speaking",
+    "event": "I have to present to senior leadership next week.",
+    "emotion": "Anxious, intimidated",
+    "rawInterpretation": "I am going to embarrass myself in front of everyone.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 92,
+    "alternateRealityChecks": [
+      "Presentations rarely go perfectly for anyone.",
+      "Senior leaders attend many presentations and understand that presenters can feel nervous.",
+      "Preparation significantly reduces the likelihood of major issues.",
+      "A less-than-perfect presentation is not the same as embarrassment."
+    ],
+    "revisedInterpretation": "I may feel nervous, but that does not mean the presentation will go badly.",
+    "confidenceAfter": 43,
+    "chosenBehaviour": "Prepare thoroughly and practise key messages.",
+    "outcomeOneWeekLater": "The presentation was well received and generated useful discussion."
+  },
+  {
+    "id": 7002,
+    "category": "Public Speaking",
+    "event": "I forgot part of what I wanted to say during a presentation.",
+    "emotion": "Embarrassed",
+    "rawInterpretation": "Everyone noticed and thinks I am unprepared.",
+    "cognitiveDistortion": "Spotlight Effect",
+    "confidenceBefore": 89,
+    "alternateRealityChecks": [
+      "Audience members often notice less than presenters think.",
+      "Most people do not remember every detail of a presentation.",
+      "Pausing to gather your thoughts is normal.",
+      "One missed point does not define the overall presentation."
+    ],
+    "revisedInterpretation": "The mistake was likely much more noticeable to me than to the audience.",
+    "confidenceAfter": 34,
+    "chosenBehaviour": "Focus on recovering smoothly rather than dwelling on the mistake.",
+    "outcomeOneWeekLater": "No one mentioned the forgotten point."
+  },
+  {
+    "id": 7003,
+    "category": "Public Speaking",
+    "event": "Several people looked at their phones during my presentation.",
+    "emotion": "Self-conscious",
+    "rawInterpretation": "The audience is bored.",
+    "cognitiveDistortion": "Mind Reading",
+    "confidenceBefore": 88,
+    "alternateRealityChecks": [
+      "People check phones for many reasons unrelated to the speaker.",
+      "Some attendees may be handling urgent messages or multitasking.",
+      "A few distracted people do not represent the entire audience.",
+      "You cannot determine engagement from a single behaviour."
+    ],
+    "revisedInterpretation": "I do not have enough evidence to conclude that the audience was bored.",
+    "confidenceAfter": 38,
+    "chosenBehaviour": "Continue presenting rather than focusing on individual audience members.",
+    "outcomeOneWeekLater": "Several participants complimented the presentation afterwards."
+  },
+  {
+    "id": 7004,
+    "category": "Public Speaking",
+    "event": "I stumbled over a few words while speaking.",
+    "emotion": "Embarrassed",
+    "rawInterpretation": "I sounded unprofessional.",
+    "cognitiveDistortion": "All-or-Nothing Thinking",
+    "confidenceBefore": 87,
+    "alternateRealityChecks": [
+      "Most speakers occasionally stumble over words.",
+      "Professionalism is determined by more than perfect delivery.",
+      "The audience is likely focused on the message rather than small errors.",
+      "Minor speaking mistakes are normal."
+    ],
+    "revisedInterpretation": "The stumble was a minor part of a larger presentation.",
+    "confidenceAfter": 31,
+    "chosenBehaviour": "Continue focusing on the content.",
+    "outcomeOneWeekLater": "The audience remembered the message rather than the mistakes."
+  },
+  {
+    "id": 7005,
+    "category": "Public Speaking",
+    "event": "Someone asked a question I could not answer immediately.",
+    "emotion": "Nervous",
+    "rawInterpretation": "People now think I am not knowledgeable.",
+    "cognitiveDistortion": "Mind Reading",
+    "confidenceBefore": 91,
+    "alternateRealityChecks": [
+      "No speaker knows everything.",
+      "Challenging questions are common in discussions.",
+      "Following up later is a professional response.",
+      "One unknown answer does not define expertise."
+    ],
+    "revisedInterpretation": "Not knowing one answer does not undermine my credibility.",
+    "confidenceAfter": 35,
+    "chosenBehaviour": "Follow up after the session.",
+    "outcomeOneWeekLater": "The audience appreciated the detailed follow-up."
+  },
+  {
+    "id": 7006,
+    "category": "Public Speaking",
+    "event": "I felt extremely nervous before my presentation.",
+    "emotion": "Fearful",
+    "rawInterpretation": "My nervousness means I will perform badly.",
+    "cognitiveDistortion": "Emotional Reasoning",
+    "confidenceBefore": 86,
+    "alternateRealityChecks": [
+      "Many effective speakers feel nervous before presentations.",
+      "Feeling nervous does not accurately predict performance.",
+      "Anxiety often reflects importance rather than inability.",
+      "Performance and emotions are related but not identical."
+    ],
+    "revisedInterpretation": "I can feel nervous and still present effectively.",
+    "confidenceAfter": 29,
+    "chosenBehaviour": "Use breathing techniques and preparation.",
+    "outcomeOneWeekLater": "The session went smoothly despite nervousness."
+  },
+  {
+    "id": 7007,
+    "category": "Public Speaking",
+    "event": "My presentation received less discussion than expected.",
+    "emotion": "Disappointed",
+    "rawInterpretation": "The content was not valuable.",
+    "cognitiveDistortion": "Jumping to Conclusions",
+    "confidenceBefore": 84,
+    "alternateRealityChecks": [
+      "Limited discussion can occur for many reasons.",
+      "The audience may have agreed with the content.",
+      "Time constraints may have reduced questions.",
+      "The amount of discussion is not a direct measure of value."
+    ],
+    "revisedInterpretation": "The lack of discussion does not automatically indicate poor content.",
+    "confidenceAfter": 33,
+    "chosenBehaviour": "Request feedback directly.",
+    "outcomeOneWeekLater": "Several attendees provided positive feedback."
+  },
+  {
+    "id": 7008,
+    "category": "Public Speaking",
+    "event": "A senior stakeholder challenged one of my points.",
+    "emotion": "Threatened",
+    "rawInterpretation": "They think I do not know what I am talking about.",
+    "cognitiveDistortion": "Personalization",
+    "confidenceBefore": 90,
+    "alternateRealityChecks": [
+      "Questions and challenges are common in professional discussions.",
+      "Stakeholders often test assumptions and explore trade-offs.",
+      "Challenging an idea is not the same as challenging a person.",
+      "The discussion may reflect engagement with the topic."
+    ],
+    "revisedInterpretation": "The challenge may have been directed at the idea rather than me.",
+    "confidenceAfter": 41,
+    "chosenBehaviour": "Engage constructively with the discussion.",
+    "outcomeOneWeekLater": "The discussion improved the final proposal."
+  },
+  {
+    "id": 7009,
+    "category": "Public Speaking",
+    "event": "I watched a recording of my presentation.",
+    "emotion": "Critical",
+    "rawInterpretation": "I sound awkward and should avoid public speaking.",
+    "cognitiveDistortion": "Overgeneralization",
+    "confidenceBefore": 89,
+    "alternateRealityChecks": [
+      "Most people are uncomfortable hearing recordings of themselves.",
+      "Self-criticism often focuses on imperfections.",
+      "Public speaking is a skill that improves through practice.",
+      "One recording does not define future ability."
+    ],
+    "revisedInterpretation": "I can identify areas for improvement without concluding that I should avoid speaking.",
+    "confidenceAfter": 34,
+    "chosenBehaviour": "Focus on one improvement area at a time.",
+    "outcomeOneWeekLater": "Practice increased my confidence."
+  },
+  {
+    "id": 7010,
+    "category": "Public Speaking",
+    "event": "There was a long silence after I asked the audience a question.",
+    "emotion": "Awkward",
+    "rawInterpretation": "Nobody understands or cares about what I am saying.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 88,
+    "alternateRealityChecks": [
+      "Audiences sometimes need time to think.",
+      "Silence does not necessarily reflect disinterest.",
+      "People may be considering their response.",
+      "There are many possible explanations for the pause."
+    ],
+    "revisedInterpretation": "The silence may simply indicate that people were processing the question.",
+    "confidenceAfter": 36,
+    "chosenBehaviour": "Allow more thinking time before speaking again.",
+    "outcomeOneWeekLater": "Audience participation improved."
+  },
+  {
+    "id": 7011,
+    "category": "Public Speaking",
+    "event": "I noticed several mistakes while reviewing my presentation slides after the meeting.",
+    "emotion": "Frustrated",
+    "rawInterpretation": "The entire presentation was poor.",
+    "cognitiveDistortion": "Mental Filter",
+    "confidenceBefore": 91,
+    "alternateRealityChecks": [
+      "Imperfections can exist within an otherwise effective presentation.",
+      "Audience members often focus on core messages.",
+      "Mistakes provide learning opportunities.",
+      "The presentation should be evaluated as a whole."
+    ],
+    "revisedInterpretation": "There were areas to improve, but that does not invalidate the overall presentation.",
+    "confidenceAfter": 42,
+    "chosenBehaviour": "Note lessons learned for future presentations.",
+    "outcomeOneWeekLater": "Feedback was more positive than expected."
+  },
+  {
+    "id": 7012,
+    "category": "Public Speaking",
+    "event": "People asked more questions than usual after my presentation.",
+    "emotion": "Uneasy",
+    "rawInterpretation": "My presentation must have been confusing.",
+    "cognitiveDistortion": "Negative Interpretation Bias",
+    "confidenceBefore": 82,
+    "alternateRealityChecks": [
+      "Questions often indicate engagement and interest.",
+      "Interested audiences usually ask more questions.",
+      "The audience may have wanted to explore the topic further.",
+      "Questions alone do not prove confusion."
+    ],
+    "revisedInterpretation": "The questions may indicate engagement rather than confusion.",
+    "confidenceAfter": 30,
+    "chosenBehaviour": "View questions as opportunities for discussion.",
+    "outcomeOneWeekLater": "Stakeholders requested additional sessions on the topic."
+  },
+  {
+    "id": 7013,
+    "category": "Public Speaking",
+    "event": "I am presenting at a conference for the first time.",
+    "emotion": "Intimidated",
+    "rawInterpretation": "I am not experienced enough to be here.",
+    "cognitiveDistortion": "Imposter Syndrome",
+    "confidenceBefore": 94,
+    "alternateRealityChecks": [
+      "You were selected or invited for a reason.",
+      "Many first-time speakers feel similarly.",
+      "Experience grows through participation.",
+      "Feeling uncertain does not mean you do not belong."
+    ],
+    "revisedInterpretation": "I may be new to this environment, but that does not mean I am unqualified.",
+    "confidenceAfter": 45,
+    "chosenBehaviour": "Prepare thoroughly and trust my expertise.",
+    "outcomeOneWeekLater": "The session was successful and well attended."
+  },
+  {
+    "id": 7014,
+    "category": "Public Speaking",
+    "event": "I forgot one slide during my talk.",
+    "emotion": "Embarrassed",
+    "rawInterpretation": "The audience thinks I am disorganised.",
+    "cognitiveDistortion": "Mind Reading",
+    "confidenceBefore": 86,
+    "alternateRealityChecks": [
+      "Many audience members may not have known a slide was skipped.",
+      "The overall presentation matters more than one omission.",
+      "People evaluate presentations holistically.",
+      "The mistake does not reveal what others think."
+    ],
+    "revisedInterpretation": "The skipped slide was a minor issue within a larger presentation.",
+    "confidenceAfter": 29,
+    "chosenBehaviour": "Move on rather than dwelling on the mistake.",
+    "outcomeOneWeekLater": "Nobody referenced the omission."
+  },
+  {
+    "id": 7015,
+    "category": "Public Speaking",
+    "event": "Several presentations before mine were delivered by highly experienced speakers.",
+    "emotion": "Insecure",
+    "rawInterpretation": "My presentation will look amateurish in comparison.",
+    "cognitiveDistortion": "Comparison Bias",
+    "confidenceBefore": 90,
+    "alternateRealityChecks": [
+      "Different speakers bring different perspectives and strengths.",
+      "Audiences often value authenticity and relevance.",
+      "Comparisons do not determine the value of your message.",
+      "Experience is only one aspect of effective communication."
+    ],
+    "revisedInterpretation": "My presentation can still provide value even if others are more experienced.",
+    "confidenceAfter": 37,
+    "chosenBehaviour": "Focus on delivering my message clearly.",
+    "outcomeOneWeekLater": "The audience responded positively to the practical insights shared."
+  }
+]

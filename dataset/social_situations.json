@@ -1,0 +1,287 @@
+[
+  {
+    "id": 4001,
+    "category": "Social Situations",
+    "event": "I made a small mistake while introducing myself at a networking event.",
+    "emotion": "Embarrassed",
+    "rawInterpretation": "Everyone noticed and thinks I am awkward.",
+    "cognitiveDistortion": "Spotlight Effect",
+    "confidenceBefore": 92,
+    "alternateRealityChecks": [
+      "Most people are primarily focused on themselves during social events.",
+      "Minor mistakes are often forgotten quickly by others.",
+      "People generally judge themselves more harshly than they judge strangers.",
+      "There is no evidence that others formed a negative opinion."
+    ],
+    "revisedInterpretation": "The mistake was likely far more noticeable to me than to anyone else.",
+    "confidenceAfter": 35,
+    "chosenBehaviour": "Continue conversations instead of withdrawing.",
+    "outcomeOneWeekLater": "Several people connected with me afterwards and did not mention the mistake."
+  },
+  {
+    "id": 4002,
+    "category": "Social Situations",
+    "event": "I sent a message to a group chat and nobody responded.",
+    "emotion": "Rejected",
+    "rawInterpretation": "People are ignoring me because they do not like me.",
+    "cognitiveDistortion": "Mind Reading",
+    "confidenceBefore": 87,
+    "alternateRealityChecks": [
+      "Group messages are often overlooked.",
+      "People may not know how to respond.",
+      "A lack of response does not automatically indicate dislike.",
+      "Many unrelated factors could explain the silence."
+    ],
+    "revisedInterpretation": "The lack of replies may be unrelated to how people feel about me.",
+    "confidenceAfter": 32,
+    "chosenBehaviour": "Avoid making assumptions based on silence.",
+    "outcomeOneWeekLater": "Several people later responded once the conversation became active again."
+  },
+  {
+    "id": 4003,
+    "category": "Social Situations",
+    "event": "I arrived at a gathering and people continued talking without acknowledging me immediately.",
+    "emotion": "Uncomfortable",
+    "rawInterpretation": "Nobody is happy that I came.",
+    "cognitiveDistortion": "Personalization",
+    "confidenceBefore": 83,
+    "alternateRealityChecks": [
+      "People may have been focused on an ongoing conversation.",
+      "The absence of a greeting does not imply rejection.",
+      "Social attention is often delayed in larger groups.",
+      "There is insufficient evidence to conclude that people are unhappy to see you."
+    ],
+    "revisedInterpretation": "The situation may be explained by the flow of the conversation rather than how people feel about me.",
+    "confidenceAfter": 28,
+    "chosenBehaviour": "Join the conversation confidently.",
+    "outcomeOneWeekLater": "People engaged enthusiastically once I joined the discussion."
+  },
+  {
+    "id": 4004,
+    "category": "Social Situations",
+    "event": "I told a joke and nobody laughed.",
+    "emotion": "Embarrassed",
+    "rawInterpretation": "People think I am boring and unfunny.",
+    "cognitiveDistortion": "Overgeneralization",
+    "confidenceBefore": 90,
+    "alternateRealityChecks": [
+      "Humour is highly contextual.",
+      "People may have been distracted or tired.",
+      "One joke does not define your personality.",
+      "Not every joke lands, even for professional comedians."
+    ],
+    "revisedInterpretation": "The joke simply did not work in that moment.",
+    "confidenceAfter": 30,
+    "chosenBehaviour": "Let it go and continue participating.",
+    "outcomeOneWeekLater": "Nobody appeared to remember the incident."
+  },
+  {
+    "id": 4005,
+    "category": "Social Situations",
+    "event": "I saw photos online from an event that I was not invited to.",
+    "emotion": "Left out",
+    "rawInterpretation": "Nobody considers me a close friend.",
+    "cognitiveDistortion": "Black-and-White Thinking",
+    "confidenceBefore": 88,
+    "alternateRealityChecks": [
+      "Not every social gathering includes every friend.",
+      "Attendance may have been limited by practical constraints.",
+      "Being excluded from one event does not reflect all relationships.",
+      "Friendship cannot be accurately measured by a single invitation."
+    ],
+    "revisedInterpretation": "Being left out of one event does not define my social value.",
+    "confidenceAfter": 37,
+    "chosenBehaviour": "Avoid drawing broad conclusions from a single event.",
+    "outcomeOneWeekLater": "Friends invited me to another gathering."
+  },
+  {
+    "id": 4006,
+    "category": "Social Situations",
+    "event": "People seemed distracted while I was speaking.",
+    "emotion": "Self-conscious",
+    "rawInterpretation": "What I am saying is not interesting.",
+    "cognitiveDistortion": "Mind Reading",
+    "confidenceBefore": 84,
+    "alternateRealityChecks": [
+      "Attention can be influenced by many factors unrelated to the speaker.",
+      "People may have personal concerns occupying their thoughts.",
+      "A distracted listener does not necessarily reflect content quality.",
+      "Their behaviour does not provide enough evidence about their opinions."
+    ],
+    "revisedInterpretation": "The distraction may not be related to me or my contribution.",
+    "confidenceAfter": 29,
+    "chosenBehaviour": "Continue speaking normally rather than self-censoring.",
+    "outcomeOneWeekLater": "Several people later referenced points I had made."
+  },
+  {
+    "id": 4007,
+    "category": "Social Situations",
+    "event": "A friend took several hours to reply to my message.",
+    "emotion": "Anxious",
+    "rawInterpretation": "They are upset with me.",
+    "cognitiveDistortion": "Jumping to Conclusions",
+    "confidenceBefore": 81,
+    "alternateRealityChecks": [
+      "People often respond when they have time and energy.",
+      "Message delays are common.",
+      "There is no direct evidence that the delay reflects anger.",
+      "Multiple explanations remain possible."
+    ],
+    "revisedInterpretation": "I do not know why the reply was delayed.",
+    "confidenceAfter": 25,
+    "chosenBehaviour": "Wait for additional information.",
+    "outcomeOneWeekLater": "My friend replied and apologised for being busy."
+  },
+  {
+    "id": 4008,
+    "category": "Social Situations",
+    "event": "I felt nervous and awkward during a conversation with new people.",
+    "emotion": "Insecure",
+    "rawInterpretation": "I am bad at socialising.",
+    "cognitiveDistortion": "Labeling",
+    "confidenceBefore": 89,
+    "alternateRealityChecks": [
+      "Feeling awkward occasionally is a normal human experience.",
+      "Comfort often increases as people become familiar.",
+      "One interaction does not define social ability.",
+      "Most people experience uncertainty in unfamiliar situations."
+    ],
+    "revisedInterpretation": "I felt uncomfortable in this situation, but that does not mean I am bad at socialising.",
+    "confidenceAfter": 34,
+    "chosenBehaviour": "Continue practising social interactions.",
+    "outcomeOneWeekLater": "Future conversations felt noticeably easier."
+  },
+  {
+    "id": 4009,
+    "category": "Social Situations",
+    "event": "A group of people stopped talking when I approached.",
+    "emotion": "Suspicious",
+    "rawInterpretation": "They were talking about me.",
+    "cognitiveDistortion": "Mind Reading",
+    "confidenceBefore": 91,
+    "alternateRealityChecks": [
+      "Conversations naturally change when someone new joins.",
+      "There is no evidence that the discussion involved you.",
+      "People often pause conversations to include newcomers.",
+      "Assumptions are not facts."
+    ],
+    "revisedInterpretation": "Their behaviour does not provide enough information to know what they were discussing.",
+    "confidenceAfter": 27,
+    "chosenBehaviour": "Avoid speculating about hidden meanings.",
+    "outcomeOneWeekLater": "The conversation turned out to be about a topic unrelated to me."
+  },
+  {
+    "id": 4010,
+    "category": "Social Situations",
+    "event": "I was not tagged in a friend's social media post.",
+    "emotion": "Hurt",
+    "rawInterpretation": "They do not value our friendship.",
+    "cognitiveDistortion": "Emotional Reasoning",
+    "confidenceBefore": 86,
+    "alternateRealityChecks": [
+      "Social media behaviour does not always reflect relationship quality.",
+      "People have different habits regarding tagging and posting.",
+      "One online action does not define a friendship.",
+      "Additional evidence would be needed to support that conclusion."
+    ],
+    "revisedInterpretation": "The post alone does not provide enough information about the friendship.",
+    "confidenceAfter": 33,
+    "chosenBehaviour": "Focus on real-world interactions rather than online signals.",
+    "outcomeOneWeekLater": "My friend continued to engage normally and positively."
+  },
+  {
+    "id": 4011,
+    "category": "Social Situations",
+    "event": "Over the past month, several friends have met up multiple times without inviting me.",
+    "emotion": "Excluded, sad",
+    "rawInterpretation": "They no longer want me in their friend group.",
+    "cognitiveDistortion": "Fortune Telling",
+    "confidenceBefore": 92,
+    "alternateRealityChecks": [
+      "The repeated pattern makes it reasonable to feel concerned.",
+      "There may be practical reasons for some of the gatherings.",
+      "The available information does not explain why you were not included.",
+      "The situation may warrant a conversation rather than assumptions."
+    ],
+    "revisedInterpretation": "I have noticed a pattern that is worth understanding, but I do not know the reasons behind it.",
+    "confidenceAfter": 60,
+    "chosenBehaviour": "Discuss the situation with a trusted friend rather than speculating.",
+    "outcomeOneWeekLater": "One friend explained that the recent gatherings were organised around a shared hobby that I had never expressed interest in."
+  },
+  {
+    "id": 4012,
+    "category": "Social Situations",
+    "event": "I introduced myself to someone and they seemed uninterested in continuing the conversation.",
+    "emotion": "Rejected",
+    "rawInterpretation": "I made a bad impression and people generally do not enjoy talking to me.",
+    "cognitiveDistortion": "Overgeneralization",
+    "confidenceBefore": 88,
+    "alternateRealityChecks": [
+      "You only observed one brief interaction.",
+      "The other person may have been tired, distracted, or preoccupied.",
+      "Chemistry varies between individuals and situations.",
+      "One interaction cannot define how people generally experience you."
+    ],
+    "revisedInterpretation": "The conversation may simply not have connected, and that does not reflect my overall social ability.",
+    "confidenceAfter": 34,
+    "chosenBehaviour": "Continue meeting new people rather than focusing on one interaction.",
+    "outcomeOneWeekLater": "Several later conversations felt natural and enjoyable."
+  },
+  {
+    "id": 4013,
+    "category": "Social Situations",
+    "event": "People laughed shortly after I walked away from a conversation.",
+    "emotion": "Self-conscious",
+    "rawInterpretation": "They were laughing at me.",
+    "cognitiveDistortion": "Mind Reading",
+    "confidenceBefore": 90,
+    "alternateRealityChecks": [
+      "You do not know the content of the conversation.",
+      "People laugh for many reasons unrelated to others.",
+      "The timing may be coincidental.",
+      "There is no direct evidence that the laughter was about you."
+    ],
+    "revisedInterpretation": "I cannot know what the laughter was about based solely on timing.",
+    "confidenceAfter": 25,
+    "chosenBehaviour": "Avoid filling gaps in information with assumptions.",
+    "outcomeOneWeekLater": "The topic of conversation turned out to be unrelated."
+  },
+  {
+    "id": 4014,
+    "category": "Social Situations",
+    "event": "I attended a party where I knew very few people and struggled to join conversations.",
+    "emotion": "Awkward, lonely",
+    "rawInterpretation": "I do not fit in socially.",
+    "cognitiveDistortion": "Labeling",
+    "confidenceBefore": 87,
+    "alternateRealityChecks": [
+      "Many people find unfamiliar social situations uncomfortable.",
+      "Joining existing groups often requires time and persistence.",
+      "Difficulty in one environment does not define social identity.",
+      "The context itself may have contributed to the discomfort."
+    ],
+    "revisedInterpretation": "The situation was challenging, but it does not mean I am incapable of fitting in socially.",
+    "confidenceAfter": 39,
+    "chosenBehaviour": "Keep attending social events and focus on small interactions.",
+    "outcomeOneWeekLater": "Future events felt easier as familiarity increased."
+  },
+  {
+    "id": 4015,
+    "category": "Social Situations",
+    "event": "A friend repeatedly interrupts me and rarely asks questions about my life during conversations.",
+    "emotion": "Unimportant, frustrated",
+    "rawInterpretation": "They do not care about me as a friend.",
+    "cognitiveDistortion": "Overgeneralization",
+    "confidenceBefore": 89,
+    "alternateRealityChecks": [
+      "The behaviour appears to be recurring rather than a single incident.",
+      "Some people are poor conversational listeners without intending harm.",
+      "It is reasonable to examine whether the friendship feels balanced.",
+      "The behaviour may indicate a problem, but it does not automatically reveal the person's intentions."
+    ],
+    "revisedInterpretation": "There may be an issue in how our conversations work, and it is worth discussing rather than assuming they do not care.",
+    "confidenceAfter": 58,
+    "chosenBehaviour": "Talk openly about how the conversations make me feel.",
+    "outcomeOneWeekLater": "My friend was surprised by the feedback and made an effort to be more attentive."
+  }
+]

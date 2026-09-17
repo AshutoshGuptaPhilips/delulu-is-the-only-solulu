@@ -1,0 +1,287 @@
+[
+  {
+    "id": 5001,
+    "category": "Career Uncertainty",
+    "event": "My company announced organisational restructuring.",
+    "emotion": "Anxious, uncertain",
+    "rawInterpretation": "I will probably lose my job.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 91,
+    "alternateRealityChecks": [
+      "Organisational changes can affect roles in many different ways.",
+      "Restructuring does not automatically result in job loss.",
+      "No information has specifically indicated that your role is affected.",
+      "The future is currently uncertain rather than predetermined."
+    ],
+    "revisedInterpretation": "There may be changes ahead, but I do not have evidence that my job is at risk.",
+    "confidenceAfter": 48,
+    "chosenBehaviour": "Stay informed and focus on factors within my control.",
+    "outcomeOneWeekLater": "Leadership shared additional details and my role was unchanged."
+  },
+  {
+    "id": 5002,
+    "category": "Career Uncertainty",
+    "event": "A colleague with similar experience was promoted before me.",
+    "emotion": "Disappointed",
+    "rawInterpretation": "My career is falling behind everyone else's.",
+    "cognitiveDistortion": "Comparison Bias",
+    "confidenceBefore": 89,
+    "alternateRealityChecks": [
+      "Promotions depend on multiple factors beyond tenure.",
+      "Career progression is rarely linear.",
+      "One person's advancement does not determine your future opportunities.",
+      "Comparisons often ignore differences in circumstances and goals."
+    ],
+    "revisedInterpretation": "Their promotion does not define the trajectory of my career.",
+    "confidenceAfter": 39,
+    "chosenBehaviour": "Seek feedback on growth opportunities.",
+    "outcomeOneWeekLater": "My manager outlined potential opportunities for advancement."
+  },
+  {
+    "id": 5003,
+    "category": "Career Uncertainty",
+    "event": "I am considering changing careers but feel unsure.",
+    "emotion": "Conflicted",
+    "rawInterpretation": "If I switch careers, I will probably regret it.",
+    "cognitiveDistortion": "Fortune Telling",
+    "confidenceBefore": 84,
+    "alternateRealityChecks": [
+      "Future outcomes cannot be known with certainty.",
+      "Career decisions can often be tested gradually.",
+      "Many people successfully transition careers multiple times.",
+      "Regret is only one of several possible outcomes."
+    ],
+    "revisedInterpretation": "The decision involves uncertainty, but I can explore options before committing.",
+    "confidenceAfter": 36,
+    "chosenBehaviour": "Research the field and speak with people already working in it.",
+    "outcomeOneWeekLater": "I gained useful insights through informational conversations."
+  },
+  {
+    "id": 5004,
+    "category": "Career Uncertainty",
+    "event": "Artificial intelligence is increasingly capable of tasks in my profession.",
+    "emotion": "Worried",
+    "rawInterpretation": "My skills will become completely obsolete.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 92,
+    "alternateRealityChecks": [
+      "Technology often changes jobs rather than eliminating them entirely.",
+      "New tools also create opportunities and new skill requirements.",
+      "Adaptability is an important professional strength.",
+      "The future impact is uncertain and likely more nuanced than complete replacement."
+    ],
+    "revisedInterpretation": "My profession may evolve, but adaptation remains possible.",
+    "confidenceAfter": 50,
+    "chosenBehaviour": "Invest in learning emerging skills.",
+    "outcomeOneWeekLater": "I identified training opportunities relevant to future trends."
+  },
+  {
+    "id": 5005,
+    "category": "Career Uncertainty",
+    "event": "I received a job rejection after several interview rounds.",
+    "emotion": "Discouraged",
+    "rawInterpretation": "I am not good enough for the jobs I want.",
+    "cognitiveDistortion": "Overgeneralization",
+    "confidenceBefore": 88,
+    "alternateRealityChecks": [
+      "One hiring decision does not define your ability.",
+      "Hiring outcomes depend on many factors beyond competence.",
+      "Reaching later interview stages suggests strengths were recognised.",
+      "Future opportunities remain available."
+    ],
+    "revisedInterpretation": "The rejection is disappointing but does not define my professional value.",
+    "confidenceAfter": 34,
+    "chosenBehaviour": "Request feedback and continue applying.",
+    "outcomeOneWeekLater": "I received invitations to additional interviews."
+  },
+  {
+    "id": 5006,
+    "category": "Career Uncertainty",
+    "event": "My work feels repetitive compared to what my peers are doing.",
+    "emotion": "Restless",
+    "rawInterpretation": "I am wasting my career potential.",
+    "cognitiveDistortion": "Black-and-White Thinking",
+    "confidenceBefore": 83,
+    "alternateRealityChecks": [
+      "Repeating work can still build important expertise.",
+      "Career growth often includes periods of stability.",
+      "Peer experiences may look different from the outside than they feel internally.",
+      "One phase does not define an entire career."
+    ],
+    "revisedInterpretation": "I may be ready for new challenges, but that does not mean my current experience lacks value.",
+    "confidenceAfter": 37,
+    "chosenBehaviour": "Explore development opportunities within my role.",
+    "outcomeOneWeekLater": "A new project opportunity became available."
+  },
+  {
+    "id": 5007,
+    "category": "Career Uncertainty",
+    "event": "I am considering returning to school later in my career.",
+    "emotion": "Uncertain",
+    "rawInterpretation": "I am too old to make such a change.",
+    "cognitiveDistortion": "Limiting Belief",
+    "confidenceBefore": 85,
+    "alternateRealityChecks": [
+      "People begin new educational paths at many different ages.",
+      "Experience can be an advantage in learning.",
+      "Age alone does not determine success.",
+      "There are many examples of successful later-career transitions."
+    ],
+    "revisedInterpretation": "The decision deserves thoughtful consideration, but age alone is not a reason to avoid it.",
+    "confidenceAfter": 32,
+    "chosenBehaviour": "Research programmes and speak with mature students.",
+    "outcomeOneWeekLater": "I discovered several flexible learning options."
+  },
+  {
+    "id": 5008,
+    "category": "Career Uncertainty",
+    "event": "I have not figured out my long-term career path.",
+    "emotion": "Lost",
+    "rawInterpretation": "Everyone else knows exactly where they are going except me.",
+    "cognitiveDistortion": "Mental Filter",
+    "confidenceBefore": 87,
+    "alternateRealityChecks": [
+      "Many people experience uncertainty about their long-term direction.",
+      "Career paths often emerge through experimentation rather than planning.",
+      "People frequently appear more certain externally than they actually feel.",
+      "Not having all the answers today is normal."
+    ],
+    "revisedInterpretation": "Career uncertainty is common and does not indicate failure.",
+    "confidenceAfter": 35,
+    "chosenBehaviour": "Focus on the next useful step rather than the entire path.",
+    "outcomeOneWeekLater": "I identified several areas I wanted to explore further."
+  },
+  {
+    "id": 5009,
+    "category": "Career Uncertainty",
+    "event": "A role I wanted was given to an external candidate.",
+    "emotion": "Disappointed",
+    "rawInterpretation": "The company does not see potential in me.",
+    "cognitiveDistortion": "Mind Reading",
+    "confidenceBefore": 90,
+    "alternateRealityChecks": [
+      "External candidates may bring specialised experience.",
+      "One staffing decision does not reflect all perceptions of your ability.",
+      "Hiring decisions often involve multiple business considerations.",
+      "The decision provides limited information about your future opportunities."
+    ],
+    "revisedInterpretation": "The hiring outcome does not necessarily reflect how my potential is viewed.",
+    "confidenceAfter": 42,
+    "chosenBehaviour": "Discuss future opportunities and expectations with leadership.",
+    "outcomeOneWeekLater": "I learned more about the specific skills required for the role."
+  },
+  {
+    "id": 5010,
+    "category": "Career Uncertainty",
+    "event": "I am considering starting a business but feel uncertain about the risks.",
+    "emotion": "Fearful",
+    "rawInterpretation": "If I fail, it will ruin my career.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 89,
+    "alternateRealityChecks": [
+      "Career setbacks are often recoverable.",
+      "Many entrepreneurs learn from unsuccessful ventures.",
+      "There are ways to test ideas before committing fully.",
+      "Failure is not the only possible outcome."
+    ],
+    "revisedInterpretation": "The decision involves risk, but it is unlikely that one outcome would permanently define my career.",
+    "confidenceAfter": 43,
+    "chosenBehaviour": "Evaluate options gradually and manage risks realistically.",
+    "outcomeOneWeekLater": "I created a plan to test the idea on a small scale."
+  },
+  {
+    "id": 5011,
+    "category": "Career Uncertainty",
+    "event": "Several projects have recently been cancelled and leadership has spoken about reducing costs.",
+    "emotion": "Anxious",
+    "rawInterpretation": "Layoffs are definitely coming and I will be affected.",
+    "cognitiveDistortion": "Fortune Telling",
+    "confidenceBefore": 93,
+    "alternateRealityChecks": [
+      "The recent events suggest there may be organisational challenges.",
+      "Cost reduction can take many forms besides layoffs.",
+      "There is currently no specific evidence that your role will be affected.",
+      "It is reasonable to prepare for uncertainty without assuming a specific outcome."
+    ],
+    "revisedInterpretation": "The situation creates uncertainty, but I do not have enough information to conclude that I will lose my job.",
+    "confidenceAfter": 58,
+    "chosenBehaviour": "Update my resume and stay informed while continuing to perform well.",
+    "outcomeOneWeekLater": "Leadership clarified that spending controls were being introduced but no workforce changes were announced."
+  },
+  {
+    "id": 5012,
+    "category": "Career Uncertainty",
+    "event": "I have been in the same role for four years and have not yet received a promotion.",
+    "emotion": "Frustrated",
+    "rawInterpretation": "My career has stalled permanently.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 89,
+    "alternateRealityChecks": [
+      "A slower promotion timeline does not determine the rest of your career.",
+      "Career progression often occurs in cycles rather than at a constant pace.",
+      "Promotion depends on multiple factors including organisational opportunities.",
+      "Current progress does not predict future progress with certainty."
+    ],
+    "revisedInterpretation": "I may need to understand what is required for advancement, but my career is not permanently stalled.",
+    "confidenceAfter": 40,
+    "chosenBehaviour": "Discuss promotion expectations and growth opportunities with my manager.",
+    "outcomeOneWeekLater": "A development plan was created with measurable goals."
+  },
+  {
+    "id": 5013,
+    "category": "Career Uncertainty",
+    "event": "My industry is changing rapidly and many new skills are becoming important.",
+    "emotion": "Overwhelmed",
+    "rawInterpretation": "I will never be able to keep up with these changes.",
+    "cognitiveDistortion": "All-or-Nothing Thinking",
+    "confidenceBefore": 87,
+    "alternateRealityChecks": [
+      "No professional learns every new skill immediately.",
+      "Most successful careers involve continuous learning over time.",
+      "You can prioritise the skills most relevant to your goals.",
+      "The challenge is gradual adaptation, not instant mastery."
+    ],
+    "revisedInterpretation": "The industry is evolving, but I can adapt by learning incrementally.",
+    "confidenceAfter": 35,
+    "chosenBehaviour": "Create a focused learning plan for the next six months.",
+    "outcomeOneWeekLater": "I identified several high-impact skills and learning resources."
+  },
+  {
+    "id": 5014,
+    "category": "Career Uncertainty",
+    "event": "I received feedback that my current skillset may not fully match the direction of future projects.",
+    "emotion": "Concerned",
+    "rawInterpretation": "I am becoming irrelevant and will eventually be replaced.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 91,
+    "alternateRealityChecks": [
+      "The feedback identifies a genuine development opportunity.",
+      "Skill gaps can often be addressed through training and experience.",
+      "Many organisations provide time and support for upskilling.",
+      "Needing additional skills does not imply replacement is inevitable."
+    ],
+    "revisedInterpretation": "There is a legitimate need to expand my skillset, but I am not automatically at risk of becoming irrelevant.",
+    "confidenceAfter": 55,
+    "chosenBehaviour": "Invest in learning skills aligned with future work.",
+    "outcomeOneWeekLater": "Relevant training opportunities were identified and approved."
+  },
+  {
+    "id": 5015,
+    "category": "Career Uncertainty",
+    "event": "I no longer feel motivated or fulfilled by my current work.",
+    "emotion": "Demotivated, uncertain",
+    "rawInterpretation": "I chose the wrong career and have wasted years of my life.",
+    "cognitiveDistortion": "Overgeneralization",
+    "confidenceBefore": 94,
+    "alternateRealityChecks": [
+      "A period of dissatisfaction does not invalidate previous experiences.",
+      "Career interests naturally evolve over time.",
+      "The skills and experiences gained remain valuable regardless of future choices.",
+      "Feeling unfulfilled may indicate a need for change, not that past decisions were mistakes."
+    ],
+    "revisedInterpretation": "My current role may no longer meet my needs, but my past experience still has value and can inform future decisions.",
+    "confidenceAfter": 48,
+    "chosenBehaviour": "Reflect on what is missing and explore alternative career paths.",
+    "outcomeOneWeekLater": "I gained clarity about the type of work I want to pursue in the future."
+  }
+]

@@ -1,0 +1,287 @@
+[
+  {
+    "id": 1001,
+    "category": "Manager Feedback",
+    "event": "My manager spent most of our 1:1 discussing things I could improve.",
+    "emotion": "Discouraged, anxious",
+    "rawInterpretation": "My manager is unhappy with my performance.",
+    "cognitiveDistortion": "Mental Filter",
+    "confidenceBefore": 90,
+    "alternateRealityChecks": [
+      "Managers often focus on improvement opportunities because strengths may already be meeting expectations.",
+      "Discussing improvements does not automatically indicate poor performance.",
+      "The conversation may reflect an investment in your growth.",
+      "No explicit statement of poor performance was made."
+    ],
+    "revisedInterpretation": "The discussion may have been focused on development rather than criticism.",
+    "confidenceAfter": 50,
+    "chosenBehaviour": "Ask for both strengths and improvement areas during the next 1:1.",
+    "outcomeOneWeekLater": "Manager highlighted several positive contributions and clarified development goals."
+  },
+  {
+    "id": 1002,
+    "category": "Manager Feedback",
+    "event": "My manager asked detailed questions about a project update.",
+    "emotion": "Uneasy",
+    "rawInterpretation": "They suspect I have made mistakes.",
+    "cognitiveDistortion": "Mind Reading",
+    "confidenceBefore": 88,
+    "alternateRealityChecks": [
+      "Managers often ask questions to understand status and risks.",
+      "Clarifying questions are a normal part of project oversight.",
+      "Questions alone do not imply concern or distrust.",
+      "No accusation or criticism was expressed."
+    ],
+    "revisedInterpretation": "The questions may simply reflect their responsibility to stay informed.",
+    "confidenceAfter": 35,
+    "chosenBehaviour": "Answer questions objectively and openly.",
+    "outcomeOneWeekLater": "Manager used the information to prepare for a stakeholder review."
+  },
+  {
+    "id": 1003,
+    "category": "Manager Feedback",
+    "event": "My manager took two days to respond to my email.",
+    "emotion": "Insecure",
+    "rawInterpretation": "They are avoiding me because they are disappointed.",
+    "cognitiveDistortion": "Jumping to Conclusions",
+    "confidenceBefore": 82,
+    "alternateRealityChecks": [
+      "Managers often have competing priorities and inbox overload.",
+      "Delayed responses happen for many reasons unrelated to performance.",
+      "There is no evidence linking the delay to dissatisfaction.",
+      "Avoidance is only one of many possible explanations."
+    ],
+    "revisedInterpretation": "The response delay may simply be due to workload.",
+    "confidenceAfter": 30,
+    "chosenBehaviour": "Send a polite follow-up if necessary.",
+    "outcomeOneWeekLater": "Manager replied and apologised for being busy."
+  },
+  {
+    "id": 1004,
+    "category": "Manager Feedback",
+    "event": "My manager corrected me during a meeting.",
+    "emotion": "Embarrassed",
+    "rawInterpretation": "They think I am incompetent.",
+    "cognitiveDistortion": "Personalization",
+    "confidenceBefore": 92,
+    "alternateRealityChecks": [
+      "The correction may have been intended to maintain accuracy.",
+      "Everyone occasionally provides incomplete information.",
+      "Correcting one statement does not indicate a judgement about competence.",
+      "The focus may have been on the topic rather than the person."
+    ],
+    "revisedInterpretation": "The correction may have been about the information, not my capability.",
+    "confidenceAfter": 38,
+    "chosenBehaviour": "Clarify any misunderstandings and move on.",
+    "outcomeOneWeekLater": "Manager later complimented preparation on another topic."
+  },
+  {
+    "id": 1005,
+    "category": "Manager Feedback",
+    "event": "A project I led received critical feedback from my manager.",
+    "emotion": "Frustrated",
+    "rawInterpretation": "The entire project was a failure.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 94,
+    "alternateRealityChecks": [
+      "Projects can succeed while still having improvement areas.",
+      "Critical feedback often focuses on specific topics.",
+      "One weakness does not invalidate the whole project.",
+      "Successful projects regularly undergo review and critique."
+    ],
+    "revisedInterpretation": "The project may still have delivered value despite the feedback.",
+    "confidenceAfter": 42,
+    "chosenBehaviour": "Capture lessons learned and improvement actions.",
+    "outcomeOneWeekLater": "Stakeholders confirmed satisfaction with overall project outcomes."
+  },
+  {
+    "id": 1006,
+    "category": "Manager Feedback",
+    "event": "My manager praised a colleague during team updates but did not mention my work.",
+    "emotion": "Disappointed",
+    "rawInterpretation": "My contributions are not appreciated.",
+    "cognitiveDistortion": "Overgeneralization",
+    "confidenceBefore": 87,
+    "alternateRealityChecks": [
+      "Recognition can be influenced by timing and visibility.",
+      "Someone else's praise does not imply others are unvalued.",
+      "Managers cannot mention every contribution every time.",
+      "One meeting does not establish a pattern."
+    ],
+    "revisedInterpretation": "The lack of recognition in one meeting does not define how my work is viewed.",
+    "confidenceAfter": 45,
+    "chosenBehaviour": "Continue delivering impact and discuss visibility if needed.",
+    "outcomeOneWeekLater": "Manager referenced several of my contributions during planning discussions."
+  },
+  {
+    "id": 1007,
+    "category": "Manager Feedback",
+    "event": "My manager asked me to revise a document before sharing it.",
+    "emotion": "Deflated",
+    "rawInterpretation": "The document was poor quality.",
+    "cognitiveDistortion": "Black-and-White Thinking",
+    "confidenceBefore": 84,
+    "alternateRealityChecks": [
+      "Documents often go through multiple review cycles.",
+      "Requested revisions can improve clarity rather than fix problems.",
+      "Managers may have different expectations for the audience.",
+      "Needing edits does not mean the work is poor."
+    ],
+    "revisedInterpretation": "The document may have been good but needed refinement.",
+    "confidenceAfter": 37,
+    "chosenBehaviour": "Incorporate feedback constructively.",
+    "outcomeOneWeekLater": "The document was approved and shared widely."
+  },
+  {
+    "id": 1008,
+    "category": "Manager Feedback",
+    "event": "My manager asked if I needed help on a challenging task.",
+    "emotion": "Defensive",
+    "rawInterpretation": "They think I cannot handle the task.",
+    "cognitiveDistortion": "Mind Reading",
+    "confidenceBefore": 81,
+    "alternateRealityChecks": [
+      "Offering support is a normal leadership behaviour.",
+      "Managers help reduce risks on important work.",
+      "The question may reflect care rather than doubt.",
+      "There is no evidence of a negative judgement."
+    ],
+    "revisedInterpretation": "The offer may have been intended to support success.",
+    "confidenceAfter": 28,
+    "chosenBehaviour": "Accept support where helpful.",
+    "outcomeOneWeekLater": "Additional support accelerated completion of the task."
+  },
+  {
+    "id": 1009,
+    "category": "Manager Feedback",
+    "event": "My manager asked about career goals unexpectedly.",
+    "emotion": "Nervous",
+    "rawInterpretation": "They may be planning changes to my role.",
+    "cognitiveDistortion": "Fortune Telling",
+    "confidenceBefore": 75,
+    "alternateRealityChecks": [
+      "Career discussions are common development activities.",
+      "Managers often explore aspirations during planning cycles.",
+      "No information about role changes was provided.",
+      "There may be positive reasons behind the discussion."
+    ],
+    "revisedInterpretation": "The discussion likely relates to development rather than a hidden concern.",
+    "confidenceAfter": 30,
+    "chosenBehaviour": "Share career interests openly.",
+    "outcomeOneWeekLater": "Manager suggested growth opportunities aligned with my interests."
+  },
+  {
+    "id": 1010,
+    "category": "Manager Feedback",
+    "event": "My manager requested more frequent status updates.",
+    "emotion": "Concerned",
+    "rawInterpretation": "They no longer trust me.",
+    "cognitiveDistortion": "Personalization",
+    "confidenceBefore": 89,
+    "alternateRealityChecks": [
+      "Projects sometimes require increased visibility.",
+      "Stakeholder pressure may require more reporting.",
+      "The request may be process-related rather than personal.",
+      "Trust cannot be evaluated from this request alone."
+    ],
+    "revisedInterpretation": "The additional updates may be driven by project needs.",
+    "confidenceAfter": 44,
+    "chosenBehaviour": "Provide updates and seek context if needed.",
+    "outcomeOneWeekLater": "Manager explained leadership requested greater transparency."
+  },
+  {
+    "id": 1011,
+    "category": "Manager Feedback",
+    "event": "My manager did not immediately support my proposal.",
+    "emotion": "Disappointed",
+    "rawInterpretation": "They do not believe in my ideas.",
+    "cognitiveDistortion": "Overgeneralization",
+    "confidenceBefore": 85,
+    "alternateRealityChecks": [
+      "Managers often evaluate proposals from multiple perspectives.",
+      "Questions can indicate engagement rather than rejection.",
+      "The timing may not be right.",
+      "One proposal does not represent all future ideas."
+    ],
+    "revisedInterpretation": "The proposal may simply require further validation.",
+    "confidenceAfter": 40,
+    "chosenBehaviour": "Gather evidence and strengthen the proposal.",
+    "outcomeOneWeekLater": "Manager approved a revised version."
+  },
+  {
+    "id": 1012,
+    "category": "Manager Feedback",
+    "event": "My manager cancelled our check-in meeting.",
+    "emotion": "Anxious",
+    "rawInterpretation": "I am no longer important to them.",
+    "cognitiveDistortion": "Personalization",
+    "confidenceBefore": 83,
+    "alternateRealityChecks": [
+      "Managers frequently reprioritise schedules.",
+      "A cancelled meeting does not indicate reduced support.",
+      "Many external factors may affect availability.",
+      "No evidence suggests a change in relationship."
+    ],
+    "revisedInterpretation": "The cancellation is more likely scheduling related.",
+    "confidenceAfter": 29,
+    "chosenBehaviour": "Wait for rescheduling.",
+    "outcomeOneWeekLater": "The meeting was rescheduled and held normally."
+  },
+  {
+    "id": 1013,
+    "category": "Manager Feedback",
+    "event": "My manager asked me to present to leadership.",
+    "emotion": "Anxious",
+    "rawInterpretation": "I am being tested and will fail.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 91,
+    "alternateRealityChecks": [
+      "High-visibility opportunities are often given to trusted contributors.",
+      "Presenting does not imply a hidden test.",
+      "The invitation may reflect confidence in your work.",
+      "Failure is not the most likely outcome."
+    ],
+    "revisedInterpretation": "This may be an opportunity rather than a threat.",
+    "confidenceAfter": 36,
+    "chosenBehaviour": "Prepare thoroughly.",
+    "outcomeOneWeekLater": "The presentation was well received."
+  },
+  {
+    "id": 1014,
+    "category": "Manager Feedback",
+    "event": "My manager compared my approach to another employee's approach.",
+    "emotion": "Threatened",
+    "rawInterpretation": "I am being measured and found lacking.",
+    "cognitiveDistortion": "Mind Reading",
+    "confidenceBefore": 86,
+    "alternateRealityChecks": [
+      "Comparisons can be used to share ideas and approaches.",
+      "Different methods may suit different situations.",
+      "The comparison may not have been evaluative.",
+      "No direct criticism was expressed."
+    ],
+    "revisedInterpretation": "The comparison may have been intended as a learning opportunity.",
+    "confidenceAfter": 39,
+    "chosenBehaviour": "Explore what can be learned from the example.",
+    "outcomeOneWeekLater": "The discussion helped improve future planning."
+  },
+  {
+    "id": 1015,
+    "category": "Manager Feedback",
+    "event": "My manager said my work could have a greater impact with some changes.",
+    "emotion": "Disappointed",
+    "rawInterpretation": "My current work has little value.",
+    "cognitiveDistortion": "Discounting the Positive",
+    "confidenceBefore": 88,
+    "alternateRealityChecks": [
+      "Greater impact implies existing value already exists.",
+      "Improvement suggestions do not negate contributions.",
+      "Feedback can build upon success.",
+      "The statement acknowledges potential rather than failure."
+    ],
+    "revisedInterpretation": "My work is valuable and can become even more effective.",
+    "confidenceAfter": 31,
+    "chosenBehaviour": "Focus on the suggested improvements.",
+    "outcomeOneWeekLater": "The revised work received strong stakeholder feedback."
+  }
+]

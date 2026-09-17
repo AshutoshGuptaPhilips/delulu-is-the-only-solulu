@@ -1,0 +1,287 @@
+[
+  {
+    "id": 6001,
+    "category": "Self-Esteem",
+    "event": "A friend my age recently bought a house.",
+    "emotion": "Inadequate, jealous",
+    "rawInterpretation": "I am falling behind in life.",
+    "cognitiveDistortion": "Comparison Bias",
+    "confidenceBefore": 91,
+    "alternateRealityChecks": [
+      "People reach life milestones at different times.",
+      "Financial situations, opportunities, and priorities vary significantly.",
+      "One achievement does not represent a person's entire life.",
+      "Comparing your timeline to someone else's may not be meaningful."
+    ],
+    "revisedInterpretation": "My life is following a different path, not necessarily a worse one.",
+    "confidenceAfter": 42,
+    "chosenBehaviour": "Focus on my own goals and progress.",
+    "outcomeOneWeekLater": "I identified financial goals that are meaningful to me."
+  },
+  {
+    "id": 6002,
+    "category": "Self-Esteem",
+    "event": "I made a mistake during a meeting.",
+    "emotion": "Embarrassed",
+    "rawInterpretation": "I am incompetent.",
+    "cognitiveDistortion": "Labeling",
+    "confidenceBefore": 89,
+    "alternateRealityChecks": [
+      "Everyone makes mistakes occasionally.",
+      "One mistake does not define your overall capability.",
+      "Competent people are not error-free.",
+      "Performance should be evaluated using broader evidence."
+    ],
+    "revisedInterpretation": "I made a mistake, but that does not determine my competence.",
+    "confidenceAfter": 31,
+    "chosenBehaviour": "Correct the mistake and move on.",
+    "outcomeOneWeekLater": "The issue was quickly forgotten and work continued normally."
+  },
+  {
+    "id": 6003,
+    "category": "Self-Esteem",
+    "event": "I received positive feedback from several people but one person was critical.",
+    "emotion": "Disappointed",
+    "rawInterpretation": "The criticism proves I am not doing well.",
+    "cognitiveDistortion": "Mental Filter",
+    "confidenceBefore": 87,
+    "alternateRealityChecks": [
+      "You received both positive and constructive feedback.",
+      "Focusing only on criticism can create an incomplete picture.",
+      "Improvement opportunities and strengths can coexist.",
+      "The complete feedback should be considered."
+    ],
+    "revisedInterpretation": "The criticism identifies an area to improve, but it does not invalidate the positive feedback.",
+    "confidenceAfter": 36,
+    "chosenBehaviour": "Learn from the feedback while acknowledging successes.",
+    "outcomeOneWeekLater": "I felt more balanced about the situation."
+  },
+  {
+    "id": 6004,
+    "category": "Self-Esteem",
+    "event": "I struggled to learn a new skill.",
+    "emotion": "Frustrated",
+    "rawInterpretation": "I am not smart enough.",
+    "cognitiveDistortion": "Labeling",
+    "confidenceBefore": 90,
+    "alternateRealityChecks": [
+      "Learning often involves periods of confusion and difficulty.",
+      "Skill acquisition takes time and practice.",
+      "Difficulty does not indicate lack of intelligence.",
+      "The challenge may reflect the complexity of the skill."
+    ],
+    "revisedInterpretation": "I am still learning, and difficulty is part of the process.",
+    "confidenceAfter": 34,
+    "chosenBehaviour": "Continue practising consistently.",
+    "outcomeOneWeekLater": "Progress became more noticeable."
+  },
+  {
+    "id": 6005,
+    "category": "Self-Esteem",
+    "event": "I was rejected after interviewing for a role.",
+    "emotion": "Discouraged",
+    "rawInterpretation": "Nobody will ever hire me for the type of work I want.",
+    "cognitiveDistortion": "Overgeneralization",
+    "confidenceBefore": 92,
+    "alternateRealityChecks": [
+      "One rejection cannot predict all future outcomes.",
+      "Hiring decisions depend on many factors.",
+      "Being interviewed suggests there was initial interest.",
+      "Future opportunities remain possible."
+    ],
+    "revisedInterpretation": "The rejection is disappointing but does not define my future prospects.",
+    "confidenceAfter": 40,
+    "chosenBehaviour": "Continue applying and improving my interview skills.",
+    "outcomeOneWeekLater": "New opportunities appeared."
+  },
+  {
+    "id": 6006,
+    "category": "Self-Esteem",
+    "event": "I saw people on social media sharing impressive achievements.",
+    "emotion": "Inferior",
+    "rawInterpretation": "Everyone is more successful than me.",
+    "cognitiveDistortion": "Comparison Bias",
+    "confidenceBefore": 88,
+    "alternateRealityChecks": [
+      "People typically share highlights rather than struggles.",
+      "Social media is not a complete representation of reality.",
+      "Success has different meanings for different people.",
+      "You may not be seeing the full context."
+    ],
+    "revisedInterpretation": "I am comparing my full life to other people's highlights.",
+    "confidenceAfter": 29,
+    "chosenBehaviour": "Reduce comparison and focus on personal goals.",
+    "outcomeOneWeekLater": "I felt less influenced by social media."
+  },
+  {
+    "id": 6007,
+    "category": "Self-Esteem",
+    "event": "Someone disagreed with my opinion.",
+    "emotion": "Defensive",
+    "rawInterpretation": "My opinion must be stupid.",
+    "cognitiveDistortion": "Black-and-White Thinking",
+    "confidenceBefore": 84,
+    "alternateRealityChecks": [
+      "Reasonable people can disagree.",
+      "Disagreement does not prove that one side is foolish.",
+      "Different experiences often lead to different viewpoints.",
+      "Ideas can be debated without judging intelligence."
+    ],
+    "revisedInterpretation": "The disagreement reflects different perspectives, not my worth.",
+    "confidenceAfter": 33,
+    "chosenBehaviour": "Remain curious about alternative viewpoints.",
+    "outcomeOneWeekLater": "The discussion remained constructive."
+  },
+  {
+    "id": 6008,
+    "category": "Self-Esteem",
+    "event": "I forgot an important task.",
+    "emotion": "Frustrated with myself",
+    "rawInterpretation": "I am unreliable.",
+    "cognitiveDistortion": "Overgeneralization",
+    "confidenceBefore": 86,
+    "alternateRealityChecks": [
+      "People occasionally forget things.",
+      "One oversight does not define overall reliability.",
+      "Reliability should be evaluated across many situations.",
+      "Systems and reminders can prevent future mistakes."
+    ],
+    "revisedInterpretation": "I made a mistake and can improve how I organise tasks.",
+    "confidenceAfter": 30,
+    "chosenBehaviour": "Improve my tracking system.",
+    "outcomeOneWeekLater": "Task management became more consistent."
+  },
+  {
+    "id": 6009,
+    "category": "Self-Esteem",
+    "event": "I received a compliment but felt uncomfortable accepting it.",
+    "emotion": "Self-doubt",
+    "rawInterpretation": "They are probably just being polite.",
+    "cognitiveDistortion": "Discounting the Positive",
+    "confidenceBefore": 83,
+    "alternateRealityChecks": [
+      "The compliment may genuinely reflect their perception.",
+      "People often offer praise because they mean it.",
+      "Rejecting positive feedback can create a distorted self-image.",
+      "There is no evidence that the compliment was insincere."
+    ],
+    "revisedInterpretation": "The compliment may reflect something I genuinely did well.",
+    "confidenceAfter": 32,
+    "chosenBehaviour": "Accept positive feedback more openly.",
+    "outcomeOneWeekLater": "I found it easier to acknowledge strengths."
+  },
+  {
+    "id": 6010,
+    "category": "Self-Esteem",
+    "event": "I am slower than some colleagues at completing tasks.",
+    "emotion": "Insecure",
+    "rawInterpretation": "I am less capable than they are.",
+    "cognitiveDistortion": "Comparison Bias",
+    "confidenceBefore": 87,
+    "alternateRealityChecks": [
+      "Speed is only one aspect of contribution.",
+      "Different people prioritise quality, depth, and accuracy differently.",
+      "Experience and context vary significantly.",
+      "Capability cannot be measured by speed alone."
+    ],
+    "revisedInterpretation": "My value depends on more than how quickly I complete tasks.",
+    "confidenceAfter": 38,
+    "chosenBehaviour": "Focus on quality and continuous improvement.",
+    "outcomeOneWeekLater": "My work quality was positively recognised."
+  },
+  {
+    "id": 6011,
+    "category": "Self-Esteem",
+    "event": "I often avoid sharing ideas because I assume they are not good enough.",
+    "emotion": "Self-conscious",
+    "rawInterpretation": "Other people always have better ideas than I do.",
+    "cognitiveDistortion": "Mind Reading",
+    "confidenceBefore": 89,
+    "alternateRealityChecks": [
+      "You cannot know how others will evaluate an idea before sharing it.",
+      "Many useful ideas initially seem imperfect.",
+      "Ideas improve through discussion and feedback.",
+      "Remaining silent guarantees that potentially good ideas are not heard."
+    ],
+    "revisedInterpretation": "I cannot accurately judge how others will respond without sharing my ideas.",
+    "confidenceAfter": 40,
+    "chosenBehaviour": "Contribute more actively during discussions.",
+    "outcomeOneWeekLater": "One suggestion received positive feedback."
+  },
+  {
+    "id": 6012,
+    "category": "Self-Esteem",
+    "event": "My performance review rated me as meeting expectations instead of exceeding them.",
+    "emotion": "Disappointed",
+    "rawInterpretation": "I am only average.",
+    "cognitiveDistortion": "Labeling",
+    "confidenceBefore": 91,
+    "alternateRealityChecks": [
+      "Meeting expectations often indicates solid performance.",
+      "A rating reflects performance during a period, not personal worth.",
+      "Performance exists on a spectrum rather than fixed categories.",
+      "One evaluation does not define identity."
+    ],
+    "revisedInterpretation": "The review provides feedback on performance, not my value as a person.",
+    "confidenceAfter": 45,
+    "chosenBehaviour": "Use the review to identify growth opportunities.",
+    "outcomeOneWeekLater": "I gained more clarity on development goals."
+  },
+  {
+    "id": 6013,
+    "category": "Self-Esteem",
+    "event": "I feel behind because I have not achieved a goal I expected by this age.",
+    "emotion": "Disappointed",
+    "rawInterpretation": "I have wasted valuable years.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 93,
+    "alternateRealityChecks": [
+      "Life goals rarely follow a fixed timeline.",
+      "Past experiences often contribute valuable skills and insights.",
+      "Many successful outcomes occur later than originally planned.",
+      "A delayed goal does not mean failure."
+    ],
+    "revisedInterpretation": "My timeline differs from my expectations, but my experiences still have value.",
+    "confidenceAfter": 41,
+    "chosenBehaviour": "Refocus on future steps instead of past comparisons.",
+    "outcomeOneWeekLater": "I felt more motivated about future plans."
+  },
+  {
+    "id": 6014,
+    "category": "Self-Esteem",
+    "event": "I rarely notice my achievements because I immediately focus on the next challenge.",
+    "emotion": "Unsatisfied",
+    "rawInterpretation": "Nothing I achieve is ever enough.",
+    "cognitiveDistortion": "Discounting the Positive",
+    "confidenceBefore": 86,
+    "alternateRealityChecks": [
+      "Progress deserves recognition even when new goals exist.",
+      "Achievement and growth can coexist.",
+      "Ignoring accomplishments creates an incomplete picture of reality.",
+      "Acknowledging success does not mean becoming complacent."
+    ],
+    "revisedInterpretation": "I can appreciate achievements while still pursuing improvement.",
+    "confidenceAfter": 33,
+    "chosenBehaviour": "Regularly review accomplishments and progress.",
+    "outcomeOneWeekLater": "I felt more balanced about my development."
+  },
+  {
+    "id": 6015,
+    "category": "Self-Esteem",
+    "event": "Several people have recently given feedback that I tend to underestimate my contributions.",
+    "emotion": "Sceptical",
+    "rawInterpretation": "They are just trying to make me feel better.",
+    "cognitiveDistortion": "Discounting the Positive",
+    "confidenceBefore": 85,
+    "alternateRealityChecks": [
+      "Consistent feedback from multiple people may contain useful information.",
+      "Others sometimes notice strengths that we overlook.",
+      "It is possible to have strengths without being perfect.",
+      "The feedback may be worth exploring rather than dismissing."
+    ],
+    "revisedInterpretation": "There may be aspects of my contribution that I am not fully recognising.",
+    "confidenceAfter": 40,
+    "chosenBehaviour": "Track achievements and seek objective feedback.",
+    "outcomeOneWeekLater": "I identified several contributions that I had previously minimised."
+  }
+]

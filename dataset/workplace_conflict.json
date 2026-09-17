@@ -1,0 +1,287 @@
+[
+  {
+    "id": 1,
+    "category": "Workplace Conflict",
+    "event": "My manager cancelled our 1:1 meeting 30 minutes before it started.",
+    "emotion": "Anxious, insecure",
+    "rawInterpretation": "My manager is losing interest in supporting me and probably thinks I am not performing well.",
+    "cognitiveDistortion": "Mind Reading",
+    "confidenceBefore": 92,
+    "alternateRealityChecks": [
+      "Managers often reschedule due to competing priorities.",
+      "A cancelled meeting does not necessarily reflect the value of the employee.",
+      "Performance concerns are usually communicated more directly.",
+      "There is no evidence that the cancellation is related to your performance."
+    ],
+    "revisedInterpretation": "I feel disappointed, but a cancelled meeting alone does not indicate dissatisfaction with my work.",
+    "confidenceAfter": 55,
+    "chosenBehaviour": "Wait for the rescheduled meeting and avoid making assumptions.",
+    "outcomeOneWeekLater": "Manager rescheduled the meeting and discussed project priorities."
+  },
+  {
+    "id": 2,
+    "category": "Workplace Conflict",
+    "event": "A colleague challenged my proposal during a team meeting.",
+    "emotion": "Embarrassed, defensive",
+    "rawInterpretation": "They were trying to undermine me in front of everyone.",
+    "cognitiveDistortion": "Personalization",
+    "confidenceBefore": 88,
+    "alternateRealityChecks": [
+      "The challenge may have been directed at the idea rather than you.",
+      "Healthy disagreement is common in decision making.",
+      "Questions often help strengthen proposals.",
+      "There is insufficient evidence that the intent was personal."
+    ],
+    "revisedInterpretation": "The discussion may have focused on improving the proposal rather than attacking me.",
+    "confidenceAfter": 45,
+    "chosenBehaviour": "Follow up with curiosity instead of defensiveness.",
+    "outcomeOneWeekLater": "The colleague later supported an updated version of the proposal."
+  },
+  {
+    "id": 3,
+    "category": "Workplace Conflict",
+    "event": "Nobody responded to my Teams message for several hours.",
+    "emotion": "Ignored, frustrated",
+    "rawInterpretation": "The team does not value my input.",
+    "cognitiveDistortion": "Overgeneralization",
+    "confidenceBefore": 85,
+    "alternateRealityChecks": [
+      "People may have been in meetings.",
+      "Some questions require more thought before responding.",
+      "Response speed does not equal respect.",
+      "Others may not have considered the message urgent."
+    ],
+    "revisedInterpretation": "The lack of immediate replies is not sufficient evidence that my input is undervalued.",
+    "confidenceAfter": 40,
+    "chosenBehaviour": "Wait and send a polite follow-up if needed.",
+    "outcomeOneWeekLater": "Several teammates replied and provided useful feedback."
+  },
+  {
+    "id": 4,
+    "category": "Workplace Conflict",
+    "event": "A coworker received recognition for a project I also contributed to.",
+    "emotion": "Resentful, disappointed",
+    "rawInterpretation": "Management notices only their work and ignores mine.",
+    "cognitiveDistortion": "Mental Filter",
+    "confidenceBefore": 90,
+    "alternateRealityChecks": [
+      "Recognition of one person does not negate your contribution.",
+      "Managers may not have full visibility into everyone's work.",
+      "Your impact may be recognized at another opportunity.",
+      "One event does not establish a pattern."
+    ],
+    "revisedInterpretation": "Recognition may have reflected visibility rather than deliberate exclusion.",
+    "confidenceAfter": 50,
+    "chosenBehaviour": "Discuss contribution visibility with manager.",
+    "outcomeOneWeekLater": "Manager acknowledged contributions and included them in a project update."
+  },
+  {
+    "id": 5,
+    "category": "Workplace Conflict",
+    "event": "My manager gave me critical feedback on a presentation.",
+    "emotion": "Discouraged",
+    "rawInterpretation": "I failed and disappointed everyone.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 94,
+    "alternateRealityChecks": [
+      "Feedback often focuses on improvement opportunities.",
+      "Receiving feedback suggests investment in your growth.",
+      "One weakness does not invalidate the entire presentation.",
+      "Most professionals improve through feedback."
+    ],
+    "revisedInterpretation": "The feedback is an opportunity to improve rather than proof of failure.",
+    "confidenceAfter": 35,
+    "chosenBehaviour": "Incorporate the feedback into the next presentation.",
+    "outcomeOneWeekLater": "The next presentation received positive feedback."
+  },
+  {
+    "id": 6,
+    "category": "Workplace Conflict",
+    "event": "A colleague stopped inviting me to informal discussions.",
+    "emotion": "Rejected",
+    "rawInterpretation": "They no longer want to work with me.",
+    "cognitiveDistortion": "Jumping to Conclusions",
+    "confidenceBefore": 80,
+    "alternateRealityChecks": [
+      "The discussions may have become project specific.",
+      "The colleague may assume you already know the information.",
+      "The participant list may have changed.",
+      "There is not enough information to conclude exclusion."
+    ],
+    "revisedInterpretation": "I need more context before assuming rejection.",
+    "confidenceAfter": 42,
+    "chosenBehaviour": "Ask openly about upcoming discussions.",
+    "outcomeOneWeekLater": "The colleague explained the discussions involved a different project."
+  },
+  {
+    "id": 7,
+    "category": "Workplace Conflict",
+    "event": "My proposal was not selected during planning.",
+    "emotion": "Disappointed",
+    "rawInterpretation": "My ideas are not respected.",
+    "cognitiveDistortion": "Overgeneralization",
+    "confidenceBefore": 87,
+    "alternateRealityChecks": [
+      "Priorities depend on timing and resources.",
+      "A rejected proposal can still be valuable.",
+      "Many good ideas are postponed.",
+      "One decision does not define your credibility."
+    ],
+    "revisedInterpretation": "The proposal may not have fit current priorities.",
+    "confidenceAfter": 38,
+    "chosenBehaviour": "Request feedback on future opportunities.",
+    "outcomeOneWeekLater": "Parts of the proposal were included in the next planning cycle."
+  },
+  {
+    "id": 8,
+    "category": "Workplace Conflict",
+    "event": "A senior stakeholder seemed disengaged during my presentation.",
+    "emotion": "Nervous",
+    "rawInterpretation": "They disliked my presentation.",
+    "cognitiveDistortion": "Mind Reading",
+    "confidenceBefore": 89,
+    "alternateRealityChecks": [
+      "They may have been distracted by unrelated issues.",
+      "Different people process information differently.",
+      "Body language is not always a reliable indicator.",
+      "You have not received explicit negative feedback."
+    ],
+    "revisedInterpretation": "I cannot infer their opinion solely from their behaviour.",
+    "confidenceAfter": 43,
+    "chosenBehaviour": "Request feedback after the session.",
+    "outcomeOneWeekLater": "Stakeholder provided constructive and positive comments."
+  },
+  {
+    "id": 9,
+    "category": "Workplace Conflict",
+    "event": "My pull request received many review comments.",
+    "emotion": "Overwhelmed",
+    "rawInterpretation": "My code quality is poor.",
+    "cognitiveDistortion": "Labeling",
+    "confidenceBefore": 86,
+    "alternateRealityChecks": [
+      "Comments often improve quality.",
+      "Complex work usually receives more feedback.",
+      "Code reviews are collaborative by design.",
+      "Experienced engineers also receive comments."
+    ],
+    "revisedInterpretation": "The comments are part of the development process.",
+    "confidenceAfter": 30,
+    "chosenBehaviour": "Address comments objectively.",
+    "outcomeOneWeekLater": "The PR was approved and merged."
+  },
+  {
+    "id": 10,
+    "category": "Workplace Conflict",
+    "event": "A coworker interrupted me several times during a discussion.",
+    "emotion": "Annoyed",
+    "rawInterpretation": "They do not respect me.",
+    "cognitiveDistortion": "Mind Reading",
+    "confidenceBefore": 83,
+    "alternateRealityChecks": [
+      "Some communication styles are naturally more interruptive.",
+      "They may have been excited about the topic.",
+      "The interruptions may have been unintentional.",
+      "Intent cannot be determined from behaviour alone."
+    ],
+    "revisedInterpretation": "The interruptions were frustrating but not necessarily disrespectful.",
+    "confidenceAfter": 45,
+    "chosenBehaviour": "Discuss meeting dynamics calmly if the pattern continues.",
+    "outcomeOneWeekLater": "The colleague apologized and became more conscious in discussions."
+  },
+  {
+    "id": 11,
+    "category": "Workplace Conflict",
+    "event": "A project decision was made without consulting me.",
+    "emotion": "Excluded",
+    "rawInterpretation": "My expertise is no longer valued.",
+    "cognitiveDistortion": "Emotional Reasoning",
+    "confidenceBefore": 91,
+    "alternateRealityChecks": [
+      "The decision may have been time sensitive.",
+      "The team may not have realized your input was needed.",
+      "The scope may have changed.",
+      "One event does not define your organisational value."
+    ],
+    "revisedInterpretation": "I need more context before concluding that my expertise is undervalued.",
+    "confidenceAfter": 48,
+    "chosenBehaviour": "Seek clarity on future involvement.",
+    "outcomeOneWeekLater": "Manager clarified the decision timeline and invited participation in future reviews."
+  },
+  {
+    "id": 12,
+    "category": "Workplace Conflict",
+    "event": "I saw colleagues talking quietly after a meeting.",
+    "emotion": "Suspicious",
+    "rawInterpretation": "They were discussing me negatively.",
+    "cognitiveDistortion": "Jumping to Conclusions",
+    "confidenceBefore": 84,
+    "alternateRealityChecks": [
+      "They may have been discussing another topic.",
+      "People often continue conversations after meetings.",
+      "There is no evidence the conversation involved you.",
+      "Assumptions are not facts."
+    ],
+    "revisedInterpretation": "I do not know what they were discussing.",
+    "confidenceAfter": 25,
+    "chosenBehaviour": "Avoid speculation.",
+    "outcomeOneWeekLater": "The discussion turned out to be about a separate customer issue."
+  },
+  {
+    "id": 13,
+    "category": "Workplace Conflict",
+    "event": "A teammate strongly disagreed with my recommendation.",
+    "emotion": "Defensive",
+    "rawInterpretation": "They think I am incompetent.",
+    "cognitiveDistortion": "Personalization",
+    "confidenceBefore": 88,
+    "alternateRealityChecks": [
+      "People can disagree without questioning competence.",
+      "Strong opinions often occur around important decisions.",
+      "The disagreement may be about trade-offs.",
+      "Debate can improve outcomes."
+    ],
+    "revisedInterpretation": "The discussion may have been focused on the recommendation rather than me.",
+    "confidenceAfter": 40,
+    "chosenBehaviour": "Explore the rationale behind the disagreement.",
+    "outcomeOneWeekLater": "The team created a combined solution using ideas from both sides."
+  },
+  {
+    "id": 14,
+    "category": "Workplace Conflict",
+    "event": "My promotion did not happen this cycle.",
+    "emotion": "Frustrated",
+    "rawInterpretation": "The organisation does not appreciate my work.",
+    "cognitiveDistortion": "Overgeneralization",
+    "confidenceBefore": 93,
+    "alternateRealityChecks": [
+      "Promotion decisions consider multiple factors.",
+      "Budget and timing can influence promotions.",
+      "Performance is only one variable.",
+      "No promotion is not the same as no appreciation."
+    ],
+    "revisedInterpretation": "I am disappointed, but I need more information before drawing conclusions.",
+    "confidenceAfter": 50,
+    "chosenBehaviour": "Request development feedback and promotion expectations.",
+    "outcomeOneWeekLater": "Manager outlined a growth plan and upcoming opportunities."
+  },
+  {
+    "id": 15,
+    "category": "Workplace Conflict",
+    "event": "My manager asked detailed questions about my work.",
+    "emotion": "Uneasy",
+    "rawInterpretation": "They are looking for mistakes.",
+    "cognitiveDistortion": "Mind Reading",
+    "confidenceBefore": 82,
+    "alternateRealityChecks": [
+      "Managers need visibility into project status.",
+      "Questions can indicate engagement and interest.",
+      "Clarification is a normal leadership activity.",
+      "You have not received any indication of concern."
+    ],
+    "revisedInterpretation": "The questions may simply be part of responsible project oversight.",
+    "confidenceAfter": 28,
+    "chosenBehaviour": "Answer factually and ask if additional details are needed.",
+    "outcomeOneWeekLater": "Manager used the information to support project planning."
+  }
+]

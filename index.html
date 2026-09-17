@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solulu - Reality Checks</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">✨</span>
+                    <h1>SOLULU</h1>
+                </div>
+                <div class="user-menu">
+                    <button class="icon-btn" title="User menu">👤</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-wrapper">
+            <!-- Sidebar Navigation -->
+            <nav class="sidebar">
+                <div class="nav-tabs">
+                    <button class="nav-tab active" data-tab="reality-checks">
+                        <span class="tab-icon">🔍</span>
+                        <span class="tab-label">Reality Checks</span>
+                    </button>
+                    <button class="nav-tab" data-tab="journal">
+                        <span class="tab-icon">📔</span>
+                        <span class="tab-label">Journal</span>
+                    </button>
+                    <button class="nav-tab" data-tab="progress">
+                        <span class="tab-icon">📈</span>
+                        <span class="tab-label">Progress</span>
+                    </button>
+                    <button class="nav-tab" data-tab="settings">
+                        <span class="tab-icon">⚙️</span>
+                        <span class="tab-label">Settings</span>
+                    </button>
+                    <button class="nav-tab" data-tab="pattern-insights">
+                        <span class="tab-icon">📊</span>
+                        <span class="tab-label">Pattern Insights</span>
+                    </button>
+                </div>
+            </nav>
+
+            <!-- Content Area -->
+            <main class="content-area">
+                <!-- Reality Checks Tab -->
+                <section id="reality-checks" class="tab-content active">
+                    <div class="section-header">
+                        <h2>REALITY CHECKS</h2>
+                        <button class="btn-view-all" id="viewAllBtn">
+                            View All Exercises 
+                            <span class="dropdown-icon">▼</span>
+                        </button>
+                    </div>
+
+                    <!-- Main Exercise Container -->
+                    <div class="exercise-container">
+                        <!-- Exercise Header -->
+                        <div class="exercise-header">
+                            <div class="exercise-status">
+                                <h3 id="exerciseTitle">NEW EXERCISE</h3>
+                                <span class="auto-save-indicator">Auto-saves</span>
+                            </div>
+                            <span class="exercise-timestamp" id="exerciseTimestamp">Just started</span>
+                        </div>
+
+                        <!-- Input Section -->
+                        <section class="input-section">
+                            <h3 class="section-title">Your Thoughts</h3>
+
+                            <!-- Event Description -->
+                            <div class="input-group">
+                                <label for="eventInput" class="input-label">
+                                    <span class="label-icon">📝</span>
+                                    Describe the Event
+                                </label>
+                                <textarea 
+                                    id="eventInput" 
+                                    class="input-field" 
+                                    placeholder="What happened? Be specific and objective about the situation..."
+                                    rows="3"
+                                    maxlength="500"
+                                ></textarea>
+                                <div class="helper-text">
+                                    <span>Be specific and objective about what happened.</span>
+                                    <span class="char-count"><span id="eventCount">0</span> / 500</span>
+                                </div>
+                            </div>
+
+                            <!-- Emotion Felt -->
+                            <div class="input-group">
+                                <label for="emotionInput" class="input-label">
+                                    <span class="label-icon">💭</span>
+                                    Emotion Felt
+                                </label>
+                                <textarea 
+                                    id="emotionInput" 
+                                    class="input-field" 
+                                    placeholder="What emotion did you feel? e.g., sad, happy, insecure, anxious, worried..."
+                                    rows="2"
+                                    maxlength="300"
+                                ></textarea>
+                                <div class="helper-text">
+                                    <span>Describe the emotion you're experiencing.</span>
+                                    <span class="char-count"><span id="emotionCount">0</span> / 300</span>
+                                </div>
+                            </div>
+
+                            <!-- Raw Interpretation -->
+                            <div class="input-group">
+                                <label for="interpretationInput" class="input-label">
+                                    <span class="label-icon">💡</span>
+                                    Your Raw Interpretation
+                                </label>
+                                <textarea 
+                                    id="interpretationInput" 
+                                    class="input-field" 
+                                    placeholder="What do you think will happen next? Why do you think that will happen? What do you believe about this situation?"
+                                    rows="3"
+                                    maxlength="500"
+                                ></textarea>
+                                <div class="helper-text">
+                                    <span>What do you predict will happen and why?</span>
+                                    <span class="char-count"><span id="interpretationCount">0</span> / 500</span>
+                                </div>
+                            </div>
+
+                            <!-- Generate Button -->
+                            <div class="button-container">
+                                <button id="generateBtn" class="btn-generate">
+                                    <span class="btn-icon">✨</span>
+                                    <span class="btn-text">Generate Alternate Realities</span>
+                                </button>
+                            </div>
+                        </section>
+
+                        <!-- Output Section -->
+                        <section class="output-section" id="outputSection" style="display: none;">
+                            <h3 class="section-title">Generated Alternate Realities</h3>
+                            <p class="output-subtitle">Here are 4 different perspectives on your situation:</p>
+
+                            <!-- Realities Container -->
+                            <div class="realities-container" id="realitiesContainer">
+                                <!-- Reality cards will be inserted here -->
+                            </div>
+
+                            <!-- Reflection Section -->
+                            <section class="reflection-section">
+                                <div class="reflection-header" id="reflectionHeader">
+                                    <button class="reflection-toggle" id="reflectionToggle">
+                                        <span class="toggle-icon">▼</span>
+                                        <span class="toggle-text">Expand to Add Your Reflection</span>
+                                    </button>
+                                </div>
+                                <div class="reflection-content" id="reflectionContent" style="display: none;">
+                                    <p class="reflection-prompt">
+                                        After reading these alternate realities, how do you feel now? 
+                                        Have your thoughts or feelings changed?
+                                    </p>
+                                    <textarea 
+                                        id="reflectionInput" 
+                                        class="input-field reflection-textarea" 
+                                        placeholder="Share your fresh thoughts and interpretation..."
+                                        rows="4"
+                                        maxlength="500"
+                                    ></textarea>
+                                    <div class="helper-text">
+                                        <span class="char-count"><span id="reflectionCount">0</span> / 500</span>
+                                    </div>
+                                    <button class="btn-save-reflection" id="saveReflectionBtn">
+                                        Save Reflection
+                                    </button>
+                                </div>
+                            </section>
+
+                            <!-- Navigation -->
+                            <div class="exercise-navigation">
+                                <button class="btn-back" id="backBtn">← Back to Exercises</button>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+
+                <!-- Journal Tab -->
+                <section id="journal" class="tab-content">
+                    <div class="section-header">
+                        <h2>JOURNAL</h2>
+                    </div>
+                    <div class="coming-soon">
+                        <p>📔 Journal feature coming soon...</p>
+                    </div>
+                </section>
+
+                <!-- Progress Tab -->
+                <section id="progress" class="tab-content">
+                    <div class="section-header">
+                        <h2>YOUR PROGRESS</h2>
+                    </div>
+                    
+                    <!-- Progress Empty State -->
+                    <div class="progress-empty-state" id="progressEmptyState" style="display: none;">
+                        <div class="empty-state">
+                            <span class="empty-icon">📊</span>
+                            <p>Complete at least 3 exercises to see your progress</p>
+                            <button class="btn-secondary" onclick="app.switchTab(document.querySelector('[data-tab=reality-checks]'))">Start Exercise</button>
+                        </div>
+                    </div>
+
+                    <!-- Progress Container -->
+                    <div class="progress-container" id="progressContainer" style="display: none;">
+                        <!-- Emotional Awareness Section -->
+                        <section class="progress-section">
+                            <h3 class="progress-section-title">💭 Emotional Awareness</h3>
+                            <p class="progress-subtitle">How well you identify emotions</p>
+                            <div class="progress-metrics" id="emotionalAwarenessMetrics">
+                                <!-- Timeline will be inserted here -->
+                            </div>
+                            <div class="progress-insight" id="emotionalAwarenessInsight">
+                                <!-- Insight will be inserted here -->
+                            </div>
+                        </section>
+
+                        <!-- Flexibility Score Section -->
+                        <section class="progress-section">
+                            <h3 class="progress-section-title">🔄 Flexibility Score</h3>
+                            <p class="progress-subtitle">Willingness to consider multiple explanations</p>
+                            <div class="progress-metrics" id="flexibilityMetrics">
+                                <!-- Timeline will be inserted here -->
+                            </div>
+                            <div class="progress-insight" id="flexibilityInsight">
+                                <!-- Insight will be inserted here -->
+                            </div>
+                        </section>
+
+                        <!-- Reaction Speed Section -->
+                        <section class="progress-section">
+                            <h3 class="progress-section-title">⚡ Reaction Speed</h3>
+                            <p class="progress-subtitle">How quickly you consider alternatives</p>
+                            <div class="progress-metrics" id="reactionSpeedMetrics">
+                                <!-- Timeline will be inserted here -->
+                            </div>
+                            <div class="progress-insight" id="reactionSpeedInsight">
+                                <!-- Insight will be inserted here -->
+                            </div>
+                        </section>
+
+                        <!-- Overall Progress Summary -->
+                        <section class="progress-section progress-summary">
+                            <h3 class="progress-section-title">🏆 Overall Progress</h3>
+                            <div class="summary-stats" id="summaryStats">
+                                <!-- Summary stats will be inserted here -->
+                            </div>
+                        </section>
+                    </div>
+                </section>
+
+                <!-- Settings Tab -->
+                <section id="settings" class="tab-content">
+                    <div class="section-header">
+                        <h2>SETTINGS</h2>
+                    </div>
+                    <div class="coming-soon">
+                        <p>⚙️ Settings coming soon...</p>
+                    </div>
+                </section>
+
+                <!-- Pattern Insights Tab -->
+                <section id="pattern-insights" class="tab-content">
+                    <div class="section-header">
+                        <h2>PATTERN INSIGHTS</h2>
+                    </div>
+
+                    <!-- Insights Overview -->
+                    <div class="insights-overview" id="insightsOverview" style="display: none;">
+                        <div class="overview-cards">
+                            <div class="overview-card">
+                                <div class="overview-label">Total Exercises</div>
+                                <div class="overview-value" id="totalExercises">0</div>
+                            </div>
+                            <div class="overview-card">
+                                <div class="overview-label">Last 30 Days</div>
+                                <div class="overview-value" id="exercisesLast30">0</div>
+                            </div>
+                            <div class="overview-card">
+                                <div class="overview-label">Confidence Shift</div>
+                                <div class="overview-value" id="confidenceShift">0%</div>
+                            </div>
+                            <div class="overview-card">
+                                <div class="overview-label">With Reflection</div>
+                                <div class="overview-value" id="withReflection">0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- No Data State -->
+                    <div class="empty-state" id="insightsEmptyState">
+                        <span class="empty-icon">📭</span>
+                        <p>Complete at least 3 exercises with reflections to see pattern insights</p>
+                        <button class="btn-secondary" onclick="app.switchTab(document.querySelector('[data-tab=\"reality-checks\"]'))">
+                            Go to Reality Checks
+                        </button>
+                    </div>
+
+                    <!-- Category Buttons -->
+                    <div class="insights-categories" id="insightsCategories" style="display: none;">
+                        <div class="categories-grid">
+                            <button class="category-btn active" data-category="Workplace Pattern Insights">
+                                <span class="category-icon">💼</span>
+                                <span class="category-text">Workplace</span>
+                            </button>
+                            <button class="category-btn" data-category="Relationship Pattern Insights">
+                                <span class="category-icon">❤️</span>
+                                <span class="category-text">Relationships</span>
+                            </button>
+                            <button class="category-btn" data-category="Social Situation Insights">
+                                <span class="category-icon">👥</span>
+                                <span class="category-text">Social</span>
+                            </button>
+                            <button class="category-btn" data-category="General Insights">
+                                <span class="category-icon">🧠</span>
+                                <span class="category-text">General</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Insights Display -->
+                    <div class="insights-display" id="insightsDisplay" style="display: none;">
+                        <!-- What Happened Section -->
+                        <section class="insight-section">
+                            <h3 class="insight-section-title">📌 What Happened</h3>
+                            <p class="insight-subtitle" id="whatHappenedSubtitle"></p>
+                            <ul class="what-happened-list" id="whatHappenedList">
+                                <!-- Generated content -->
+                            </ul>
+                        </section>
+
+                        <!-- Emotional Patterns Section -->
+                        <section class="insight-section">
+                            <h3 class="insight-section-title">💭 Emotional Patterns</h3>
+                            <p class="insight-subtitle">Most common emotions:</p>
+                            <div class="emotions-chart" id="emotionsChart">
+                                <!-- Generated chart -->
+                            </div>
+                        </section>
+
+                        <!-- Interpretation Patterns Section -->
+                        <section class="insight-section">
+                            <h3 class="insight-section-title">💡 Interpretation Patterns</h3>
+                            <p class="insight-subtitle">Your most common first reactions:</p>
+                            <div class="table-wrapper">
+                                <table class="patterns-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Pattern</th>
+                                            <th>Occurrences</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="patternsTableBody">
+                                        <!-- Generated content -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <!-- Most Common Cognitive Patterns Section -->
+                        <section class="insight-section">
+                            <h3 class="insight-section-title">🧠 Your Most Common Cognitive Patterns</h3>
+                            <div class="patterns-list" id="patternsList">
+                                <!-- Pattern items will be inserted here -->
+                            </div>
+                        </section>
+
+                        <!-- Reality Check Impact Section -->
+                        <section class="insight-section">
+                            <h3 class="insight-section-title">✨ Reality Check Impact</h3>
+                            <div class="impact-container">
+                                <div class="impact-card before">
+                                    <div class="impact-label">Before Reality Checks</div>
+                                    <div class="impact-value" id="beforeConfidence">87</div>
+                                    <div class="impact-desc">Average confidence in initial interpretation</div>
+                                </div>
+                                <div class="impact-arrow">→</div>
+                                <div class="impact-card after">
+                                    <div class="impact-label">After Reality Checks</div>
+                                    <div class="impact-value" id="afterConfidence">54</div>
+                                    <div class="impact-desc">Average confidence after reflection</div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Insight Card -->
+                        <section class="insight-section">
+                            <h3 class="insight-section-title">🔍 Key Insight</h3>
+                            <div class="insight-card">
+                                <blockquote id="insightText">
+                                    <!-- Generated insight -->
+                                </blockquote>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modals -->
+
+    <!-- View All Exercises Modal -->
+    <div class="modal" id="exercisesModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>MY EXERCISES</h2>
+                <button class="modal-close" id="modalCloseBtn">✕</button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Search and Filter -->
+                <div class="search-filter">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="search-input" 
+                        placeholder="Search exercises..."
+                    >
+                    <select id="filterSelect" class="filter-select">
+                        <option value="all">All Exercises</option>
+                        <option value="today">Today</option>
+                        <option value="week">This Week</option>
+                        <option value="month">This Month</option>
+                    </select>
+                </div>
+
+                <!-- Exercises List -->
+                <div class="exercises-list" id="exercisesList">
+                    <!-- Exercises will be inserted here -->
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-state" id="emptyState" style="display: none;">
+                    <span class="empty-icon">📭</span>
+                    <p>You haven't created any exercises yet</p>
+                    <button class="btn-create-first" id="createFirstBtn">
+                        Create Your First Exercise
+                    </button>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-secondary" id="newExerciseBtn">New Exercise</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="spinner"></div>
+        <p>Generating alternate realities...</p>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="api.js"></script>
+    <script src="analytics.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

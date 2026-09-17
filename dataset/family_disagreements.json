@@ -1,0 +1,287 @@
+[
+  {
+    "id": 9001,
+    "category": "Family Disagreements",
+    "event": "My parents disagreed with a major life decision I recently made.",
+    "emotion": "Hurt, frustrated",
+    "rawInterpretation": "They do not respect my judgement.",
+    "cognitiveDistortion": "Mind Reading",
+    "confidenceBefore": 89,
+    "alternateRealityChecks": [
+      "Disagreement does not necessarily imply lack of respect.",
+      "Family members often evaluate decisions through different values and experiences.",
+      "Concern and disagreement can coexist with respect.",
+      "The disagreement alone does not reveal their intentions."
+    ],
+    "revisedInterpretation": "They may genuinely disagree while still respecting me as a person.",
+    "confidenceAfter": 41,
+    "chosenBehaviour": "Seek to understand their concerns before defending my position.",
+    "outcomeOneWeekLater": "The conversation became more constructive once both sides explained their reasoning."
+  },
+  {
+    "id": 9002,
+    "category": "Family Disagreements",
+    "event": "A sibling criticised how I handled a family situation.",
+    "emotion": "Defensive",
+    "rawInterpretation": "They think I am incapable.",
+    "cognitiveDistortion": "Personalization",
+    "confidenceBefore": 87,
+    "alternateRealityChecks": [
+      "Criticism of a decision is not necessarily criticism of the person.",
+      "Different people often have different views about family matters.",
+      "The sibling may have focused on the situation rather than your competence.",
+      "One disagreement does not define how they view you overall."
+    ],
+    "revisedInterpretation": "They may disagree with my actions without believing I am incapable.",
+    "confidenceAfter": 36,
+    "chosenBehaviour": "Discuss the specific issue rather than assuming broader judgement.",
+    "outcomeOneWeekLater": "The disagreement was narrowed to one specific decision."
+  },
+  {
+    "id": 9003,
+    "category": "Family Disagreements",
+    "event": "A relative did not respond to my message for several days.",
+    "emotion": "Ignored",
+    "rawInterpretation": "They are upset with me.",
+    "cognitiveDistortion": "Jumping to Conclusions",
+    "confidenceBefore": 84,
+    "alternateRealityChecks": [
+      "Delayed responses have many possible explanations.",
+      "People often become busy or distracted.",
+      "The delay alone does not reveal emotions.",
+      "There is insufficient information to conclude that they are upset."
+    ],
+    "revisedInterpretation": "I do not yet know the reason for the delayed response.",
+    "confidenceAfter": 28,
+    "chosenBehaviour": "Wait patiently or send a follow-up.",
+    "outcomeOneWeekLater": "The relative apologised and explained they had been busy."
+  },
+  {
+    "id": 9004,
+    "category": "Family Disagreements",
+    "event": "My family criticised how I spend my money.",
+    "emotion": "Annoyed",
+    "rawInterpretation": "They think I am irresponsible.",
+    "cognitiveDistortion": "Overgeneralization",
+    "confidenceBefore": 88,
+    "alternateRealityChecks": [
+      "They may disagree with a specific choice rather than your overall responsibility.",
+      "Family members often have different financial beliefs.",
+      "One discussion does not define how they view you.",
+      "The criticism may reflect concern rather than judgement."
+    ],
+    "revisedInterpretation": "The disagreement appears to be about the decision rather than my entire character.",
+    "confidenceAfter": 39,
+    "chosenBehaviour": "Discuss the reasoning behind my choices calmly.",
+    "outcomeOneWeekLater": "The discussion became more respectful once perspectives were shared."
+  },
+  {
+    "id": 9005,
+    "category": "Family Disagreements",
+    "event": "A family gathering became tense after a disagreement.",
+    "emotion": "Embarrassed",
+    "rawInterpretation": "I have permanently damaged relationships within my family.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 93,
+    "alternateRealityChecks": [
+      "Family disagreements are common.",
+      "One tense interaction rarely defines long-term relationships.",
+      "Many conflicts are repaired through later conversations.",
+      "The current tension does not predict the future."
+    ],
+    "revisedInterpretation": "The situation is uncomfortable but does not automatically mean permanent damage.",
+    "confidenceAfter": 44,
+    "chosenBehaviour": "Allow emotions to settle before revisiting the discussion.",
+    "outcomeOneWeekLater": "Communication returned to normal."
+  },
+  {
+    "id": 9006,
+    "category": "Family Disagreements",
+    "event": "My parents compared me to another family member.",
+    "emotion": "Inadequate",
+    "rawInterpretation": "They are disappointed in me.",
+    "cognitiveDistortion": "Mind Reading",
+    "confidenceBefore": 91,
+    "alternateRealityChecks": [
+      "Comparisons are often unhelpful but do not always indicate disappointment.",
+      "Parents sometimes use comparisons in an attempt to motivate.",
+      "The comparison may reflect their communication style rather than their feelings.",
+      "Additional evidence is needed to understand their perspective."
+    ],
+    "revisedInterpretation": "The comparison upset me, but it does not prove disappointment.",
+    "confidenceAfter": 46,
+    "chosenBehaviour": "Explain how the comparison affects me.",
+    "outcomeOneWeekLater": "The parents acknowledged the comparison was not helpful."
+  },
+  {
+    "id": 9007,
+    "category": "Family Disagreements",
+    "event": "A family member forgot an important commitment they made to me.",
+    "emotion": "Disappointed",
+    "rawInterpretation": "They do not care about me.",
+    "cognitiveDistortion": "Emotional Reasoning",
+    "confidenceBefore": 89,
+    "alternateRealityChecks": [
+      "People sometimes forget commitments even when they care deeply.",
+      "The impact of the event and the intent behind it may be different.",
+      "The behaviour can be addressed without assuming motivations.",
+      "One incident does not define the entire relationship."
+    ],
+    "revisedInterpretation": "The situation hurt me, but I do not know why it happened.",
+    "confidenceAfter": 35,
+    "chosenBehaviour": "Share how the event affected me.",
+    "outcomeOneWeekLater": "The family member apologised and made amends."
+  },
+  {
+    "id": 9008,
+    "category": "Family Disagreements",
+    "event": "My family disagreed with my career choice.",
+    "emotion": "Frustrated",
+    "rawInterpretation": "They have no confidence in me.",
+    "cognitiveDistortion": "All-or-Nothing Thinking",
+    "confidenceBefore": 86,
+    "alternateRealityChecks": [
+      "People can support a person while questioning a decision.",
+      "Family members often view risk differently.",
+      "Their concerns may reflect fear rather than lack of confidence.",
+      "Disagreement does not automatically mean lack of support."
+    ],
+    "revisedInterpretation": "They may be concerned about risks rather than my ability.",
+    "confidenceAfter": 42,
+    "chosenBehaviour": "Discuss concerns openly.",
+    "outcomeOneWeekLater": "The disagreement softened after a more detailed discussion."
+  },
+  {
+    "id": 9009,
+    "category": "Family Disagreements",
+    "event": "I was left out of part of a family decision.",
+    "emotion": "Excluded",
+    "rawInterpretation": "My opinions do not matter.",
+    "cognitiveDistortion": "Overgeneralization",
+    "confidenceBefore": 88,
+    "alternateRealityChecks": [
+      "The decision-making process may have had practical constraints.",
+      "Being excluded from one decision does not define overall influence.",
+      "There may be reasons you were not consulted.",
+      "More context is needed before drawing conclusions."
+    ],
+    "revisedInterpretation": "I feel excluded, but I need more information before concluding that my opinions do not matter.",
+    "confidenceAfter": 40,
+    "chosenBehaviour": "Ask how the decision process occurred.",
+    "outcomeOneWeekLater": "There was a practical reason for the limited involvement."
+  },
+  {
+    "id": 9010,
+    "category": "Family Disagreements",
+    "event": "A family member criticised my parenting decisions.",
+    "emotion": "Defensive",
+    "rawInterpretation": "They think I am a bad parent.",
+    "cognitiveDistortion": "Personalization",
+    "confidenceBefore": 92,
+    "alternateRealityChecks": [
+      "People often have strong opinions about parenting.",
+      "Criticism of a specific choice is not equivalent to judging your entire role as a parent.",
+      "Different experiences can lead to different viewpoints.",
+      "One conversation provides limited evidence."
+    ],
+    "revisedInterpretation": "The criticism may be directed at the decision rather than my overall parenting.",
+    "confidenceAfter": 45,
+    "chosenBehaviour": "Separate feedback about actions from identity.",
+    "outcomeOneWeekLater": "The disagreement remained about the specific issue rather than broader judgement."
+  },
+  {
+    "id": 9011,
+    "category": "Family Disagreements",
+    "event": "Several family members regularly dismiss topics that are important to me.",
+    "emotion": "Unheard",
+    "rawInterpretation": "Nobody in my family respects me.",
+    "cognitiveDistortion": "Overgeneralization",
+    "confidenceBefore": 90,
+    "alternateRealityChecks": [
+      "The repeated behaviour appears to be a genuine concern.",
+      "Different people in the family may behave differently.",
+      "The situation may indicate a communication problem.",
+      "The evidence supports addressing the pattern but does not justify broad conclusions about everyone."
+    ],
+    "revisedInterpretation": "There seems to be a recurring issue that deserves discussion, but I should avoid assuming universal disrespect.",
+    "confidenceAfter": 58,
+    "chosenBehaviour": "Raise the pattern directly with trusted family members.",
+    "outcomeOneWeekLater": "The conversation revealed misunderstandings around communication styles."
+  },
+  {
+    "id": 9012,
+    "category": "Family Disagreements",
+    "event": "A sibling repeatedly fails to follow through on shared responsibilities.",
+    "emotion": "Frustrated",
+    "rawInterpretation": "They are selfish and do not care about anyone else.",
+    "cognitiveDistortion": "Labeling",
+    "confidenceBefore": 88,
+    "alternateRealityChecks": [
+      "The repeated behaviour is understandably frustrating.",
+      "The behaviour should be addressed directly.",
+      "The reason behind the behaviour is not yet clear.",
+      "Labelling a person is less useful than discussing specific actions."
+    ],
+    "revisedInterpretation": "There is a recurring behaviour that needs discussion, but I do not know the full explanation.",
+    "confidenceAfter": 54,
+    "chosenBehaviour": "Focus on specific examples rather than labels.",
+    "outcomeOneWeekLater": "Responsibilities were redistributed more clearly."
+  },
+  {
+    "id": 9013,
+    "category": "Family Disagreements",
+    "event": "My parents frequently bring up mistakes I made years ago.",
+    "emotion": "Resentful",
+    "rawInterpretation": "They will never see me differently.",
+    "cognitiveDistortion": "Fortune Telling",
+    "confidenceBefore": 91,
+    "alternateRealityChecks": [
+      "The behaviour may reflect habit rather than a fixed judgement.",
+      "People's views can change over time.",
+      "Past behaviour does not guarantee future behaviour.",
+      "The situation may improve through boundaries or conversation."
+    ],
+    "revisedInterpretation": "The pattern is frustrating, but I do not know whether their views are fixed permanently.",
+    "confidenceAfter": 49,
+    "chosenBehaviour": "Discuss the impact of repeatedly revisiting past mistakes.",
+    "outcomeOneWeekLater": "The behaviour became less frequent after the discussion."
+  },
+  {
+    "id": 9014,
+    "category": "Family Disagreements",
+    "event": "A disagreement about inheritance created tension between family members.",
+    "emotion": "Angry, hurt",
+    "rawInterpretation": "This family will never recover from this conflict.",
+    "cognitiveDistortion": "Catastrophizing",
+    "confidenceBefore": 93,
+    "alternateRealityChecks": [
+      "Inheritance disputes can create significant tension.",
+      "Many families eventually find ways to repair relationships.",
+      "The current conflict does not determine the future.",
+      "Resolution may require time and effort."
+    ],
+    "revisedInterpretation": "The conflict is serious, but long-term outcomes remain uncertain.",
+    "confidenceAfter": 63,
+    "chosenBehaviour": "Focus on constructive communication where possible.",
+    "outcomeOneWeekLater": "Conversations remained difficult but continued."
+  },
+  {
+    "id": 9015,
+    "category": "Family Disagreements",
+    "event": "A family member openly said they disagree with major aspects of my lifestyle.",
+    "emotion": "Hurt, frustrated",
+    "rawInterpretation": "They do not accept me as a person.",
+    "cognitiveDistortion": "All-or-Nothing Thinking",
+    "confidenceBefore": 89,
+    "alternateRealityChecks": [
+      "People can disagree with choices while still caring about a person.",
+      "Acceptance and agreement are not always the same thing.",
+      "The comment may indicate a values conflict rather than rejection.",
+      "Additional discussion may clarify what they actually mean."
+    ],
+    "revisedInterpretation": "There is a significant disagreement, but I should not automatically equate disagreement with rejection.",
+    "confidenceAfter": 52,
+    "chosenBehaviour": "Clarify expectations and boundaries.",
+    "outcomeOneWeekLater": "The disagreement remained, but mutual respect improved."
+  }
+]

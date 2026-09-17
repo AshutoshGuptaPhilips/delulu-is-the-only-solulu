@@ -1,0 +1,1929 @@
+/* ============================================
+   SOLULU - Reality Checks App
+   CSS Stylesheet
+   ============================================ */
+
+/* ============================================
+   1. GLOBAL STYLES & RESET
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    background-color: #f9fafb;
+    color: #1f2937;
+    line-height: 1.6;
+}
+
+/* ============================================
+   2. COLOR PALETTE
+   ============================================ */
+
+:root {
+    --primary: #0ea5e9;
+    --primary-dark: #0284c7;
+    --secondary: #a855f7;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    --background: #f9fafb;
+    --surface: #ffffff;
+    --border: #e5e7eb;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+}
+
+/* ============================================
+   3. LAYOUT STRUCTURE
+   ============================================ */
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: var(--background);
+}
+
+.app-header {
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-icon {
+    font-size: 1.75rem;
+}
+
+.logo h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.user-menu {
+    display: flex;
+    gap: 1rem;
+}
+
+.main-wrapper {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* ============================================
+   4. SIDEBAR NAVIGATION
+   ============================================ */
+
+.sidebar {
+    width: 220px;
+    background-color: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 1.5rem 0;
+    overflow-y: auto;
+}
+
+.nav-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.nav-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.5rem;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+    margin: 0 0.75rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.nav-tab:hover {
+    background-color: #f3f4f6;
+    color: var(--text-primary);
+}
+
+.nav-tab.active {
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(168, 85, 247, 0.1));
+    color: var(--primary);
+    border-left-color: var(--primary);
+    font-weight: 600;
+}
+
+.tab-icon {
+    font-size: 1.25rem;
+}
+
+.tab-label {
+    flex: 1;
+}
+
+/* ============================================
+   5. CONTENT AREA
+   ============================================ */
+
+.content-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* ============================================
+   6. EXERCISE CONTAINER
+   ============================================ */
+
+.exercise-container {
+    background-color: var(--surface);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    max-width: 900px;
+}
+
+.exercise-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.exercise-status {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.exercise-status h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.auto-save-indicator {
+    display: inline-block;
+    background-color: #ecfdf5;
+    color: var(--success);
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.exercise-timestamp {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   7. INPUT SECTION
+   ============================================ */
+
+.input-section,
+.output-section {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.section-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.input-group {
+    margin-bottom: 2rem;
+}
+
+.input-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.label-icon {
+    font-size: 1.25rem;
+}
+
+.input-field {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    background-color: #fafbfc;
+    transition: all 0.2s ease;
+    resize: vertical;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--primary);
+    background-color: var(--surface);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+.input-field::placeholder {
+    color: var(--text-muted);
+}
+
+.helper-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.char-count {
+    font-weight: 500;
+}
+
+/* ============================================
+   8. BUTTON STYLES
+   ============================================ */
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin: 2.5rem 0 2rem;
+}
+
+.btn-generate {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-generate:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+}
+
+.btn-generate:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn-generate:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-icon {
+    font-size: 1.25rem;
+    animation: spin 2s linear infinite;
+    animation-play-state: paused;
+}
+
+.btn-generate.loading .btn-icon {
+    animation-play-state: running;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Generic Button Styles */
+
+.btn-view-all {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-view-all:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.dropdown-icon {
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+}
+
+.icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+    background-color: #f3f4f6;
+}
+
+.btn-back {
+    padding: 0.75rem 1.5rem;
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-back:hover {
+    background-color: var(--background);
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-secondary {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn-create-first {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--secondary);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 1rem;
+}
+
+.btn-create-first:hover {
+    background-color: #9333ea;
+}
+
+/* ============================================
+   9. OUTPUT SECTION - REALITIES
+   ============================================ */
+
+.output-subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.realities-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.reality-card {
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border-left: 4px solid var(--primary);
+    background-color: #f0f9ff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    animation: slideIn 0.4s ease-out;
+}
+
+.reality-card.ai-interpretation {
+    border-left-color: var(--secondary);
+    background-color: #faf5ff;
+}
+
+.reality-card.alternate {
+    border-left-color: var(--primary);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reality-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.reality-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.reality-card.ai-interpretation .reality-number {
+    background: linear-gradient(135deg, var(--secondary), #7c3aed);
+}
+
+.reality-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.reality-content {
+    color: var(--text-primary);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.reality-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.reality-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    border: 1px solid var(--border);
+    border-radius: 0.375rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.reality-btn:hover {
+    background-color: var(--surface);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.reality-btn.copy {
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.reality-btn.copy:hover {
+    background-color: #ecfdf5;
+}
+
+/* ============================================
+   10. REFLECTION SECTION
+   ============================================ */
+
+.reflection-section {
+    background-color: #fef3c7;
+    border: 1px solid #fbbf24;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.reflection-header {
+    display: flex;
+    align-items: center;
+}
+
+.reflection-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #78350f;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0;
+    width: 100%;
+}
+
+.reflection-toggle:hover {
+    color: #92400e;
+}
+
+.toggle-icon {
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+    display: inline-block;
+}
+
+.reflection-toggle.open .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.reflection-content {
+    margin-top: 1rem;
+}
+
+.reflection-prompt {
+    color: #78350f;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.reflection-textarea {
+    background-color: white;
+    border-color: #fbbf24;
+    margin-bottom: 1rem;
+}
+
+.reflection-textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+.btn-save-reflection {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--success);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-save-reflection:hover {
+    background-color: #059669;
+    transform: translateY(-1px);
+}
+
+/* ============================================
+   11. EXERCISE NAVIGATION
+   ============================================ */
+
+.exercise-navigation {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+/* ============================================
+   12. MODAL STYLES
+   ============================================ */
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: var(--surface);
+    border-radius: 1rem;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.modal-header h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+    padding: 0;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    color: var(--text-primary);
+}
+
+.modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+}
+
+.modal-footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+}
+
+/* ============================================
+   13. SEARCH & FILTER
+   ============================================ */
+
+.search-filter {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.search-input,
+.filter-select {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+.search-input:focus,
+.filter-select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+.filter-select {
+    flex: 0.4;
+}
+
+/* ============================================
+   14. EXERCISES LIST
+   ============================================ */
+
+.exercises-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.exercise-date-group {
+    margin-bottom: 1.5rem;
+}
+
+.exercise-date-label {
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.exercise-item {
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+    background-color: var(--background);
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.exercise-item:hover {
+    background-color: var(--surface);
+    border-color: var(--primary);
+    border-left-color: var(--primary);
+    transform: translateX(4px);
+}
+
+.exercise-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.exercise-item-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    flex: 1;
+}
+
+.exercise-item-time {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+.exercise-item-status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-left: 0.75rem;
+}
+
+.exercise-item-status.active {
+    background-color: #dbeafe;
+    color: var(--primary);
+}
+
+.exercise-item-status.complete {
+    background-color: #dcfce7;
+    color: var(--success);
+}
+
+.exercise-item-description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* ============================================
+   15. EMPTY STATE
+   ============================================ */
+
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.empty-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.empty-state p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.coming-soon {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-secondary);
+}
+
+/* ============================================
+   16. LOADING & FEEDBACK
+   ============================================ */
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.spinner {
+    width: 3rem;
+    height: 3rem;
+    border: 3px solid rgba(14, 165, 233, 0.2);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loading-overlay p {
+    color: white;
+    margin-top: 1rem;
+    font-weight: 500;
+}
+
+/* ============================================
+   17. TOAST NOTIFICATIONS
+   ============================================ */
+
+.toast-container {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.toast {
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--surface);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation: slideInRight 0.3s ease-out;
+    min-width: 300px;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.toast.success {
+    border-left: 4px solid var(--success);
+    color: var(--success);
+}
+
+.toast.error {
+    border-left: 4px solid var(--error);
+    color: var(--error);
+}
+
+.toast.info {
+    border-left: 4px solid var(--primary);
+    color: var(--primary);
+}
+
+.toast.warning {
+    border-left: 4px solid var(--warning);
+    color: var(--warning);
+}
+
+/* ============================================
+   18. PATTERN INSIGHTS SECTION
+   ============================================ */
+
+.insights-overview {
+    margin-bottom: 2rem;
+}
+
+.overview-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.overview-card {
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(168, 85, 247, 0.1));
+    border-left: 4px solid var(--primary);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    text-align: center;
+}
+
+.overview-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+}
+
+.overview-value {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.insights-categories {
+    margin-bottom: 2rem;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.category-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    background-color: var(--background);
+    border: 2px solid var(--border);
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.category-btn:hover {
+    border-color: var(--primary);
+    background-color: var(--surface);
+    transform: translateY(-2px);
+}
+
+.category-btn.active {
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(168, 85, 247, 0.1));
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.category-icon {
+    font-size: 1.75rem;
+}
+
+.category-text {
+    display: block;
+}
+
+.insights-display {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.insight-section {
+    background-color: var(--surface);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.insight-section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.insight-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+/* What Happened List */
+
+.what-happened-list {
+    list-style: none;
+    padding: 0;
+}
+
+.what-happened-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-primary);
+}
+
+.what-happened-list li:last-child {
+    border-bottom: none;
+}
+
+.what-happened-list li::before {
+    content: '→';
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.what-happened-count {
+    margin-left: auto;
+    background-color: var(--background);
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Emotions Chart */
+
+.emotions-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.emotion-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.emotion-label {
+    min-width: 120px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.emotion-bar-container {
+    flex: 1;
+    background-color: var(--background);
+    border-radius: 0.25rem;
+    overflow: hidden;
+    height: 2rem;
+}
+
+.emotion-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 0.75rem;
+    color: white;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.emotion-percentage {
+    min-width: 50px;
+    text-align: right;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Tables */
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.patterns-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+}
+
+.patterns-table thead {
+    background-color: #f5f5f5;
+}
+
+.patterns-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-primary);
+    border: 1px solid #e6e6e6;
+    font-size: 0.95rem;
+}
+
+.patterns-table td {
+    padding: 1rem;
+    border: 1px solid #e6e6e6;
+    color: var(--text-primary);
+}
+
+.patterns-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.patterns-table tbody tr:hover {
+    background-color: #fafbfc;
+}
+
+.patterns-table tbody tr:nth-child(odd) {
+    background-color: #fafbfc;
+}
+
+/* Most Common Cognitive Patterns */
+
+.patterns-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.pattern-item {
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: all 0.2s ease;
+}
+
+.pattern-item:hover {
+    border-color: var(--primary);
+    box-shadow: 0 2px 8px rgba(14, 165, 233, 0.1);
+}
+
+.pattern-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--background);
+}
+
+.pattern-number {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin: 0;
+}
+
+.pattern-count {
+    background-color: var(--primary);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 2rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.pattern-examples {
+    margin: 0;
+}
+
+.examples-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin: 0 0 0.75rem 0;
+}
+
+.examples-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.examples-list li {
+    padding-left: 1.25rem;
+    position: relative;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.examples-list li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.examples-list li em {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Impact Cards */
+
+.impact-container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.impact-card {
+    flex: 1;
+    min-width: 200px;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    text-align: center;
+    background-color: var(--background);
+}
+
+.impact-card.before {
+    border-left: 4px solid #f59e0b;
+}
+
+.impact-card.after {
+    border-left: 4px solid var(--success);
+}
+
+.impact-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.impact-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+}
+
+.impact-card.before .impact-value {
+    color: #f59e0b;
+}
+
+.impact-card.after .impact-value {
+    color: var(--success);
+}
+
+.impact-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.impact-arrow {
+    font-size: 2rem;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+/* Insight Card */
+
+.insight-card {
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.05), rgba(168, 85, 247, 0.05));
+    border-left: 4px solid var(--secondary);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+}
+
+.insight-card blockquote {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--text-primary);
+    line-height: 1.8;
+}
+
+.insight-card blockquote::before {
+    content: '"';
+    font-size: 2rem;
+    color: var(--secondary);
+    opacity: 0.5;
+    margin-right: 0.5rem;
+}
+
+.insight-card blockquote::after {
+    content: '"';
+    font-size: 2rem;
+    color: var(--secondary);
+    opacity: 0.5;
+    margin-left: 0.5rem;
+}
+
+/* ============================================
+   18. PROGRESS TRACKING
+   ============================================ */
+
+.progress-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.progress-section {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.progress-section:hover {
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.1);
+}
+
+.progress-section-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0 0 0.5rem 0;
+}
+
+.progress-subtitle {
+    color: var(--text-secondary);
+    margin: 0 0 1.5rem 0;
+    font-size: 0.95rem;
+}
+
+.progress-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.metric-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--background);
+    border-radius: 0.5rem;
+    border-left: 4px solid var(--primary);
+}
+
+.metric-label {
+    flex: 1;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.metric-values {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.metric-value {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    min-width: 70px;
+    text-align: center;
+}
+
+.metric-value-label {
+    font-size: 0.7rem;
+    opacity: 0.9;
+    margin-top: 0.25rem;
+}
+
+.metric-arrow {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.metric-change {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.metric-change-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--success);
+}
+
+.metric-change-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.progress-insight {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(14, 165, 233, 0.05));
+    border-left: 4px solid var(--success);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.progress-insight::before {
+    content: "💡 ";
+    margin-right: 0.5rem;
+    font-weight: 600;
+}
+
+/* Progress Summary */
+
+.progress-summary {
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.05), rgba(168, 85, 247, 0.05));
+    border: 2px solid var(--primary);
+}
+
+.summary-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.summary-stat {
+    background-color: var(--surface);
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    border: 1px solid var(--border);
+}
+
+.summary-stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.summary-stat-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.progress-empty-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+}
+
+/* ============================================
+   19. RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 180px;
+    }
+
+    .content-area {
+        padding: 1.5rem;
+    }
+
+    .exercise-container {
+        padding: 1.5rem;
+    }
+
+    .categories-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    .impact-container {
+        flex-direction: column;
+    }
+
+    .impact-arrow {
+        transform: rotate(90deg);
+    }
+
+    .summary-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .main-wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 0;
+        max-height: auto;
+    }
+
+    .nav-tabs {
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 0.75rem;
+    }
+
+    .nav-tab {
+        flex-shrink: 0;
+        margin: 0 0.25rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .nav-tab.active {
+        border-left: none;
+        border-bottom: 3px solid var(--primary);
+        border-radius: 0 0 0.5rem 0.5rem;
+        margin-bottom: -0.75rem;
+    }
+
+    .content-area {
+        padding: 1rem;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .btn-view-all {
+        width: 100%;
+    }
+
+    .exercise-container {
+        padding: 1rem;
+    }
+
+    .exercise-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .search-filter {
+        flex-direction: column;
+    }
+
+    .filter-select {
+        flex: 1;
+    }
+
+    .toast {
+        min-width: calc(100vw - 2rem);
+    }
+
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .overview-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .impact-container {
+        flex-direction: column;
+    }
+
+    .table-wrapper {
+        font-size: 0.85rem;
+    }
+
+    .patterns-table th,
+    .patterns-table td {
+        padding: 0.75rem;
+    }
+
+    .pattern-item {
+        padding: 1rem;
+    }
+
+    .pattern-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .pattern-count {
+        align-self: flex-start;
+    }
+
+    .examples-list li {
+        font-size: 0.9rem;
+    }
+
+    .progress-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .metric-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .metric-values {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .summary-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    }
+}
+
+@media (max-width: 480px) {
+    .app-header {
+        padding: 1rem;
+    }
+
+    .logo h1 {
+        font-size: 1.25rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .input-label {
+        font-size: 0.9rem;
+    }
+
+    .btn-generate {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .reality-card {
+        padding: 1rem;
+    }
+
+    .reflection-section {
+        padding: 1rem;
+    }
+
+    .modal-content {
+        max-height: 95vh;
+    }
+
+    .toast-container {
+        top: 1rem;
+        right: 1rem;
+        left: 1rem;
+    }
+
+    .toast {
+        min-width: auto;
+    }
+
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    .category-btn {
+        padding: 1rem;
+        gap: 0.35rem;
+    }
+
+    .category-icon {
+        font-size: 1.5rem;
+    }
+
+    .category-text {
+        font-size: 0.8rem;
+    }
+
+    .overview-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .insight-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .impact-container {
+        gap: 1rem;
+    }
+
+    .impact-card {
+        min-width: 100%;
+    }
+
+    .impact-value {
+        font-size: 2rem;
+    }
+
+    .table-wrapper {
+        font-size: 0.75rem;
+    }
+
+    .patterns-table th,
+    .patterns-table td {
+        padding: 0.5rem;
+    }
+
+    .pattern-item {
+        padding: 1rem;
+        gap: 0.75rem;
+    }
+
+    .pattern-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .pattern-number {
+        font-size: 1rem;
+    }
+
+    .examples-list li {
+        font-size: 0.85rem;
+    }
+
+    .progress-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .metric-row {
+        padding: 0.75rem;
+    }
+
+    .metric-values {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .metric-value {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .summary-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-stat {
+        padding: 1rem;
+    }
+
+    .summary-stat-value {
+        font-size: 1.75rem;
+    }
+}
+
+/* ============================================
+   19. UTILITY CLASSES
+   ============================================ */
+
+.hidden {
+    display: none !important;
+}
+
+.visible {
+    display: block !important;
+}
+
+.transition {
+    transition: all 0.3s ease;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
