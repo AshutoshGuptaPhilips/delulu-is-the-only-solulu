@@ -14,11 +14,19 @@ class SoluluApp {
     /**
      * Initialize the application
      */
-    init() {
+    async init() {
         this.cacheElements();
+
+        const seedResult = await dataManager.seedExercisesFromDatasets();
+
         this.loadCurrentExercise();
         this.attachEventListeners();
         this.setupCharacterCounters();
+
+        if (seedResult.seeded) {
+            this.showToast(`${seedResult.count} exercises loaded`, 'success');
+        }
+
         this.showToast('Welcome to Solulu! 🌟', 'info');
     }
 
@@ -406,6 +414,14 @@ class SoluluApp {
      */
     openExercisesModal() {
         this.exercisesModal.classList.add('active');
+
+        if (this.searchInput) {
+            this.searchInput.value = '';
+        }
+        if (this.filterSelect) {
+            this.filterSelect.value = 'all';
+        }
+
         this.loadExercisesList();
         document.body.classList.add('no-scroll');
     }

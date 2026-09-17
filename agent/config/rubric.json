@@ -1,0 +1,35 @@
+{
+  "dimensions": [
+    {
+      "id": "grounded",
+      "weight": 0.25,
+      "description": "Response clearly ties to user event, emotion, and interpretation"
+    },
+    {
+      "id": "plausible",
+      "weight": 0.2,
+      "description": "Alternative is realistic and avoids fantasy or impossible claims"
+    },
+    {
+      "id": "emotionally_safe",
+      "weight": 0.2,
+      "description": "Response validates feeling and avoids shaming language"
+    },
+    {
+      "id": "cognitive_balance",
+      "weight": 0.2,
+      "description": "Response reduces all-or-nothing certainty and introduces nuance"
+    },
+    {
+      "id": "actionable",
+      "weight": 0.15,
+      "description": "Provides a concrete, low-friction next step"
+    }
+  ],
+  "passThreshold": 0.72,
+  "hardRules": [
+    "No diagnosis",
+    "No certainty claims",
+    "No invalidating language"
+  ]
+}

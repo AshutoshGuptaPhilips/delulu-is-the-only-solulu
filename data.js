@@ -7,6 +7,180 @@ class DataManager {
     constructor() {
         this.storageKey = 'solulu_exercises';
         this.currentExerciseKey = 'solulu_current_exercise';
+        this.seedVersionKey = 'solulu_seed_version';
+        this.seedMigrationKey = 'solulu_seed_id_migration_v1';
+        this.seedVersion = 'dataset_v4_unique_ids';
+        this.datasetFiles = [
+            'dataset/workplace_conflict.json',
+            'dataset/manager_feedback.json',
+            'dataset/performance_anxiety.json',
+            'dataset/career_uncertainty.json',
+            'dataset/relationships.json',
+            'dataset/family_disagreements.json',
+            'dataset/social_situations.json',
+            'dataset/public_speaking.json',
+            'dataset/selfesteem.json',
+            'dataset/health-concerns.json'
+        ];
+    }
+
+    /**
+     * Seed exercises from dataset files (runs once on a fresh install)
+     */
+    async seedExercisesFromDatasets() {
+        try {
+            const datasetResults = await Promise.all(this.datasetFiles.map(file => this.loadDatasetFile(file)));
+            const datasets = datasetResults.map(result => result.data);
+            const allFilesLoaded = datasetResults.every(result => result.ok);
+
+            const flattened = datasets.flatMap(items => Array.isArray(items) ? items : []);
+            const seededExercises = flattened.map((item, index) => this.mapDatasetItemToExercise(item, index));
+            const existingExercises = this.getAllExercises();
+
+            const migrationResult = this.ensureCompleteSeedCoverage(existingExercises, seededExercises);
+            const exercisesAfterMigration = migrationResult.exercises;
+            const existingIds = new Set(exercisesAfterMigration.map(ex => ex.id));
+            const missingSeededExercises = seededExercises.filter(ex => !existingIds.has(ex.id));
+
+            if (missingSeededExercises.length > 0) {
+                this.saveExercises([...exercisesAfterMigration, ...missingSeededExercises]);
+                if (allFilesLoaded) {
+                    localStorage.setItem(this.seedVersionKey, this.seedVersion);
+                }
+                return {
+                    seeded: true,
+                    count: missingSeededExercises.length + migrationResult.addedCount
+                };
+            }
+
+            if (migrationResult.addedCount > 0) {
+                this.saveExercises(exercisesAfterMigration);
+                if (allFilesLoaded) {
+                    localStorage.setItem(this.seedVersionKey, this.seedVersion);
+                }
+                return { seeded: true, count: migrationResult.addedCount };
+            }
+
+            if (allFilesLoaded) {
+                localStorage.setItem(this.seedVersionKey, this.seedVersion);
+            }
+            return { seeded: false, count: 0 };
+        } catch (error) {
+            console.error('Failed to seed dataset exercises:', error);
+            return { seeded: false, count: 0 };
+        }
+    }
+
+    /**
+     * Load one dataset file with fetch, then fallback to XHR for file:// usage
+     */
+    async loadDatasetFile(filePath) {
+        try {
+            const response = await fetch(filePath);
+            if (response.ok) {
+                const parsed = await response.json();
+                return { ok: true, data: Array.isArray(parsed) ? parsed : [] };
+            }
+        } catch (error) {
+            // Continue to XHR fallback
+        }
+
+        return await this.loadDatasetFileViaXHR(filePath);
+    }
+
+    /**
+     * XHR fallback for environments where fetch blocks local files
+     */
+    loadDatasetFileViaXHR(filePath) {
+        return new Promise((resolve) => {
+            try {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', filePath, true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4) {
+                        // status 0 can occur on file:// URLs
+                        if (xhr.status === 200 || xhr.status === 0) {
+                            try {
+                                const parsed = JSON.parse(xhr.responseText);
+                                resolve({ ok: true, data: Array.isArray(parsed) ? parsed : [] });
+                            } catch (parseError) {
+                                resolve({ ok: false, data: [] });
+                            }
+                        } else {
+                            resolve({ ok: false, data: [] });
+                        }
+                    }
+                };
+                xhr.onerror = function() {
+                    resolve({ ok: false, data: [] });
+                };
+                xhr.send();
+            } catch (error) {
+                resolve({ ok: false, data: [] });
+            }
+        });
+    }
+
+    /**
+     * Convert dataset item shape to app exercise shape
+     */
+    mapDatasetItemToExercise(item, index) {
+        const now = new Date();
+        const createdAt = new Date(now);
+        createdAt.setDate(now.getDate() - (index % 30));
+        createdAt.setMinutes(createdAt.getMinutes() - index);
+
+        const alternateRealityChecks = Array.isArray(item.alternateRealityChecks)
+            ? item.alternateRealityChecks
+            : [];
+
+        const realities = alternateRealityChecks.slice(0, 4).map((content, realityIndex) => ({
+            id: realityIndex + 1,
+            title: `Alternative Perspective ${realityIndex + 1}`,
+            type: 'alternate',
+            content: content
+        }));
+
+        const reflectionParts = [
+            item.revisedInterpretation,
+            item.outcomeOneWeekLater
+        ].filter(Boolean);
+
+        return {
+            id: `seed_${item.id || index + 1}`,
+            createdAt: createdAt.toISOString(),
+            updatedAt: createdAt.toISOString(),
+            event: item.event || '',
+            emotion: item.emotion || '',
+            interpretation: item.rawInterpretation || item.interpretation || '',
+            realities: realities,
+            reflection: reflectionParts.join(' '),
+            status: reflectionParts.length > 0 ? 'completed' : 'generated',
+            category: item.category || 'General'
+        };
+    }
+
+    /**
+     * One-time migration: ensure each seeded ID from dataset exists in storage
+     */
+    ensureCompleteSeedCoverage(existingExercises, seededExercises) {
+        if (localStorage.getItem(this.seedMigrationKey) === 'done') {
+            return { exercises: existingExercises, addedCount: 0 };
+        }
+
+        const existingIds = new Set(existingExercises.map(ex => ex.id));
+        const missingById = seededExercises.filter(ex => !existingIds.has(ex.id));
+
+        if (missingById.length === 0) {
+            localStorage.setItem(this.seedMigrationKey, 'done');
+            return { exercises: existingExercises, addedCount: 0 };
+        }
+
+        localStorage.setItem(this.seedMigrationKey, 'done');
+        return {
+            exercises: [...existingExercises, ...missingById],
+            addedCount: missingById.length
+        };
     }
 
     /**
@@ -266,6 +440,8 @@ class DataManager {
     clearAllData() {
         localStorage.removeItem(this.storageKey);
         localStorage.removeItem(this.currentExerciseKey);
+        localStorage.removeItem(this.seedVersionKey);
+        localStorage.removeItem(this.seedMigrationKey);
     }
 }
 

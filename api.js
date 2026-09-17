@@ -5,8 +5,9 @@
 
 class AIReality {
     constructor() {
-        this.apiEndpoint = 'https://api.openai.com/v1/chat/completions'; // For future integration
-        this.useLocalMock = true; // Set to false when real API is ready
+        this.apiEndpoint = 'http://localhost:8788/api/agent/respond';
+        this.useLocalMock = false;
+        this.enableMockFallback = true;
     }
 
     /**
@@ -19,7 +20,69 @@ class AIReality {
         if (this.useLocalMock) {
             return this.generateMockRealities(event, emotion, interpretation);
         }
-        // TODO: Implement real API call
+
+        try {
+            return await this.generateRestRealities(event, emotion, interpretation);
+        } catch (error) {
+            if (this.enableMockFallback) {
+                console.warn('REST agent unavailable, falling back to local mock:', error.message);
+                return this.generateMockRealities(event, emotion, interpretation);
+            }
+            throw error;
+        }
+    }
+
+    /**
+     * Generate alternate realities using the custom REST agent
+     */
+    async generateRestRealities(event, emotion, interpretation) {
+        const response = await fetch(this.apiEndpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                event,
+                emotion,
+                interpretation
+            })
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Agent API request failed (${response.status}): ${errorText}`);
+        }
+
+        const payload = await response.json();
+        return this.mapAgentResponseToRealities(payload);
+    }
+
+    /**
+     * Map REST agent response to existing UI reality format
+     */
+    mapAgentResponseToRealities(payload) {
+        if (!payload || !Array.isArray(payload.alternatives) || payload.alternatives.length === 0) {
+            throw new Error('Invalid agent response format');
+        }
+
+        return payload.alternatives.slice(0, 4).map((alt, index) => ({
+            id: alt.id || index + 1,
+            title: alt.title || `Alternative Perspective ${index + 1}`,
+            type: alt.type === 'ai_interpretation' ? 'ai_interpretation' : 'alternate',
+            content: this.composeRealityContent(alt)
+        }));
+    }
+
+    /**
+     * Build display content from structured alternative fields
+     */
+    composeRealityContent(alt) {
+        return [
+            alt.alternativeView || '',
+            alt.evidence ? `Evidence: ${alt.evidence}` : '',
+            alt.gentleReframe ? `Reframe: ${alt.gentleReframe}` : '',
+            alt.nextStep ? `Next step: ${alt.nextStep}` : ''
+        ].filter(Boolean).join('\n\n');
     }
 
     /**
@@ -125,7 +188,7 @@ class AIReality {
 
             `Broader context: When we zoom out, "${event}" is a small moment in a much larger pattern. Your interpretation focuses on one possible narrative, but contexts shift daily. The impact of "${event}" depends partly on what everyone involved has going on in their other lives. Your ${emotion} is understandable but localized. In weeks or months, this might be completely reframed by new information and changing circumstances.`,
 
-            `Systemic view: "${event}" is influenced by power dynamics, organizational realities, and human limitations you may not be aware of. Your interpretation that "${interpretation}" may or may not account for these invisible systems. People's responses are constrained by policies, pressures, and their own capacity. Your ${emotion}} is real, but the actual mechanics of what unfolds will involve many factors beyond your interpretation. The system is more complex than any individual's narrative about it.`
+            `Systemic view: "${event}" is influenced by power dynamics, organizational realities, and human limitations you may not be aware of. Your interpretation that "${interpretation}" may or may not account for these invisible systems. People's responses are constrained by policies, pressures, and their own capacity. Your ${emotion} is real, but the actual mechanics of what unfolds will involve many factors beyond your interpretation. The system is more complex than any individual's narrative about it.`
         ];
 
         return this.getRandomElement(perspectives);

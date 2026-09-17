@@ -1,0 +1,48 @@
+{
+  "type": "object",
+  "required": [
+    "alternatives"
+  ],
+  "properties": {
+    "alternatives": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "required": [
+          "title",
+          "type",
+          "alternativeView",
+          "evidence",
+          "gentleReframe",
+          "nextStep"
+        ],
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "ai_interpretation",
+              "alternate"
+            ]
+          },
+          "alternativeView": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "string"
+          },
+          "gentleReframe": {
+            "type": "string"
+          },
+          "nextStep": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
