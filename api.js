@@ -5,7 +5,7 @@
 
 class AIReality {
     constructor() {
-        this.apiEndpoint = 'http://localhost:8788/api/agent/respond';
+        this.apiEndpoint = 'http://localhost:8787/api/agent/respond';
         this.useLocalMock = false;
         this.enableMockFallback = true;
     }

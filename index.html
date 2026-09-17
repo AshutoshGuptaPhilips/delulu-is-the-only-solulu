@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solulu - Reality Checks</title>
+    <title>Solulu - Mental Gym</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -26,9 +26,17 @@
             <!-- Sidebar Navigation -->
             <nav class="sidebar">
                 <div class="nav-tabs">
-                    <button class="nav-tab active" data-tab="reality-checks">
-                        <span class="tab-icon">🔍</span>
-                        <span class="tab-label">Reality Checks</span>
+                    <button class="nav-tab active" data-tab="mental-gym">
+                        <span class="tab-icon">🏋️</span>
+                        <span class="tab-label">Mental Gym</span>
+                    </button>
+                    <button class="nav-tab" data-tab="consultation-prep">
+                        <span class="tab-icon">🩺</span>
+                        <span class="tab-label">Consultation Prep</span>
+                    </button>
+                    <button class="nav-tab" data-tab="life-coach">
+                        <span class="tab-icon">🧭</span>
+                        <span class="tab-label">Life Coach</span>
                     </button>
                     <button class="nav-tab" data-tab="journal">
                         <span class="tab-icon">📔</span>
@@ -51,14 +59,199 @@
 
             <!-- Content Area -->
             <main class="content-area">
-                <!-- Reality Checks Tab -->
-                <section id="reality-checks" class="tab-content active">
+                <!-- Mental Gym Tab -->
+                <section id="mental-gym" class="tab-content active">
                     <div class="section-header">
-                        <h2>REALITY CHECKS</h2>
-                        <button class="btn-view-all" id="viewAllBtn">
-                            View All Exercises 
-                            <span class="dropdown-icon">▼</span>
-                        </button>
+                        <h2>MENTAL GYM</h2>
+                    </div>
+
+                    <div class="mental-gym-intro">
+                        <p>Build mental flexibility with practical exercises. Pick one based on how you feel right now.</p>
+                    </div>
+
+                    <div class="gym-grid">
+                        <article class="gym-card">
+                            <div class="gym-card-header">
+                                <span class="gym-icon">🧠</span>
+                                <h3>CBT Exercise</h3>
+                            </div>
+                            <p class="gym-description">
+                                Cognitive Behavioral Therapy helps you challenge automatic negative thoughts and replace
+                                them with grounded alternatives.
+                            </p>
+                            <p class="gym-impact">
+                                Impact: Better emotional regulation, reduced catastrophizing, and more balanced decisions.
+                            </p>
+                            <button class="btn-secondary" id="openCBTBtn">Open CBT Exercise</button>
+                        </article>
+
+                        <article class="gym-card">
+                            <div class="gym-card-header">
+                                <span class="gym-icon">🫁</span>
+                                <h3>Box Breathing</h3>
+                            </div>
+                            <p class="gym-description">
+                                Breathe in, hold, breathe out, and hold for equal counts. This calms your nervous system.
+                            </p>
+                            <p class="gym-impact">
+                                Impact: Lowers acute stress, improves focus, and can reduce panic symptoms in minutes.
+                            </p>
+                            <div class="breathing-widget">
+                                <div class="breathing-phase" id="breathingPhase">Ready: inhale for 4 seconds</div>
+                                <div class="breathing-timer" id="breathingTimer">00:00</div>
+                                <div class="breathing-controls">
+                                    <button class="btn-secondary" id="breathingStartBtn">Start 2-Minute Cycle</button>
+                                    <button class="btn-back" id="breathingResetBtn">Reset</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="gym-card">
+                            <div class="gym-card-header">
+                                <span class="gym-icon">💪</span>
+                                <h3>JPMR</h3>
+                            </div>
+                            <p class="gym-description">
+                                Jacobson Progressive Muscle Relaxation teaches you to tense then release muscle groups to
+                                reduce body-held anxiety.
+                            </p>
+                            <p class="gym-impact">
+                                Impact: Reduces physical tension, improves sleep readiness, and strengthens body awareness.
+                            </p>
+                            <div class="jpmr-widget">
+                                <div class="jpmr-step" id="jpmrCurrentStep">Press start to begin guided JPMR</div>
+                                <div class="jpmr-controls">
+                                    <button class="btn-secondary" id="jpmrStartBtn">Start Guided JPMR</button>
+                                    <button class="btn-back" id="jpmrNextBtn" disabled>Next Step</button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Consultation Prep Tab -->
+                <section id="consultation-prep" class="tab-content">
+                    <div class="section-header">
+                        <h2>CONSULTATION PREP</h2>
+                    </div>
+
+                    <div class="exercise-container consultation-container">
+                        <p class="consultation-intro">
+                            Generate a professional summary from your exercises to share before therapy or psychiatry sessions.
+                        </p>
+
+                        <div class="consultation-options">
+                            <label><input type="checkbox" id="includeSummary" checked> Include overall summary</label>
+                            <label><input type="checkbox" id="includeTriggers" checked> Include recurring triggers and themes</label>
+                            <label><input type="checkbox" id="includeEmotions" checked> Include top emotions and intensity signals</label>
+                            <label><input type="checkbox" id="includeReframes" checked> Include helpful reframes from CBT work</label>
+                            <label><input type="checkbox" id="includeReflections" checked> Include reflection and progress notes</label>
+                            <label><input type="checkbox" id="includeActions" checked> Include suggested agenda for the session</label>
+                        </div>
+
+                        <div class="button-container consultation-buttons">
+                            <button class="btn-generate" id="generateConsultationReportBtn">
+                                <span class="btn-icon">📄</span>
+                                <span class="btn-text">Generate Consultation Report</span>
+                            </button>
+                            <button class="btn-secondary" id="copyConsultationReportBtn">Copy Report</button>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="consultationReportOutput" class="input-label">Generated Report</label>
+                            <textarea
+                                id="consultationReportOutput"
+                                class="input-field consultation-output"
+                                rows="16"
+                                placeholder="Your professional report will appear here..."
+                            ></textarea>
+                            <div class="helper-text">
+                                <span id="consultationReportMeta">No report generated yet</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Life Coach Tab -->
+                <section id="life-coach" class="tab-content">
+                    <div class="section-header">
+                        <h2>LIFE COACH</h2>
+                    </div>
+
+                    <div class="life-coach-layout">
+                        <section class="exercise-container" id="coachSetupCard">
+                            <h3 class="section-title">Create Your Coach</h3>
+                            <p class="coach-note">
+                                Build a coach profile aligned with ethical AI support. This coach is not a therapist and will
+                                encourage professional help when needed.
+                            </p>
+
+                            <div class="input-group">
+                                <label for="coachNameInput" class="input-label">Coach Name</label>
+                                <input id="coachNameInput" class="input-field" type="text" placeholder="e.g., Aarya" maxlength="40">
+                            </div>
+
+                            <div class="input-group">
+                                <label for="coachAgeInput" class="input-label">Coach Age</label>
+                                <input id="coachAgeInput" class="input-field" type="number" min="18" max="90" placeholder="e.g., 36">
+                            </div>
+
+                            <div class="input-group">
+                                <label for="coachGenderInput" class="input-label">Coach Gender</label>
+                                <select id="coachGenderInput" class="input-field">
+                                    <option value="">Select</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Non-binary">Non-binary</option>
+                                    <option value="Prefer not to say">Prefer not to say</option>
+                                </select>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="coachPersonalityInput" class="input-label">Coach Personality</label>
+                                <textarea id="coachPersonalityInput" class="input-field" rows="4" maxlength="240"
+                                    placeholder="e.g., calm, direct, warm, practical, accountability-focused"></textarea>
+                            </div>
+
+                            <div class="life-coach-actions">
+                                <button class="btn-secondary" id="createCoachBtn">Create Life Coach</button>
+                            </div>
+                        </section>
+
+                        <section class="exercise-container coach-chat-card" id="coachChatCard" style="display: none;">
+                            <div class="coach-chat-header">
+                                <div>
+                                    <h3 id="coachIdentity">Your Coach</h3>
+                                    <p class="coach-note" id="coachEthicsNote">Ethical AI coach: motivational support, not clinical diagnosis.</p>
+                                </div>
+                                <div class="life-coach-actions">
+                                    <button class="btn-back" id="coachVoiceToggleBtn">Voice Reply: Off</button>
+                                    <button class="btn-back" id="resetCoachBtn">Reset Coach</button>
+                                </div>
+                            </div>
+
+                            <div class="coach-messages" id="coachMessages"></div>
+
+                            <div class="coach-composer">
+                                <textarea id="coachMessageInput" class="input-field" rows="2" maxlength="600"
+                                    placeholder="Message your coach... e.g., I keep procrastinating when I feel overwhelmed."></textarea>
+                                <button class="btn-secondary" id="sendCoachMessageBtn">Send</button>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+
+                <!-- CBT Exercise Tab -->
+                <section id="cbt-exercise" class="tab-content">
+                    <div class="section-header">
+                        <h2>CBT EXERCISE</h2>
+                        <div class="section-header-actions">
+                            <button class="btn-back" id="backToGymBtn">← Mental Gym</button>
+                            <button class="btn-view-all" id="viewAllBtn">
+                                View All Exercises 
+                                <span class="dropdown-icon">▼</span>
+                            </button>
+                        </div>
                     </div>
 
                     <!-- Main Exercise Container -->
@@ -137,14 +330,14 @@
                             <div class="button-container">
                                 <button id="generateBtn" class="btn-generate">
                                     <span class="btn-icon">✨</span>
-                                    <span class="btn-text">Generate Alternate Realities</span>
+                                    <span class="btn-text">Generate Alternative Thoughts</span>
                                 </button>
                             </div>
                         </section>
 
                         <!-- Output Section -->
                         <section class="output-section" id="outputSection" style="display: none;">
-                            <h3 class="section-title">Generated Alternate Realities</h3>
+                            <h3 class="section-title">Generated Cognitive Reframes</h3>
                             <p class="output-subtitle">Here are 4 different perspectives on your situation:</p>
 
                             <!-- Realities Container -->
@@ -210,7 +403,7 @@
                         <div class="empty-state">
                             <span class="empty-icon">📊</span>
                             <p>Complete at least 3 exercises to see your progress</p>
-                            <button class="btn-secondary" onclick="app.switchTab(document.querySelector('[data-tab=reality-checks]'))">Start Exercise</button>
+                            <button class="btn-secondary" onclick="app.openCBTExercise()">Start CBT Exercise</button>
                         </div>
                     </div>
 
@@ -278,6 +471,19 @@
                         <h2>PATTERN INSIGHTS</h2>
                     </div>
 
+                    <div class="demo-controls" id="demoControls">
+                        <div class="demo-copy">
+                            <h3>Demo Flow</h3>
+                            <p>Load 10 exercises at a time and show measurable change in Pattern Insights and Progress.</p>
+                            <p class="demo-status" id="demoStatus">Demo dataset loaded: 0 / 0</p>
+                        </div>
+                        <div class="demo-actions">
+                            <button class="btn-back" id="resetDemoBtn">Reset Demo</button>
+                            <button class="btn-secondary" id="loadNextDemoBtn">Load Next 10 Exercises</button>
+                            <button class="btn-view-all" id="openProgressFromDemoBtn">Open Progress</button>
+                        </div>
+                    </div>
+
                     <!-- Insights Overview -->
                     <div class="insights-overview" id="insightsOverview" style="display: none;">
                         <div class="overview-cards">
@@ -297,6 +503,14 @@
                                 <div class="overview-label">With Reflection</div>
                                 <div class="overview-value" id="withReflection">0</div>
                             </div>
+                            <div class="overview-card">
+                                <div class="overview-label">Top Trigger Context</div>
+                                <div class="overview-value" id="mostCommonCategory">General</div>
+                            </div>
+                            <div class="overview-card">
+                                <div class="overview-label">Weekly Momentum</div>
+                                <div class="overview-value" id="weeklyMomentumValue">Baseline</div>
+                            </div>
                         </div>
                     </div>
 
@@ -304,8 +518,8 @@
                     <div class="empty-state" id="insightsEmptyState">
                         <span class="empty-icon">📭</span>
                         <p>Complete at least 3 exercises with reflections to see pattern insights</p>
-                        <button class="btn-secondary" onclick="app.switchTab(document.querySelector('[data-tab=\"reality-checks\"]'))">
-                            Go to Reality Checks
+                        <button class="btn-secondary" onclick="app.openCBTExercise()">
+                            Go to CBT Exercise
                         </button>
                     </div>
 
@@ -333,6 +547,71 @@
 
                     <!-- Insights Display -->
                     <div class="insights-display" id="insightsDisplay" style="display: none;">
+                        <!-- Weekly Pattern Journey -->
+                        <section class="insight-section">
+                            <h3 class="insight-section-title">📅 Weekly Pattern Journey</h3>
+                            <p class="insight-subtitle" id="weeklyJourneySubtitle">Last 8 weeks trend</p>
+                            <div class="weekly-kpis">
+                                <div class="weekly-kpi-card">
+                                    <div class="weekly-kpi-label">Current Momentum</div>
+                                    <div class="weekly-kpi-value" id="weeklyMomentumBadge">Baseline</div>
+                                </div>
+                                <div class="weekly-kpi-card">
+                                    <div class="weekly-kpi-label">Assumption Rate</div>
+                                    <div class="weekly-kpi-value" id="weeklyAssumptionRate">0%</div>
+                                </div>
+                                <div class="weekly-kpi-card">
+                                    <div class="weekly-kpi-label">Average Reframe Shift</div>
+                                    <div class="weekly-kpi-value" id="weeklyShiftScore">0</div>
+                                </div>
+                            </div>
+                            <div class="weekly-trend-rows" id="weeklyTrendRows">
+                                <!-- Generated weekly rows -->
+                            </div>
+                        </section>
+
+                        <!-- Assumption vs Fact -->
+                        <section class="insight-section">
+                            <h3 class="insight-section-title">⚖️ Assumptions vs Facts</h3>
+                            <p class="insight-subtitle">How often first interpretations are assumption-heavy versus evidence-grounded.</p>
+                            <div class="assumption-fact-bars">
+                                <div class="ratio-row">
+                                    <div class="ratio-label">Assumption-Heavy</div>
+                                    <div class="ratio-track"><div class="ratio-fill assumption" id="assumptionFill" style="width: 0%;"></div></div>
+                                    <div class="ratio-value" id="assumptionValue">0%</div>
+                                </div>
+                                <div class="ratio-row">
+                                    <div class="ratio-label">Fact-Grounded</div>
+                                    <div class="ratio-track"><div class="ratio-fill fact" id="factFill" style="width: 0%;"></div></div>
+                                    <div class="ratio-value" id="factValue">0%</div>
+                                </div>
+                                <div class="ratio-row">
+                                    <div class="ratio-label">Balanced</div>
+                                    <div class="ratio-track"><div class="ratio-fill balanced" id="balancedFill" style="width: 0%;"></div></div>
+                                    <div class="ratio-value" id="balancedValue">0%</div>
+                                </div>
+                            </div>
+                            <div class="progress-insight" id="assumptionFactNarrative"></div>
+                        </section>
+
+                        <!-- Trigger Emotion Reaction Map -->
+                        <section class="insight-section">
+                            <h3 class="insight-section-title">🧭 Trigger → Emotion → Reaction Map</h3>
+                            <p class="insight-subtitle">Common sequence you follow when stress events happen.</p>
+                            <div class="trigger-map" id="triggerResponseMapList">
+                                <!-- Generated rows -->
+                            </div>
+                        </section>
+
+                        <!-- Weekly Action Plan -->
+                        <section class="insight-section">
+                            <h3 class="insight-section-title">✅ Weekly Action Plan</h3>
+                            <p class="insight-subtitle">Practical next steps based on your current patterns.</p>
+                            <ul class="action-plan-list" id="actionPlanList">
+                                <!-- Generated actions -->
+                            </ul>
+                        </section>
+
                         <!-- What Happened Section -->
                         <section class="insight-section">
                             <h3 class="insight-section-title">📌 What Happened</h3>
@@ -380,16 +659,16 @@
 
                         <!-- Reality Check Impact Section -->
                         <section class="insight-section">
-                            <h3 class="insight-section-title">✨ Reality Check Impact</h3>
+                            <h3 class="insight-section-title">✨ CBT Impact</h3>
                             <div class="impact-container">
                                 <div class="impact-card before">
-                                    <div class="impact-label">Before Reality Checks</div>
+                                    <div class="impact-label">Before CBT Exercise</div>
                                     <div class="impact-value" id="beforeConfidence">87</div>
                                     <div class="impact-desc">Average confidence in initial interpretation</div>
                                 </div>
                                 <div class="impact-arrow">→</div>
                                 <div class="impact-card after">
-                                    <div class="impact-label">After Reality Checks</div>
+                                    <div class="impact-label">After CBT Exercise</div>
                                     <div class="impact-value" id="afterConfidence">54</div>
                                     <div class="impact-desc">Average confidence after reflection</div>
                                 </div>

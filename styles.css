@@ -201,6 +201,225 @@ body {
     color: var(--text-primary);
 }
 
+.section-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* ============================================
+   6.5 MENTAL GYM
+   ============================================ */
+
+.mental-gym-intro {
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+    max-width: 860px;
+}
+
+.gym-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+}
+
+.gym-card {
+    background: linear-gradient(165deg, #ffffff 0%, #f4f9ff 100%);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    box-shadow: 0 8px 18px rgba(14, 165, 233, 0.08);
+}
+
+.gym-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.gym-card-header h3 {
+    font-size: 1.2rem;
+}
+
+.gym-icon {
+    font-size: 1.5rem;
+}
+
+.gym-description {
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.gym-impact {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+}
+
+.breathing-widget,
+.jpmr-widget {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 0.9rem;
+}
+
+.breathing-phase,
+.jpmr-step {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+}
+
+.breathing-timer {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+}
+
+.breathing-controls,
+.jpmr-controls,
+.life-coach-actions,
+.consultation-buttons {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   6.6 CONSULTATION PREP
+   ============================================ */
+
+.consultation-container {
+    max-width: 1000px;
+}
+
+.consultation-intro {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.consultation-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.consultation-options label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #f7fbff;
+    border: 1px solid #dbeafe;
+    border-radius: 0.5rem;
+    padding: 0.65rem 0.75rem;
+    color: var(--text-primary);
+    font-size: 0.92rem;
+}
+
+.consultation-options input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+}
+
+.consultation-output {
+    font-family: 'Courier New', Consolas, monospace;
+    line-height: 1.45;
+}
+
+/* ============================================
+   6.7 LIFE COACH
+   ============================================ */
+
+.life-coach-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1rem;
+    align-items: start;
+}
+
+.coach-chat-card {
+    min-height: 640px;
+}
+
+.coach-note {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+}
+
+.coach-chat-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.coach-messages {
+    height: 420px;
+    overflow-y: auto;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border);
+    background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+}
+
+.coach-message {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.85rem;
+}
+
+.coach-message.user {
+    align-items: flex-end;
+}
+
+.coach-message.coach {
+    align-items: flex-start;
+}
+
+.coach-bubble {
+    max-width: 85%;
+    padding: 0.7rem 0.8rem;
+    border-radius: 0.9rem;
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    line-height: 1.5;
+    font-size: 0.92rem;
+    white-space: pre-wrap;
+}
+
+.coach-message.user .coach-bubble {
+    background-color: #dbeafe;
+    border-color: #93c5fd;
+}
+
+.coach-message.coach .coach-bubble {
+    background-color: #ecfdf5;
+    border-color: #a7f3d0;
+}
+
+.coach-time {
+    margin-top: 0.2rem;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+.coach-composer {
+    margin-top: 0.9rem;
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-end;
+}
+
+.coach-composer .input-field {
+    margin-bottom: 0;
+}
+
 /* ============================================
    6. EXERCISE CONTAINER
    ============================================ */
@@ -1024,6 +1243,40 @@ body {
     margin-bottom: 2rem;
 }
 
+.demo-controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border: 1px solid var(--border);
+    background: linear-gradient(135deg, #f8fbff, #fefce8);
+    border-radius: 0.85rem;
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.demo-copy h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.2rem;
+}
+
+.demo-copy p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.demo-status {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.demo-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
 .overview-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1105,6 +1358,200 @@ body {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+}
+
+.weekly-kpis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.weekly-kpi-card {
+    border: 1px solid var(--border);
+    border-radius: 0.65rem;
+    background-color: #f8fbff;
+    padding: 0.85rem;
+}
+
+.weekly-kpi-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.weekly-kpi-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.weekly-trend-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.weekly-row {
+    display: grid;
+    grid-template-columns: 90px 1fr auto;
+    gap: 0.75rem;
+    align-items: center;
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 0.6rem;
+    padding: 0.65rem 0.75rem;
+}
+
+.weekly-label {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.weekly-bars {
+    display: flex;
+    gap: 0.35rem;
+}
+
+.weekly-bar {
+    border-radius: 999px;
+    padding: 0.2rem 0.45rem;
+    color: #ffffff;
+    font-size: 0.72rem;
+    min-width: 45px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.weekly-bar.assumption {
+    background: linear-gradient(90deg, #ef4444, #f97316);
+}
+
+.weekly-bar.fact {
+    background: linear-gradient(90deg, #10b981, #14b8a6);
+}
+
+.weekly-meta {
+    display: flex;
+    gap: 0.55rem;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.assumption-fact-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.ratio-row {
+    display: grid;
+    grid-template-columns: 145px 1fr 58px;
+    gap: 0.6rem;
+    align-items: center;
+}
+
+.ratio-label {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.ratio-track {
+    width: 100%;
+    height: 0.72rem;
+    background-color: #e5e7eb;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.ratio-fill {
+    height: 100%;
+    border-radius: 999px;
+}
+
+.ratio-fill.assumption {
+    background: linear-gradient(90deg, #f97316, #ef4444);
+}
+
+.ratio-fill.fact {
+    background: linear-gradient(90deg, #34d399, #10b981);
+}
+
+.ratio-fill.balanced {
+    background: linear-gradient(90deg, #0ea5e9, #3b82f6);
+}
+
+.ratio-value {
+    text-align: right;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.trigger-map {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.trigger-row {
+    border: 1px solid var(--border);
+    background-color: #fbfdff;
+    border-radius: 0.65rem;
+    padding: 0.7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.trigger-theme {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.trigger-sequence {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.sequence-node {
+    background-color: #dbeafe;
+    color: #1e3a8a;
+    border-radius: 999px;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.sequence-node.reaction {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.sequence-arrow {
+    color: var(--text-secondary);
+    font-weight: 700;
+}
+
+.action-plan-list {
+    margin: 0;
+    padding-left: 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.action-plan-list li {
+    color: var(--text-primary);
+    line-height: 1.55;
 }
 
 .insight-section {
@@ -1633,6 +2080,10 @@ body {
     .summary-stats {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .life-coach-layout {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1675,6 +2126,12 @@ body {
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
+    }
+
+    .section-header-actions {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
     }
 
     .btn-view-all {
@@ -1765,6 +2222,56 @@ body {
     .summary-stats {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .demo-controls {
+        flex-direction: column;
+    }
+
+    .demo-actions {
+        width: 100%;
+    }
+
+    .demo-actions .btn-back,
+    .demo-actions .btn-secondary,
+    .demo-actions .btn-view-all {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .weekly-row {
+        grid-template-columns: 1fr;
+    }
+
+    .ratio-row {
+        grid-template-columns: 1fr;
+    }
+
+    .ratio-value {
+        text-align: left;
+    }
+
+    .consultation-buttons {
+        width: 100%;
+    }
+
+    .consultation-buttons .btn-generate,
+    .consultation-buttons .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .coach-chat-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .coach-composer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .coach-composer .btn-secondary {
+        width: 100%;
     }
 }
 
@@ -1779,6 +2286,15 @@ body {
 
     .section-header h2 {
         font-size: 1.5rem;
+    }
+
+    .gym-grid,
+    .consultation-options {
+        grid-template-columns: 1fr;
+    }
+
+    .coach-bubble {
+        max-width: 100%;
     }
 
     .input-label {

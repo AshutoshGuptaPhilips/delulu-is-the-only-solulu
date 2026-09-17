@@ -8,6 +8,32 @@ class SoluluApp {
         this.currentExercise = null;
         this.allExercises = [];
         this.isGenerating = false;
+        this.breathingTimerId = null;
+        this.breathingElapsedSeconds = 0;
+        this.breathingPhaseSeconds = 0;
+        this.breathingPhaseIndex = 0;
+        this.breathingPhases = [
+            { label: 'Inhale', seconds: 4 },
+            { label: 'Hold', seconds: 4 },
+            { label: 'Exhale', seconds: 4 },
+            { label: 'Hold', seconds: 4 }
+        ];
+        this.jpmrStepIndex = -1;
+        this.jpmrSteps = [
+            'Hands and forearms: clench gently for 5 seconds, then release for 10 seconds.',
+            'Upper arms: tense biceps for 5 seconds, then release fully.',
+            'Shoulders and neck: lift shoulders up for 5 seconds, then drop and relax.',
+            'Face and jaw: tighten face muscles for 5 seconds, then soften completely.',
+            'Chest and back: take a deep breath and hold tension for 5 seconds, then release.',
+            'Stomach: tighten core gently for 5 seconds, then release.',
+            'Thighs: press thighs together for 5 seconds, then release.',
+            'Calves and feet: point toes for 5 seconds, then relax and notice warmth.'
+        ];
+        this.coachProfileKey = 'solulu_life_coach_profile';
+        this.coachMessagesKey = 'solulu_life_coach_messages';
+        this.coachProfile = null;
+        this.coachMessages = [];
+        this.coachVoiceEnabled = false;
         this.init();
     }
 
@@ -22,6 +48,11 @@ class SoluluApp {
         this.loadCurrentExercise();
         this.attachEventListeners();
         this.setupCharacterCounters();
+        this.loadLifeCoachState();
+        this.renderLifeCoach();
+        this.resetBreathingExercise();
+        this.resetJPMR();
+        await this.refreshDemoStatus();
 
         if (seedResult.seeded) {
             this.showToast(`${seedResult.count} exercises loaded`, 'success');
@@ -48,6 +79,46 @@ class SoluluApp {
         this.saveReflectionBtn = document.getElementById('saveReflectionBtn');
         this.modalCloseBtn = document.getElementById('modalCloseBtn');
         this.newExerciseBtn = document.getElementById('newExerciseBtn');
+        this.createFirstBtn = document.getElementById('createFirstBtn');
+
+        // Mental Gym elements
+        this.openCBTBtn = document.getElementById('openCBTBtn');
+        this.backToGymBtn = document.getElementById('backToGymBtn');
+        this.breathingPhase = document.getElementById('breathingPhase');
+        this.breathingTimer = document.getElementById('breathingTimer');
+        this.breathingStartBtn = document.getElementById('breathingStartBtn');
+        this.breathingResetBtn = document.getElementById('breathingResetBtn');
+        this.jpmrCurrentStep = document.getElementById('jpmrCurrentStep');
+        this.jpmrStartBtn = document.getElementById('jpmrStartBtn');
+        this.jpmrNextBtn = document.getElementById('jpmrNextBtn');
+
+        // Consultation prep elements
+        this.includeSummary = document.getElementById('includeSummary');
+        this.includeTriggers = document.getElementById('includeTriggers');
+        this.includeEmotions = document.getElementById('includeEmotions');
+        this.includeReframes = document.getElementById('includeReframes');
+        this.includeReflections = document.getElementById('includeReflections');
+        this.includeActions = document.getElementById('includeActions');
+        this.generateConsultationReportBtn = document.getElementById('generateConsultationReportBtn');
+        this.copyConsultationReportBtn = document.getElementById('copyConsultationReportBtn');
+        this.consultationReportOutput = document.getElementById('consultationReportOutput');
+        this.consultationReportMeta = document.getElementById('consultationReportMeta');
+
+        // Life coach elements
+        this.coachSetupCard = document.getElementById('coachSetupCard');
+        this.coachChatCard = document.getElementById('coachChatCard');
+        this.coachNameInput = document.getElementById('coachNameInput');
+        this.coachAgeInput = document.getElementById('coachAgeInput');
+        this.coachGenderInput = document.getElementById('coachGenderInput');
+        this.coachPersonalityInput = document.getElementById('coachPersonalityInput');
+        this.createCoachBtn = document.getElementById('createCoachBtn');
+        this.resetCoachBtn = document.getElementById('resetCoachBtn');
+        this.coachVoiceToggleBtn = document.getElementById('coachVoiceToggleBtn');
+        this.coachIdentity = document.getElementById('coachIdentity');
+        this.coachEthicsNote = document.getElementById('coachEthicsNote');
+        this.coachMessagesList = document.getElementById('coachMessages');
+        this.coachMessageInput = document.getElementById('coachMessageInput');
+        this.sendCoachMessageBtn = document.getElementById('sendCoachMessageBtn');
 
         // Section elements
         this.outputSection = document.getElementById('outputSection');
@@ -75,6 +146,24 @@ class SoluluApp {
         this.insightsDisplay = document.getElementById('insightsDisplay');
         this.categoryBtns = document.querySelectorAll('.category-btn');
         this.patternsList = document.getElementById('patternsList');
+        this.demoStatus = document.getElementById('demoStatus');
+        this.resetDemoBtn = document.getElementById('resetDemoBtn');
+        this.loadNextDemoBtn = document.getElementById('loadNextDemoBtn');
+        this.openProgressFromDemoBtn = document.getElementById('openProgressFromDemoBtn');
+        this.weeklyJourneySubtitle = document.getElementById('weeklyJourneySubtitle');
+        this.weeklyMomentumBadge = document.getElementById('weeklyMomentumBadge');
+        this.weeklyAssumptionRate = document.getElementById('weeklyAssumptionRate');
+        this.weeklyShiftScore = document.getElementById('weeklyShiftScore');
+        this.weeklyTrendRows = document.getElementById('weeklyTrendRows');
+        this.assumptionFill = document.getElementById('assumptionFill');
+        this.factFill = document.getElementById('factFill');
+        this.balancedFill = document.getElementById('balancedFill');
+        this.assumptionValue = document.getElementById('assumptionValue');
+        this.factValue = document.getElementById('factValue');
+        this.balancedValue = document.getElementById('balancedValue');
+        this.assumptionFactNarrative = document.getElementById('assumptionFactNarrative');
+        this.triggerResponseMapList = document.getElementById('triggerResponseMapList');
+        this.actionPlanList = document.getElementById('actionPlanList');
 
         // Progress elements
         this.progressContainer = document.getElementById('progressContainer');
@@ -112,6 +201,33 @@ class SoluluApp {
         this.saveReflectionBtn?.addEventListener('click', () => this.saveReflection());
         this.modalCloseBtn?.addEventListener('click', () => this.closeExercisesModal());
         this.newExerciseBtn?.addEventListener('click', () => this.createNewExercise());
+        this.createFirstBtn?.addEventListener('click', () => this.createNewExercise());
+        this.openCBTBtn?.addEventListener('click', () => this.openCBTExercise());
+        this.backToGymBtn?.addEventListener('click', () => this.openMentalGym());
+        this.breathingStartBtn?.addEventListener('click', () => this.startBreathingExercise());
+        this.breathingResetBtn?.addEventListener('click', () => this.resetBreathingExercise());
+        this.jpmrStartBtn?.addEventListener('click', () => this.startJPMR());
+        this.jpmrNextBtn?.addEventListener('click', () => this.nextJPMRStep());
+        this.generateConsultationReportBtn?.addEventListener('click', () => this.generateConsultationReport());
+        this.copyConsultationReportBtn?.addEventListener('click', () => this.copyConsultationReport());
+        this.createCoachBtn?.addEventListener('click', () => this.createLifeCoach());
+        this.resetCoachBtn?.addEventListener('click', () => this.resetLifeCoach());
+        this.coachVoiceToggleBtn?.addEventListener('click', () => this.toggleCoachVoice());
+        this.sendCoachMessageBtn?.addEventListener('click', () => this.sendCoachMessage());
+        this.resetDemoBtn?.addEventListener('click', () => this.handleResetDemo());
+        this.loadNextDemoBtn?.addEventListener('click', () => this.handleLoadNextDemo());
+        this.openProgressFromDemoBtn?.addEventListener('click', () => {
+            const progressTab = document.querySelector('[data-tab="progress"]');
+            if (progressTab) {
+                this.switchTab(progressTab);
+            }
+        });
+        this.coachMessageInput?.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                this.sendCoachMessage();
+            }
+        });
 
         // Search and filter
         this.searchInput?.addEventListener('input', () => this.filterExercises());
@@ -140,7 +256,10 @@ class SoluluApp {
         });
 
         // Prevent losing data on page unload
-        window.addEventListener('beforeunload', () => this.autoSaveExercise());
+        window.addEventListener('beforeunload', () => {
+            this.autoSaveExercise();
+            this.stopBreathingExercise();
+        });
     }
 
     /**
@@ -553,28 +672,70 @@ class SoluluApp {
      * Switch tab
      */
     switchTab(tabButton) {
-        // Update active tab button
+        const tabName = tabButton.getAttribute('data-tab');
+        this.activateTab(tabName, tabName);
+    }
+
+    /**
+     * Open the CBT exercise from Mental Gym
+     */
+    openCBTExercise() {
+        if (!this.currentExercise) {
+            this.loadCurrentExercise();
+        }
+        this.activateTab('cbt-exercise', 'mental-gym');
+    }
+
+    /**
+     * Return to Mental Gym
+     */
+    openMentalGym() {
+        this.activateTab('mental-gym', 'mental-gym');
+    }
+
+    /**
+     * Activate a tab content and optionally highlight a nav tab
+     */
+    activateTab(tabName, navTabName = tabName) {
+        // Update active nav button
         this.navTabs.forEach(tab => tab.classList.remove('active'));
-        tabButton.classList.add('active');
+        const navTarget = Array.from(this.navTabs).find(tab => tab.getAttribute('data-tab') === navTabName);
+        if (navTarget) {
+            navTarget.classList.add('active');
+        }
 
         // Update active tab content
-        const tabName = tabButton.getAttribute('data-tab');
         this.tabContents.forEach(content => {
             content.classList.remove('active');
             if (content.id === tabName) {
                 content.classList.add('active');
-
-                // Load Pattern Insights when tab is opened
-                if (tabName === 'pattern-insights') {
-                    this.loadPatternInsights();
-                }
-
-                // Load Progress when tab is opened
-                if (tabName === 'progress') {
-                    this.loadProgress();
-                }
             }
         });
+
+        this.runTabLoaders(tabName);
+    }
+
+    /**
+     * Run tab-specific loading logic
+     */
+    runTabLoaders(tabName) {
+        if (tabName === 'pattern-insights') {
+            this.loadPatternInsights();
+            this.refreshDemoStatus();
+        }
+
+        if (tabName === 'progress') {
+            this.loadProgress();
+            this.refreshDemoStatus();
+        }
+
+        if (tabName === 'consultation-prep') {
+            this.updateConsultationMeta('Ready to generate report');
+        }
+
+        if (tabName === 'life-coach') {
+            this.renderLifeCoach();
+        }
     }
 
     /**
@@ -630,8 +791,10 @@ class SoluluApp {
         // Display overview stats
         this.displayInsightsOverview(this.allExercises);
 
-        // Load first category by default
-        this.handleCategorySelect(document.querySelector('[data-category="Workplace Pattern Insights"]'));
+        // Load first available category with data
+        const categoriesWithData = patternAnalytics.getAllCategoriesWithData(this.allExercises);
+        const firstCategory = Object.keys(categoriesWithData)[0] || 'General Insights';
+        this.handleCategorySelect(document.querySelector(`[data-category="${firstCategory}"]`));
     }
 
     /**
@@ -811,6 +974,31 @@ class SoluluApp {
         document.getElementById('exercisesLast30').textContent = stats.exercisesLast30Days;
         document.getElementById('withReflection').textContent = stats.exercisesWithReflection;
         document.getElementById('confidenceShift').textContent = stats.averageConfidenceShift + '%';
+        const mostCommonCategoryEl = document.getElementById('mostCommonCategory');
+        if (mostCommonCategoryEl) {
+            mostCommonCategoryEl.textContent = stats.mostCommonCategory
+                .replace(' Pattern Insights', '')
+                .replace(' Insights', '');
+        }
+
+        const allCategories = patternAnalytics.getAllCategoriesWithData(exercises);
+        const journeys = Object.values(allCategories)
+            .map(item => item.weeklyPatternJourney)
+            .filter(Boolean)
+            .map(journey => journey.momentum);
+
+        const momentum = journeys.includes('Strong improvement')
+            ? 'Strong improvement'
+            : journeys.includes('Steady improvement')
+                ? 'Steady improvement'
+                : journeys.includes('Watch assumptions this week')
+                    ? 'Watch assumptions'
+                    : 'Stable trend';
+
+        const weeklyMomentumValueEl = document.getElementById('weeklyMomentumValue');
+        if (weeklyMomentumValueEl) {
+            weeklyMomentumValueEl.textContent = momentum;
+        }
     }
 
     /**
@@ -846,6 +1034,10 @@ class SoluluApp {
         }
 
         // Display sections
+        this.displayWeeklyPatternJourney(analysis.weeklyPatternJourney);
+        this.displayAssumptionFactProfile(analysis.assumptionFactProfile);
+        this.displayTriggerResponseMap(analysis.triggerResponseMap);
+        this.displayActionPlan(analysis.recommendedActions);
         this.displayWhatHappened(analysis.whatHappened, analysis.timeframe);
         this.displayEmotionalPatterns(analysis.emotionalPatterns);
         this.displayInterpretationPatterns(analysis.interpretationPatterns);
@@ -874,6 +1066,127 @@ class SoluluApp {
             `;
             list.appendChild(li);
         });
+    }
+
+    /**
+     * Display weekly journey trend metrics
+     */
+    displayWeeklyPatternJourney(weeklyJourney) {
+        if (!weeklyJourney || !Array.isArray(weeklyJourney.trend)) {
+            return;
+        }
+
+        const trend = weeklyJourney.trend;
+        const current = weeklyJourney.currentWeek;
+
+        if (this.weeklyJourneySubtitle) {
+            this.weeklyJourneySubtitle.textContent = `Last ${trend.length} week${trend.length === 1 ? '' : 's'} trend`;
+        }
+
+        if (this.weeklyMomentumBadge) {
+            this.weeklyMomentumBadge.textContent = weeklyJourney.momentum;
+        }
+
+        if (this.weeklyAssumptionRate && current) {
+            this.weeklyAssumptionRate.textContent = `${current.assumptionPercent}%`;
+        }
+
+        if (this.weeklyShiftScore && current) {
+            this.weeklyShiftScore.textContent = `${current.averageShift}`;
+        }
+
+        if (!this.weeklyTrendRows) {
+            return;
+        }
+
+        this.weeklyTrendRows.innerHTML = trend.map(row => `
+            <div class="weekly-row">
+                <div class="weekly-label">${this.escapeHtml(row.label)}</div>
+                <div class="weekly-bars">
+                    <div class="weekly-bar assumption" style="width: ${row.assumptionPercent}%">A ${row.assumptionPercent}%</div>
+                    <div class="weekly-bar fact" style="width: ${row.factPercent}%">F ${row.factPercent}%</div>
+                </div>
+                <div class="weekly-meta">
+                    <span>${row.exerciseCount} entries</span>
+                    <span>Shift ${row.averageShift}</span>
+                    <span>${this.escapeHtml(row.dominantEmotion)}</span>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    /**
+     * Display assumption vs fact profile
+     */
+    displayAssumptionFactProfile(profile) {
+        if (!profile) {
+            return;
+        }
+
+        if (this.assumptionFill) {
+            this.assumptionFill.style.width = `${profile.assumptionPct}%`;
+        }
+        if (this.factFill) {
+            this.factFill.style.width = `${profile.factPct}%`;
+        }
+        if (this.balancedFill) {
+            this.balancedFill.style.width = `${profile.balancedPct}%`;
+        }
+
+        if (this.assumptionValue) {
+            this.assumptionValue.textContent = `${profile.assumptionPct}%`;
+        }
+        if (this.factValue) {
+            this.factValue.textContent = `${profile.factPct}%`;
+        }
+        if (this.balancedValue) {
+            this.balancedValue.textContent = `${profile.balancedPct}%`;
+        }
+
+        if (this.assumptionFactNarrative) {
+            this.assumptionFactNarrative.textContent = profile.narrative;
+        }
+    }
+
+    /**
+     * Display trigger to reaction mapping
+     */
+    displayTriggerResponseMap(rows) {
+        if (!this.triggerResponseMapList) {
+            return;
+        }
+
+        if (!rows || rows.length === 0) {
+            this.triggerResponseMapList.innerHTML = '<p class="insight-subtitle">No recurring trigger sequence identified yet.</p>';
+            return;
+        }
+
+        this.triggerResponseMapList.innerHTML = rows.map(row => `
+            <div class="trigger-row">
+                <div class="trigger-theme">${this.escapeHtml(row.theme)} (${row.count})</div>
+                <div class="trigger-sequence">
+                    <span class="sequence-node">${this.escapeHtml(row.dominantEmotion)}</span>
+                    <span class="sequence-arrow">→</span>
+                    <span class="sequence-node reaction">${this.escapeHtml(row.dominantReaction)}</span>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    /**
+     * Display recommended weekly actions
+     */
+    displayActionPlan(actions) {
+        if (!this.actionPlanList) {
+            return;
+        }
+
+        if (!actions || actions.length === 0) {
+            this.actionPlanList.innerHTML = '<li>Keep logging daily entries to build a stronger pattern baseline.</li>';
+            return;
+        }
+
+        this.actionPlanList.innerHTML = actions.map(action => `<li>${this.escapeHtml(action)}</li>`).join('');
     }
 
     /**
@@ -968,6 +1281,680 @@ class SoluluApp {
     displayInsight(insight) {
         const insightText = document.getElementById('insightText');
         insightText.textContent = insight;
+    }
+
+    /**
+     * Refresh demo progress label and button state
+     */
+    async refreshDemoStatus() {
+        if (!this.demoStatus) {
+            return;
+        }
+
+        if (!dataManager.isDemoMode()) {
+            this.demoStatus.textContent = 'Demo mode is off. Click Reset Demo to start staged loading.';
+            if (this.loadNextDemoBtn) {
+                this.loadNextDemoBtn.disabled = false;
+                this.loadNextDemoBtn.textContent = 'Load Next 10 Exercises';
+            }
+            return;
+        }
+
+        const progress = await dataManager.getDemoProgress();
+        this.demoStatus.textContent = `Demo dataset loaded: ${progress.loaded} / ${progress.total}`;
+
+        if (this.loadNextDemoBtn) {
+            this.loadNextDemoBtn.disabled = progress.done;
+            this.loadNextDemoBtn.textContent = progress.done
+                ? 'All Demo Exercises Loaded'
+                : 'Load Next 10 Exercises';
+        }
+    }
+
+    /**
+     * Reset dataset for incremental demo flow
+     */
+    async handleResetDemo() {
+        const reset = await dataManager.resetForIncrementalDemo();
+        this.currentExercise = null;
+
+        if (this.eventInput) this.eventInput.value = '';
+        if (this.emotionInput) this.emotionInput.value = '';
+        if (this.interpretationInput) this.interpretationInput.value = '';
+        if (this.reflectionInput) this.reflectionInput.value = '';
+        if (this.outputSection) this.outputSection.style.display = 'none';
+
+        this.setupCharacterCounters();
+        this.loadPatternInsights();
+        this.loadProgress();
+        await this.refreshDemoStatus();
+
+        this.showToast(`Demo reset. ${reset.total} exercises ready for staged loading.`, 'info');
+    }
+
+    /**
+     * Load next demo batch and refresh analysis tabs
+     */
+    async handleLoadNextDemo() {
+        if (!dataManager.isDemoMode()) {
+            this.showToast('Click Reset Demo first to avoid mixing with existing data.', 'warning');
+            return;
+        }
+
+        const result = await dataManager.loadNextDemoBatch(10);
+
+        if (result.added === 0) {
+            this.showToast('All demo exercises are already loaded.', 'info');
+            await this.refreshDemoStatus();
+            return;
+        }
+
+        if (!this.currentExercise) {
+            const latestExercise = dataManager.getAllExercises().slice(-1)[0];
+            if (latestExercise) {
+                dataManager.setCurrentExerciseId(latestExercise.id);
+                this.loadCurrentExercise();
+            }
+        }
+
+        this.loadPatternInsights();
+        this.loadProgress();
+        await this.refreshDemoStatus();
+
+        this.showToast(
+            `Loaded ${result.added} exercises. Total loaded: ${result.loaded}/${result.total}`,
+            'success'
+        );
+    }
+
+    /**
+     * Start guided box breathing timer
+     */
+    startBreathingExercise() {
+        this.stopBreathingExercise();
+        this.breathingElapsedSeconds = 0;
+        this.breathingPhaseIndex = 0;
+        this.breathingPhaseSeconds = this.breathingPhases[0].seconds;
+
+        if (this.breathingStartBtn) {
+            this.breathingStartBtn.disabled = true;
+        }
+
+        this.renderBreathingState();
+
+        this.breathingTimerId = setInterval(() => {
+            this.breathingElapsedSeconds += 1;
+            this.breathingPhaseSeconds -= 1;
+
+            if (this.breathingElapsedSeconds >= 120) {
+                this.stopBreathingExercise();
+                if (this.breathingPhase) {
+                    this.breathingPhase.textContent = 'Cycle complete. Notice your body and breath.';
+                }
+                if (this.breathingStartBtn) {
+                    this.breathingStartBtn.disabled = false;
+                }
+                this.showToast('Box breathing cycle complete', 'success');
+                return;
+            }
+
+            if (this.breathingPhaseSeconds <= 0) {
+                this.breathingPhaseIndex = (this.breathingPhaseIndex + 1) % this.breathingPhases.length;
+                this.breathingPhaseSeconds = this.breathingPhases[this.breathingPhaseIndex].seconds;
+            }
+
+            this.renderBreathingState();
+        }, 1000);
+    }
+
+    /**
+     * Stop guided box breathing timer
+     */
+    stopBreathingExercise() {
+        if (this.breathingTimerId) {
+            clearInterval(this.breathingTimerId);
+            this.breathingTimerId = null;
+        }
+    }
+
+    /**
+     * Reset guided box breathing timer state
+     */
+    resetBreathingExercise() {
+        this.stopBreathingExercise();
+        this.breathingElapsedSeconds = 0;
+        this.breathingPhaseIndex = 0;
+        this.breathingPhaseSeconds = this.breathingPhases[0].seconds;
+        if (this.breathingPhase) {
+            this.breathingPhase.textContent = 'Ready: inhale for 4 seconds';
+        }
+        if (this.breathingTimer) {
+            this.breathingTimer.textContent = '00:00';
+        }
+        if (this.breathingStartBtn) {
+            this.breathingStartBtn.disabled = false;
+        }
+    }
+
+    /**
+     * Render box breathing phase and timer
+     */
+    renderBreathingState() {
+        const phase = this.breathingPhases[this.breathingPhaseIndex];
+        if (this.breathingPhase) {
+            this.breathingPhase.textContent = `${phase.label} for ${this.breathingPhaseSeconds}s`;
+        }
+        if (this.breathingTimer) {
+            this.breathingTimer.textContent = this.formatSeconds(this.breathingElapsedSeconds);
+        }
+    }
+
+    /**
+     * Start guided JPMR sequence
+     */
+    startJPMR() {
+        this.jpmrStepIndex = 0;
+        if (this.jpmrNextBtn) {
+            this.jpmrNextBtn.disabled = false;
+        }
+        this.renderJPMRStep();
+        this.showToast('JPMR started. Follow each step slowly.', 'info');
+    }
+
+    /**
+     * Advance to next JPMR step
+     */
+    nextJPMRStep() {
+        if (this.jpmrStepIndex < 0) {
+            this.startJPMR();
+            return;
+        }
+
+        this.jpmrStepIndex += 1;
+
+        if (this.jpmrStepIndex >= this.jpmrSteps.length) {
+            if (this.jpmrCurrentStep) {
+                this.jpmrCurrentStep.textContent = 'JPMR complete. Sit quietly for 30 seconds and observe how your body feels.';
+            }
+            if (this.jpmrNextBtn) {
+                this.jpmrNextBtn.disabled = true;
+            }
+            this.showToast('JPMR complete', 'success');
+            return;
+        }
+
+        this.renderJPMRStep();
+    }
+
+    /**
+     * Reset JPMR sequence state
+     */
+    resetJPMR() {
+        this.jpmrStepIndex = -1;
+        if (this.jpmrCurrentStep) {
+            this.jpmrCurrentStep.textContent = 'Press start to begin guided JPMR';
+        }
+        if (this.jpmrNextBtn) {
+            this.jpmrNextBtn.disabled = true;
+        }
+    }
+
+    /**
+     * Render current JPMR instruction
+     */
+    renderJPMRStep() {
+        if (!this.jpmrCurrentStep || this.jpmrStepIndex < 0 || this.jpmrStepIndex >= this.jpmrSteps.length) {
+            return;
+        }
+
+        this.jpmrCurrentStep.textContent = `Step ${this.jpmrStepIndex + 1}/${this.jpmrSteps.length}: ${this.jpmrSteps[this.jpmrStepIndex]}`;
+    }
+
+    /**
+     * Generate a clinician-ready consultation report from exercise history
+     */
+    generateConsultationReport() {
+        const exercises = dataManager
+            .getAllExercises()
+            .filter(ex => ex.event || ex.emotion || ex.interpretation)
+            .sort((a, b) => new Date(b.updatedAt || b.createdAt) - new Date(a.updatedAt || a.createdAt));
+
+        if (exercises.length === 0) {
+            this.showToast('No exercise data available yet', 'warning');
+            return;
+        }
+
+        const lines = [];
+        const now = new Date();
+        lines.push('SOLULU CONSULTATION PREPARATION REPORT');
+        lines.push(`Generated: ${now.toLocaleString()}`);
+        lines.push('Purpose: Share structured observations before a mental health consultation.');
+        lines.push('');
+
+        if (this.includeSummary?.checked) {
+            const completed = exercises.filter(ex => ex.reflection && ex.reflection.trim().length > 0).length;
+            const generated = exercises.filter(ex => ex.realities && ex.realities.length > 0).length;
+            lines.push('1) Overview');
+            lines.push(`- Total exercises logged: ${exercises.length}`);
+            lines.push(`- Exercises with generated reframes: ${generated}`);
+            lines.push(`- Exercises with reflection notes: ${completed}`);
+            lines.push(`- Date range: ${dataManager.formatDate(exercises[exercises.length - 1].createdAt)} to ${dataManager.formatDate(exercises[0].createdAt)}`);
+            lines.push('');
+        }
+
+        if (this.includeTriggers?.checked) {
+            const categoryCounts = {};
+            exercises.forEach(ex => {
+                const key = ex.category || 'General';
+                categoryCounts[key] = (categoryCounts[key] || 0) + 1;
+            });
+
+            const topCategories = Object.entries(categoryCounts)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 4);
+
+            lines.push('2) Recurring Trigger Contexts');
+            if (topCategories.length === 0) {
+                lines.push('- No clear category trends yet.');
+            } else {
+                topCategories.forEach(([name, count]) => {
+                    lines.push(`- ${name}: ${count} entries`);
+                });
+            }
+            lines.push('');
+        }
+
+        if (this.includeEmotions?.checked) {
+            const emotionCounts = this.extractTopEmotions(exercises);
+            lines.push('3) Frequent Emotions');
+            if (emotionCounts.length === 0) {
+                lines.push('- No emotion data available yet.');
+            } else {
+                emotionCounts.forEach(item => {
+                    lines.push(`- ${item.emotion}: ${item.count} mentions`);
+                });
+            }
+            lines.push('');
+        }
+
+        if (this.includeReframes?.checked) {
+            const reframes = this.collectReframeHighlights(exercises, 4);
+            lines.push('4) Helpful Cognitive Reframes');
+            if (reframes.length === 0) {
+                lines.push('- No generated reframes available yet.');
+            } else {
+                reframes.forEach((item, index) => {
+                    lines.push(`${index + 1}. ${item}`);
+                });
+            }
+            lines.push('');
+        }
+
+        if (this.includeReflections?.checked) {
+            const reflections = exercises
+                .filter(ex => ex.reflection && ex.reflection.trim())
+                .slice(0, 4)
+                .map(ex => ex.reflection.trim().replace(/\s+/g, ' '));
+
+            lines.push('5) Reflection Notes');
+            if (reflections.length === 0) {
+                lines.push('- No reflection notes entered yet.');
+            } else {
+                reflections.forEach((text, index) => {
+                    lines.push(`${index + 1}. ${text}`);
+                });
+            }
+            lines.push('');
+        }
+
+        if (this.includeActions?.checked) {
+            lines.push('6) Suggested Agenda For Consultation');
+            lines.push('- Discuss repeated trigger situations and emotional spikes.');
+            lines.push('- Validate cognitive reframing techniques that worked best.');
+            lines.push('- Identify coping tools for high-risk moments.');
+            lines.push('- Agree on a plan for follow-up tracking between sessions.');
+            lines.push('');
+        }
+
+        lines.push('Note: This report is a self-tracking summary and not a clinical diagnosis.');
+
+        if (this.consultationReportOutput) {
+            this.consultationReportOutput.value = lines.join('\n');
+        }
+
+        this.updateConsultationMeta(`Generated from ${exercises.length} exercises at ${now.toLocaleTimeString()}`);
+        this.showToast('Consultation report generated', 'success');
+    }
+
+    /**
+     * Copy consultation report to clipboard
+     */
+    copyConsultationReport() {
+        const report = this.consultationReportOutput?.value?.trim();
+        if (!report) {
+            this.showToast('Generate a report first', 'warning');
+            return;
+        }
+
+        navigator.clipboard.writeText(report).then(() => {
+            this.showToast('Report copied to clipboard', 'success');
+        }).catch(() => {
+            this.showToast('Failed to copy report', 'error');
+        });
+    }
+
+    /**
+     * Update consultation report helper text
+     */
+    updateConsultationMeta(text) {
+        if (this.consultationReportMeta) {
+            this.consultationReportMeta.textContent = text;
+        }
+    }
+
+    /**
+     * Extract most frequent emotions from saved exercises
+     */
+    extractTopEmotions(exercises) {
+        const counts = {};
+
+        exercises.forEach(ex => {
+            const raw = (ex.emotion || '').toLowerCase();
+            raw
+                .split(/,|\/| and |\.|;/)
+                .map(part => part.trim())
+                .filter(Boolean)
+                .forEach(part => {
+                    counts[part] = (counts[part] || 0) + 1;
+                });
+        });
+
+        return Object.entries(counts)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 6)
+            .map(([emotion, count]) => ({ emotion, count }));
+    }
+
+    /**
+     * Collect concise reframe highlights for consultation report
+     */
+    collectReframeHighlights(exercises, limit = 4) {
+        const highlights = [];
+
+        for (const exercise of exercises) {
+            if (!exercise.realities || exercise.realities.length === 0) {
+                continue;
+            }
+
+            for (const reality of exercise.realities) {
+                if (!reality || !reality.content) {
+                    continue;
+                }
+
+                const sentence = reality.content
+                    .replace(/\s+/g, ' ')
+                    .split(/\.|\n/)
+                    .map(part => part.trim())
+                    .find(Boolean);
+
+                if (sentence) {
+                    highlights.push(sentence.endsWith('.') ? sentence : `${sentence}.`);
+                }
+
+                if (highlights.length >= limit) {
+                    return highlights;
+                }
+            }
+        }
+
+        return highlights;
+    }
+
+    /**
+     * Load coach profile and messages from local storage
+     */
+    loadLifeCoachState() {
+        try {
+            const rawProfile = localStorage.getItem(this.coachProfileKey);
+            const rawMessages = localStorage.getItem(this.coachMessagesKey);
+            this.coachProfile = rawProfile ? JSON.parse(rawProfile) : null;
+            this.coachMessages = rawMessages ? JSON.parse(rawMessages) : [];
+        } catch (error) {
+            console.warn('Failed to load life coach state', error);
+            this.coachProfile = null;
+            this.coachMessages = [];
+        }
+    }
+
+    /**
+     * Persist coach profile and messages
+     */
+    saveLifeCoachState() {
+        localStorage.setItem(this.coachProfileKey, JSON.stringify(this.coachProfile));
+        localStorage.setItem(this.coachMessagesKey, JSON.stringify(this.coachMessages));
+    }
+
+    /**
+     * Create life coach profile from form
+     */
+    createLifeCoach() {
+        const name = this.coachNameInput?.value?.trim();
+        const age = this.coachAgeInput?.value?.trim();
+        const gender = this.coachGenderInput?.value?.trim();
+        const personality = this.coachPersonalityInput?.value?.trim();
+
+        if (!name || !age || !gender || !personality) {
+            this.showToast('Please complete all coach profile fields', 'warning');
+            return;
+        }
+
+        this.coachProfile = {
+            name,
+            age,
+            gender,
+            personality,
+            createdAt: new Date().toISOString()
+        };
+
+        this.coachMessages = [
+            {
+                role: 'coach',
+                text: `Hi, I am ${name}. I am here to support your goals with practical and ethical coaching. What would you like to work on today?`,
+                createdAt: new Date().toISOString()
+            }
+        ];
+
+        this.saveLifeCoachState();
+        this.renderLifeCoach();
+        this.showToast('Life coach created', 'success');
+    }
+
+    /**
+     * Reset coach profile and chat history
+     */
+    resetLifeCoach() {
+        this.coachProfile = null;
+        this.coachMessages = [];
+        localStorage.removeItem(this.coachProfileKey);
+        localStorage.removeItem(this.coachMessagesKey);
+
+        if (this.coachNameInput) this.coachNameInput.value = '';
+        if (this.coachAgeInput) this.coachAgeInput.value = '';
+        if (this.coachGenderInput) this.coachGenderInput.value = '';
+        if (this.coachPersonalityInput) this.coachPersonalityInput.value = '';
+        if (this.coachMessageInput) this.coachMessageInput.value = '';
+
+        this.coachVoiceEnabled = false;
+        this.renderLifeCoach();
+        this.showToast('Life coach reset', 'info');
+    }
+
+    /**
+     * Toggle coach voice reply mode
+     */
+    toggleCoachVoice() {
+        if (!window.speechSynthesis) {
+            this.showToast('Voice replies are not supported in this browser', 'warning');
+            return;
+        }
+
+        this.coachVoiceEnabled = !this.coachVoiceEnabled;
+        if (this.coachVoiceToggleBtn) {
+            this.coachVoiceToggleBtn.textContent = `Voice Reply: ${this.coachVoiceEnabled ? 'On' : 'Off'}`;
+        }
+    }
+
+    /**
+     * Render life coach setup and chat views
+     */
+    renderLifeCoach() {
+        const hasProfile = Boolean(this.coachProfile);
+
+        if (this.coachSetupCard) {
+            this.coachSetupCard.style.display = hasProfile ? 'none' : 'block';
+        }
+
+        if (this.coachChatCard) {
+            this.coachChatCard.style.display = hasProfile ? 'block' : 'none';
+        }
+
+        if (!hasProfile) {
+            return;
+        }
+
+        if (this.coachIdentity) {
+            this.coachIdentity.textContent = `${this.coachProfile.name}, ${this.coachProfile.age} (${this.coachProfile.gender})`;
+        }
+
+        if (this.coachEthicsNote) {
+            this.coachEthicsNote.textContent = `Style: ${this.coachProfile.personality}. Ethical AI coach: motivational support, not medical diagnosis.`;
+        }
+
+        if (this.coachVoiceToggleBtn) {
+            this.coachVoiceToggleBtn.textContent = `Voice Reply: ${this.coachVoiceEnabled ? 'On' : 'Off'}`;
+        }
+
+        this.renderCoachMessages();
+    }
+
+    /**
+     * Render coach messages
+     */
+    renderCoachMessages() {
+        if (!this.coachMessagesList) {
+            return;
+        }
+
+        this.coachMessagesList.innerHTML = '';
+
+        this.coachMessages.forEach(message => {
+            const container = document.createElement('div');
+            container.className = `coach-message ${message.role}`;
+
+            const bubble = document.createElement('div');
+            bubble.className = 'coach-bubble';
+            bubble.innerHTML = this.escapeHtml(message.text).replace(/\n/g, '<br>');
+
+            const time = document.createElement('div');
+            time.className = 'coach-time';
+            time.textContent = dataManager.formatTime(message.createdAt);
+
+            container.appendChild(bubble);
+            container.appendChild(time);
+            this.coachMessagesList.appendChild(container);
+        });
+
+        this.coachMessagesList.scrollTop = this.coachMessagesList.scrollHeight;
+    }
+
+    /**
+     * Send user message to coach and render coach response
+     */
+    sendCoachMessage() {
+        if (!this.coachProfile) {
+            this.showToast('Create your life coach first', 'warning');
+            return;
+        }
+
+        const text = this.coachMessageInput?.value?.trim();
+        if (!text) {
+            return;
+        }
+
+        this.coachMessages.push({
+            role: 'user',
+            text,
+            createdAt: new Date().toISOString()
+        });
+
+        const reply = this.generateCoachReply(text);
+        this.coachMessages.push({
+            role: 'coach',
+            text: reply,
+            createdAt: new Date().toISOString()
+        });
+
+        this.saveLifeCoachState();
+        this.renderCoachMessages();
+
+        if (this.coachMessageInput) {
+            this.coachMessageInput.value = '';
+        }
+
+        if (this.coachVoiceEnabled && window.speechSynthesis) {
+            const utterance = new SpeechSynthesisUtterance(reply);
+            utterance.rate = 1;
+            utterance.pitch = 1;
+            window.speechSynthesis.cancel();
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+
+    /**
+     * Generate a grounded coaching response
+     */
+    generateCoachReply(message) {
+        const text = message.toLowerCase();
+        const coachName = this.coachProfile?.name || 'Coach';
+
+        const highRiskSignals = ['suicide', 'kill myself', 'self harm', 'hurt myself', 'end my life'];
+        if (highRiskSignals.some(signal => text.includes(signal))) {
+            return `${coachName}: I care about your safety. I am not equipped for crisis support. Please contact local emergency services or a trusted person immediately, and reach out to a crisis hotline in your country right now.`;
+        }
+
+        let focus = 'build one small action for today';
+        if (text.includes('anxious') || text.includes('anxiety') || text.includes('panic')) {
+            focus = 'stabilize your body first using one minute of slow breathing, then write one balanced thought';
+        } else if (text.includes('procrast') || text.includes('avoid')) {
+            focus = 'start a 10-minute sprint on the smallest possible task';
+        } else if (text.includes('manager') || text.includes('team') || text.includes('work')) {
+            focus = 'prepare one clear, factual message and one request for support';
+        } else if (text.includes('relationship') || text.includes('family') || text.includes('friend')) {
+            focus = 'name your need in one sentence and ask for a calm conversation window';
+        }
+
+        const recent = dataManager.getAllExercises().slice(-1)[0];
+        const contextLine = recent && recent.event
+            ? `I also noticed your recent CBT context: "${recent.event.substring(0, 80)}${recent.event.length > 80 ? '...' : ''}".`
+            : 'You are doing the right thing by checking in instead of bottling this up.';
+
+        return [
+            `${coachName}: ${contextLine}`,
+            `Let us focus on this next step: ${focus}.`,
+            'Plan for the next 15 minutes:',
+            '1. Ground: 4 slow breaths while relaxing shoulders.',
+            '2. Clarity: write one sentence about what is in your control.',
+            '3. Action: complete one tiny action before checking your phone again.'
+        ].join('\n');
+    }
+
+    /**
+     * Format elapsed seconds as mm:ss
+     */
+    formatSeconds(totalSeconds) {
+        const minutes = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+        const seconds = Math.floor(totalSeconds % 60).toString().padStart(2, '0');
+        return `${minutes}:${seconds}`;
     }
 }
 

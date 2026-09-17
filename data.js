@@ -9,7 +9,10 @@ class DataManager {
         this.currentExerciseKey = 'solulu_current_exercise';
         this.seedVersionKey = 'solulu_seed_version';
         this.seedMigrationKey = 'solulu_seed_id_migration_v1';
+        this.demoModeKey = 'solulu_demo_mode';
+        this.demoIndexKey = 'solulu_demo_index';
         this.seedVersion = 'dataset_v4_unique_ids';
+        this.demoPoolCache = null;
         this.datasetFiles = [
             'dataset/workplace_conflict.json',
             'dataset/manager_feedback.json',
@@ -28,6 +31,10 @@ class DataManager {
      * Seed exercises from dataset files (runs once on a fresh install)
      */
     async seedExercisesFromDatasets() {
+        if (this.isDemoMode()) {
+            return { seeded: false, count: 0 };
+        }
+
         try {
             const datasetResults = await Promise.all(this.datasetFiles.map(file => this.loadDatasetFile(file)));
             const datasets = datasetResults.map(result => result.data);
@@ -124,11 +131,19 @@ class DataManager {
     /**
      * Convert dataset item shape to app exercise shape
      */
-    mapDatasetItemToExercise(item, index) {
+    mapDatasetItemToExercise(item, index, options = {}) {
         const now = new Date();
-        const createdAt = new Date(now);
-        createdAt.setDate(now.getDate() - (index % 30));
-        createdAt.setMinutes(createdAt.getMinutes() - index);
+        const createdAt = options.createdAt ? new Date(options.createdAt) : new Date(now);
+        if (!options.createdAt) {
+            createdAt.setDate(now.getDate() - (index % 30));
+            createdAt.setMinutes(createdAt.getMinutes() - index);
+        }
+
+        const idPrefix = options.idPrefix || 'seed';
+        const baseId = item.id || index + 1;
+        const mappedId = idPrefix === 'seed'
+            ? `seed_${baseId}`
+            : `${idPrefix}_${baseId}_${index + 1}`;
 
         const alternateRealityChecks = Array.isArray(item.alternateRealityChecks)
             ? item.alternateRealityChecks
@@ -147,7 +162,7 @@ class DataManager {
         ].filter(Boolean);
 
         return {
-            id: `seed_${item.id || index + 1}`,
+            id: mappedId,
             createdAt: createdAt.toISOString(),
             updatedAt: createdAt.toISOString(),
             event: item.event || '',
@@ -156,7 +171,139 @@ class DataManager {
             realities: realities,
             reflection: reflectionParts.join(' '),
             status: reflectionParts.length > 0 ? 'completed' : 'generated',
-            category: item.category || 'General'
+            category: item.category || 'General',
+            confidenceBefore: Number.isFinite(item.confidenceBefore) ? item.confidenceBefore : null,
+            confidenceAfter: Number.isFinite(item.confidenceAfter) ? item.confidenceAfter : null,
+            cognitiveDistortion: item.cognitiveDistortion || '',
+            chosenBehaviour: item.chosenBehaviour || '',
+            outcomeOneWeekLater: item.outcomeOneWeekLater || ''
+        };
+    }
+
+    /**
+     * Whether demo mode is enabled
+     */
+    isDemoMode() {
+        return localStorage.getItem(this.demoModeKey) === 'true';
+    }
+
+    /**
+     * Toggle demo mode
+     */
+    setDemoMode(enabled) {
+        localStorage.setItem(this.demoModeKey, enabled ? 'true' : 'false');
+    }
+
+    /**
+     * Build and cache sorted demo pool from all datasets
+     */
+    async getDemoPool() {
+        if (this.demoPoolCache) {
+            return this.demoPoolCache;
+        }
+
+        const datasetResults = await Promise.all(this.datasetFiles.map(file => this.loadDatasetFile(file)));
+        const flattened = datasetResults.flatMap(result => Array.isArray(result.data) ? result.data : []);
+
+        this.demoPoolCache = flattened
+            .filter(item => item && item.event)
+            .map((item, index) => ({
+                ...item,
+                __index: index,
+                __improvement: (Number(item.confidenceBefore) || 70) - (Number(item.confidenceAfter) || 60)
+            }))
+            .sort((a, b) => a.__improvement - b.__improvement);
+
+        return this.demoPoolCache;
+    }
+
+    /**
+     * Reset all app data for incremental demo flow
+     */
+    async resetForIncrementalDemo() {
+        this.clearAllData();
+        this.setDemoMode(true);
+        localStorage.setItem(this.demoIndexKey, '0');
+        this.demoPoolCache = null;
+        const pool = await this.getDemoPool();
+        return {
+            loaded: 0,
+            total: pool.length,
+            remaining: pool.length
+        };
+    }
+
+    /**
+     * Load next demo batch of dataset exercises
+     */
+    async loadNextDemoBatch(batchSize = 10) {
+        this.setDemoMode(true);
+
+        const pool = await this.getDemoPool();
+        const start = Number(localStorage.getItem(this.demoIndexKey) || 0);
+
+        if (start >= pool.length) {
+            return {
+                added: 0,
+                loaded: pool.length,
+                total: pool.length,
+                remaining: 0,
+                done: true
+            };
+        }
+
+        const end = Math.min(start + batchSize, pool.length);
+        const allExercises = this.getAllExercises();
+        const existingIds = new Set(allExercises.map(ex => ex.id));
+        const now = new Date();
+        const totalWeeks = 5;
+        let added = 0;
+
+        for (let i = start; i < end; i++) {
+            const weekIndex = Math.floor(i / batchSize);
+            const weeksAgo = Math.max(0, (totalWeeks - 1) - weekIndex);
+            const createdAt = new Date(now);
+            createdAt.setDate(now.getDate() - (weeksAgo * 7) + (i % 5));
+            createdAt.setHours(9 + (i % 8), (i * 7) % 60, 0, 0);
+
+            const mapped = this.mapDatasetItemToExercise(pool[i], i, {
+                idPrefix: 'demo',
+                createdAt
+            });
+
+            mapped.demoBatch = weekIndex + 1;
+
+            if (!existingIds.has(mapped.id)) {
+                allExercises.push(mapped);
+                existingIds.add(mapped.id);
+                added++;
+            }
+        }
+
+        allExercises.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+        this.saveExercises(allExercises);
+        localStorage.setItem(this.demoIndexKey, String(end));
+
+        return {
+            added,
+            loaded: end,
+            total: pool.length,
+            remaining: Math.max(0, pool.length - end),
+            done: end >= pool.length
+        };
+    }
+
+    /**
+     * Return current incremental demo progress
+     */
+    async getDemoProgress() {
+        const pool = await this.getDemoPool();
+        const loaded = Number(localStorage.getItem(this.demoIndexKey) || 0);
+        return {
+            loaded,
+            total: pool.length,
+            remaining: Math.max(0, pool.length - loaded),
+            done: loaded >= pool.length
         };
     }
 
@@ -442,6 +589,8 @@ class DataManager {
         localStorage.removeItem(this.currentExerciseKey);
         localStorage.removeItem(this.seedVersionKey);
         localStorage.removeItem(this.seedMigrationKey);
+        localStorage.removeItem(this.demoIndexKey);
+        localStorage.removeItem(this.demoModeKey);
     }
 }
 

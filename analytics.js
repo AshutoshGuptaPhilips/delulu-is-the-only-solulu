@@ -11,6 +11,25 @@ class PatternAnalytics {
             'Social Situation Insights',
             'General Insights'
         ];
+        this.themeKeywords = {
+            'delayed_response': ['late', 'slow', 'delayed', 'didn\'t respond', 'no reply'],
+            'feedback_discussion': ['feedback', 'criticism', 'comment', 'review', 'critique'],
+            'disagreement': ['disagree', 'argue', 'conflict', 'different opinion', 'opposed'],
+            'miscommunication': ['misunderstood', 'confusion', 'unclear', 'mixed message'],
+            'performance_concern': ['mistake', 'error', 'fail', 'not good enough', 'incompetent'],
+            'social_pressure': ['judge', 'watch', 'observe', 'stare', 'attention'],
+            'rejection': ['ignore', 'exclude', 'left out', 'rejected', 'not invited']
+        };
+
+        this.assumptionMarkers = [
+            'will', 'definitely', 'always', 'never', 'everyone', 'nobody', 'they think',
+            'must mean', 'for sure', 'ruined', 'disaster', 'worst', 'no way'
+        ];
+
+        this.factMarkers = [
+            'i saw', 'i heard', 'they said', 'the message', 'the email', 'happened',
+            'at', 'on', 'evidence', 'fact', 'data', 'confirmed', 'actually', 'observed'
+        ];
     }
 
     /**
@@ -79,6 +98,14 @@ class PatternAnalytics {
         const emotionalPatterns = this.analyzeEmotions(categoryExercises);
         const interpretationPatterns = this.analyzeInterpretations(categoryExercises);
         const realityCheckImpact = this.analyzeRealityCheckImpact(categoryExercises);
+        const weeklyPatternJourney = this.buildWeeklyPatternJourney(categoryExercises);
+        const assumptionFactProfile = this.analyzeAssumptionFactProfile(categoryExercises);
+        const triggerResponseMap = this.buildTriggerResponseMap(categoryExercises);
+        const recommendedActions = this.generateActionRecommendations(
+            interpretationPatterns,
+            assumptionFactProfile,
+            realityCheckImpact
+        );
         const insight = this.generateInsight(category, categoryExercises, emotionalPatterns, interpretationPatterns);
 
         return {
@@ -88,6 +115,10 @@ class PatternAnalytics {
             emotionalPatterns,
             interpretationPatterns,
             realityCheckImpact,
+            weeklyPatternJourney,
+            assumptionFactProfile,
+            triggerResponseMap,
+            recommendedActions,
             insight,
             exerciseCount: categoryExercises.length
         };
@@ -110,20 +141,11 @@ class PatternAnalytics {
      */
     extractWhatHappened(exercises) {
         const themes = {};
-        const keywords = {
-            'delayed_response': ['late', 'slow', 'delayed', 'didn\'t respond', 'no reply'],
-            'feedback_discussion': ['feedback', 'criticism', 'comment', 'review', 'critique'],
-            'disagreement': ['disagree', 'argue', 'conflict', 'different opinion', 'opposed'],
-            'miscommunication': ['misunderstood', 'confusion', 'unclear', 'mixed message'],
-            'performance_concern': ['mistake', 'error', 'fail', 'not good enough', 'incompetent'],
-            'social_pressure': ['judge', 'watch', 'observe', 'stare', 'attention'],
-            'rejection': ['ignore', 'exclude', 'left out', 'rejected', 'not invited']
-        };
 
         exercises.forEach(ex => {
             const text = (ex.event + ' ' + ex.interpretation).toLowerCase();
-            Object.keys(keywords).forEach(theme => {
-                if (keywords[theme].some(kw => text.includes(kw))) {
+            Object.keys(this.themeKeywords).forEach(theme => {
+                if (this.themeKeywords[theme].some(kw => text.includes(kw))) {
                     themes[theme] = (themes[theme] || 0) + 1;
                 }
             });
@@ -137,6 +159,341 @@ class PatternAnalytics {
                 theme: this.formatThemeName(theme),
                 count: count
             }));
+    }
+
+    /**
+     * Build week-by-week pattern journey metrics for trend view
+     */
+    buildWeeklyPatternJourney(exercises) {
+        const sorted = [...exercises].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+        const weekly = {};
+
+        sorted.forEach(ex => {
+            const weekStart = this.getWeekStartKey(ex.createdAt);
+            if (!weekly[weekStart]) {
+                weekly[weekStart] = {
+                    count: 0,
+                    assumptionTotal: 0,
+                    factTotal: 0,
+                    confidenceShiftTotal: 0,
+                    confidenceShiftCount: 0,
+                    emotions: {}
+                };
+            }
+
+            const assumptionScore = this.scoreMarkers(ex.interpretation || '', this.assumptionMarkers);
+            const factScore = this.scoreMarkers(`${ex.event || ''} ${ex.reflection || ''}`, this.factMarkers);
+            weekly[weekStart].count++;
+            weekly[weekStart].assumptionTotal += assumptionScore;
+            weekly[weekStart].factTotal += factScore;
+
+            if (ex.reflection && ex.reflection.trim()) {
+                const before = this.getConfidenceBefore(ex);
+                const after = this.getConfidenceAfter(ex);
+                weekly[weekStart].confidenceShiftTotal += Math.max(0, before - after);
+                weekly[weekStart].confidenceShiftCount++;
+            }
+
+            this.parseEmotionTokens(ex.emotion || '').forEach(token => {
+                weekly[weekStart].emotions[token] = (weekly[weekStart].emotions[token] || 0) + 1;
+            });
+        });
+
+        const trend = Object.entries(weekly)
+            .sort((a, b) => new Date(a[0]) - new Date(b[0]))
+            .slice(-8)
+            .map(([weekStart, data]) => {
+                const evidenceTotal = data.assumptionTotal + data.factTotal;
+                const assumptionPercent = evidenceTotal > 0
+                    ? Math.round((data.assumptionTotal / evidenceTotal) * 100)
+                    : 50;
+                const factPercent = 100 - assumptionPercent;
+                const avgShift = data.confidenceShiftCount > 0
+                    ? Math.round(data.confidenceShiftTotal / data.confidenceShiftCount)
+                    : 0;
+
+                return {
+                    weekStart,
+                    label: this.formatWeekLabel(weekStart),
+                    exerciseCount: data.count,
+                    assumptionPercent,
+                    factPercent,
+                    averageShift: avgShift,
+                    dominantEmotion: this.getDominantEmotion(data.emotions)
+                };
+            });
+
+        const currentWeek = trend[trend.length - 1] || null;
+        const previousWeek = trend[trend.length - 2] || null;
+
+        return {
+            trend,
+            currentWeek,
+            momentum: this.getMomentum(currentWeek, previousWeek)
+        };
+    }
+
+    /**
+     * Analyze whether thought records are assumption-heavy or fact-grounded
+     */
+    analyzeAssumptionFactProfile(exercises) {
+        let assumptionHeavy = 0;
+        let factGrounded = 0;
+        let balanced = 0;
+
+        exercises.forEach(ex => {
+            const assumptionScore = this.scoreMarkers(ex.interpretation || '', this.assumptionMarkers);
+            const factScore = this.scoreMarkers(`${ex.event || ''} ${ex.reflection || ''}`, this.factMarkers);
+
+            if (assumptionScore > factScore + 1) {
+                assumptionHeavy++;
+            } else if (factScore > assumptionScore + 1) {
+                factGrounded++;
+            } else {
+                balanced++;
+            }
+        });
+
+        const total = Math.max(1, exercises.length);
+        const assumptionPct = Math.round((assumptionHeavy / total) * 100);
+        const factPct = Math.round((factGrounded / total) * 100);
+        const balancedPct = Math.max(0, 100 - assumptionPct - factPct);
+
+        return {
+            assumptionHeavy,
+            factGrounded,
+            balanced,
+            assumptionPct,
+            factPct,
+            balancedPct,
+            narrative: this.buildAssumptionFactNarrative(assumptionPct, factPct, balancedPct)
+        };
+    }
+
+    /**
+     * Build trigger -> emotion -> reaction mapping
+     */
+    buildTriggerResponseMap(exercises) {
+        const bucket = {};
+
+        exercises.forEach(ex => {
+            const theme = this.detectPrimaryTheme(ex);
+            if (!bucket[theme]) {
+                bucket[theme] = {
+                    count: 0,
+                    emotions: {},
+                    patterns: {}
+                };
+            }
+
+            bucket[theme].count++;
+
+            this.parseEmotionTokens(ex.emotion || '').forEach(token => {
+                bucket[theme].emotions[token] = (bucket[theme].emotions[token] || 0) + 1;
+            });
+
+            const topPattern = this.getTopInterpretationPattern(ex.interpretation || '');
+            if (topPattern) {
+                bucket[theme].patterns[topPattern] = (bucket[theme].patterns[topPattern] || 0) + 1;
+            }
+        });
+
+        return Object.entries(bucket)
+            .sort((a, b) => b[1].count - a[1].count)
+            .slice(0, 5)
+            .map(([theme, data]) => ({
+                theme: this.formatThemeName(theme),
+                count: data.count,
+                dominantEmotion: this.getDominantEmotion(data.emotions),
+                dominantReaction: this.getDominantReaction(data.patterns)
+            }));
+    }
+
+    /**
+     * Generate concrete next actions from pattern profile
+     */
+    generateActionRecommendations(interpretationPatterns, assumptionFactProfile, realityCheckImpact) {
+        const actions = [];
+
+        if (assumptionFactProfile.assumptionPct >= 55) {
+            actions.push('Pause before concluding: write 2 observable facts and 2 assumptions for each trigger event.');
+        }
+
+        const topPattern = interpretationPatterns && interpretationPatterns.length > 0
+            ? interpretationPatterns[0].pattern.toLowerCase()
+            : '';
+
+        if (topPattern.includes('catastroph')) {
+            actions.push('Use a best-case / likely-case / worst-case check once daily to reduce catastrophic forecasting.');
+        }
+
+        if (topPattern.includes('mind reading')) {
+            actions.push('Replace mind-reading with verification: ask one clarifying question before interpreting intent.');
+        }
+
+        if (realityCheckImpact.impact < 10) {
+            actions.push('Increase reflection depth: end each CBT entry with one small action you can do within 24 hours.');
+        } else {
+            actions.push('Keep your weekly momentum: repeat the reframing style that lowered confidence in negative predictions.');
+        }
+
+        if (actions.length < 3) {
+            actions.push('Create a weekly review habit: compare this week\'s top emotion and reaction pattern with last week.');
+        }
+
+        return actions.slice(0, 4);
+    }
+
+    /**
+     * Heuristic scoring for marker lists
+     */
+    scoreMarkers(text, markers) {
+        const normalized = (text || '').toLowerCase();
+        return markers.reduce((score, marker) => score + (normalized.includes(marker) ? 1 : 0), 0);
+    }
+
+    /**
+     * Parse emotion field into normalized tokens
+     */
+    parseEmotionTokens(emotionText) {
+        return (emotionText || '')
+            .toLowerCase()
+            .split(/,|;| and |\.|\//)
+            .map(token => token.trim())
+            .filter(Boolean)
+            .slice(0, 6);
+    }
+
+    /**
+     * Get Monday-start week key from date
+     */
+    getWeekStartKey(dateString) {
+        const d = new Date(dateString);
+        const day = d.getDay();
+        const diff = day === 0 ? -6 : 1 - day;
+        const weekStart = new Date(d);
+        weekStart.setDate(d.getDate() + diff);
+        weekStart.setHours(0, 0, 0, 0);
+        return weekStart.toISOString();
+    }
+
+    /**
+     * Format week label for chart rows
+     */
+    formatWeekLabel(weekStartIso) {
+        const date = new Date(weekStartIso);
+        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
+
+    /**
+     * Get dominant emotion label from count map
+     */
+    getDominantEmotion(emotionCounts) {
+        const entries = Object.entries(emotionCounts || {});
+        if (entries.length === 0) {
+            return 'N/A';
+        }
+        const top = entries.sort((a, b) => b[1] - a[1])[0][0];
+        return this.capitalizeFirst(top);
+    }
+
+    /**
+     * Convert reaction map into display label
+     */
+    getDominantReaction(reactionCounts) {
+        const entries = Object.entries(reactionCounts || {});
+        if (entries.length === 0) {
+            return 'No clear reaction yet';
+        }
+        return this.formatPatternName(entries.sort((a, b) => b[1] - a[1])[0][0]);
+    }
+
+    /**
+     * Estimate momentum from consecutive weeks
+     */
+    getMomentum(currentWeek, previousWeek) {
+        if (!currentWeek || !previousWeek) {
+            return 'Building baseline';
+        }
+
+        const assumptionDrop = previousWeek.assumptionPercent - currentWeek.assumptionPercent;
+        const shiftGain = currentWeek.averageShift - previousWeek.averageShift;
+
+        if (assumptionDrop >= 8 || shiftGain >= 8) {
+            return 'Strong improvement';
+        }
+
+        if (assumptionDrop >= 3 || shiftGain >= 3) {
+            return 'Steady improvement';
+        }
+
+        if (assumptionDrop <= -5) {
+            return 'Watch assumptions this week';
+        }
+
+        return 'Stable trend';
+    }
+
+    /**
+     * Build narrative for assumption vs fact profile
+     */
+    buildAssumptionFactNarrative(assumptionPct, factPct, balancedPct) {
+        if (assumptionPct >= 60) {
+            return `Your recent entries lean assumption-heavy (${assumptionPct}%). Start with observable facts before interpretation.`;
+        }
+
+        if (factPct >= 50) {
+            return `Great progress: ${factPct}% of entries are fact-grounded. Keep this pattern and add clearer next-step actions.`;
+        }
+
+        return `You are in transition: ${balancedPct}% of entries show mixed evidence. Weekly review will help improve consistency.`;
+    }
+
+    /**
+     * Pick one best-matching theme for an exercise
+     */
+    detectPrimaryTheme(exercise) {
+        const text = `${exercise.event || ''} ${exercise.interpretation || ''}`.toLowerCase();
+        let bestTheme = 'miscommunication';
+        let bestScore = 0;
+
+        Object.entries(this.themeKeywords).forEach(([theme, keywords]) => {
+            const score = keywords.reduce((sum, kw) => sum + (text.includes(kw) ? 1 : 0), 0);
+            if (score > bestScore) {
+                bestTheme = theme;
+                bestScore = score;
+            }
+        });
+
+        return bestTheme;
+    }
+
+    /**
+     * Detect most likely interpretation pattern for one exercise
+     */
+    getTopInterpretationPattern(interpretation) {
+        const text = (interpretation || '').toLowerCase();
+        const candidates = {
+            catastrophizing: ['ruined', 'disaster', 'worst', 'terrible', 'will fail'],
+            mind_reading: ['they think', 'judging', 'negative about me'],
+            predicting_failure: ['won\'t work', 'won\'t succeed', 'will go wrong'],
+            personalization: ['my fault', 'because of me', 'i caused'],
+            assuming_exclusion: ['left out', 'excluded', 'not included'],
+            overgeneralization: ['always', 'never', 'every time']
+        };
+
+        let topPattern = '';
+        let topScore = 0;
+
+        Object.entries(candidates).forEach(([pattern, words]) => {
+            const score = words.reduce((sum, word) => sum + (text.includes(word) ? 1 : 0), 0);
+            if (score > topScore) {
+                topScore = score;
+                topPattern = pattern;
+            }
+        });
+
+        return topPattern;
     }
 
     /**
@@ -250,12 +607,12 @@ class PatternAnalytics {
         exercises.forEach(ex => {
             if (ex.realities && ex.realities.length > 0 && ex.reflection) {
                 // Before: measure confidence in initial interpretation
-                const beforeConfidence = this.calculateConfidence(ex.interpretation);
+                const beforeConfidence = this.getConfidenceBefore(ex);
                 beforeTotal += beforeConfidence;
                 beforeCount++;
 
                 // After: measure confidence shift based on reflection
-                const afterConfidence = this.calculateConfidenceShift(ex.reflection);
+                const afterConfidence = this.getConfidenceAfter(ex);
                 afterTotal += afterConfidence;
                 afterCount++;
             }
@@ -312,6 +669,26 @@ class PatternAnalytics {
         });
 
         return Math.max(20, newConfidence);
+    }
+
+    /**
+     * Get confidence before reframing from explicit value or text heuristic
+     */
+    getConfidenceBefore(exercise) {
+        if (Number.isFinite(exercise?.confidenceBefore)) {
+            return Math.min(100, Math.max(10, Number(exercise.confidenceBefore)));
+        }
+        return this.calculateConfidence(exercise?.interpretation || '');
+    }
+
+    /**
+     * Get confidence after reframing from explicit value or text heuristic
+     */
+    getConfidenceAfter(exercise) {
+        if (Number.isFinite(exercise?.confidenceAfter)) {
+            return Math.min(100, Math.max(10, Number(exercise.confidenceAfter)));
+        }
+        return this.calculateConfidenceShift(exercise?.reflection || '');
     }
 
     /**
@@ -397,8 +774,8 @@ class PatternAnalytics {
 
         exercises.forEach(ex => {
             if (ex.realities && ex.realities.length > 0 && ex.reflection) {
-                const before = this.calculateConfidence(ex.interpretation);
-                const after = this.calculateConfidenceShift(ex.reflection);
+                const before = this.getConfidenceBefore(ex);
+                const after = this.getConfidenceAfter(ex);
                 total += (before - after);
                 count++;
             }
@@ -486,8 +863,8 @@ class PatternAnalytics {
                 monthlyData[monthKey] = { shifts: [] };
             }
             
-            const before = this.calculateConfidence(ex.interpretation);
-            const after = this.calculateConfidenceShift(ex.reflection);
+            const before = this.getConfidenceBefore(ex);
+            const after = this.getConfidenceAfter(ex);
             const shift = Math.abs(before - after);
             monthlyData[monthKey].shifts.push({ before, after, shift });
         });
