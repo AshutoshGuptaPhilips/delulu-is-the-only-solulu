@@ -372,8 +372,9 @@ class SoluluApp {
             // Display realities
             this.displayRealities();
             this.outputSection.style.display = 'block';
+            this.openRequiredReflectionSection();
 
-            this.showToast('Alternate realities generated! ✨', 'success');
+            this.showToast('Alternate realities generated. Reflection is required. ✨', 'success');
         } catch (error) {
             console.error('Error generating realities:', error);
             this.showToast('Failed to generate realities. Please try again.', 'error');
@@ -414,7 +415,6 @@ class SoluluApp {
         card.className = `reality-card ${reality.isAIInterpretation ? 'ai-interpretation' : 'alternate'}`;
 
         const number = reality.id || (index + 1);
-        const isAI = reality.isAIInterpretation || reality.type === 'ai_interpretation';
 
         card.innerHTML = `
             <div class="reality-header">
@@ -424,45 +424,69 @@ class SoluluApp {
             <div class="reality-content">
                 ${this.escapeHtml(reality.content).replace(/\n/g, '<br>')}
             </div>
-            <div class="reality-actions">
-                <button class="reality-btn copy" onclick="app.copyToClipboard('${this.escapeHtml(reality.content)}')">
-                    📋 Copy
-                </button>
-                <button class="reality-btn" onclick="app.saveReality(${index})">
-                    💾 Save
-                </button>
-                <button class="reality-btn" onclick="app.shareReality(${index})">
-                    🔗 Share
-                </button>
-            </div>
         `;
 
         return card;
     }
 
     /**
-     * Copy reality content to clipboard
+     * Check if current exercise has generated realities
      */
-    copyToClipboard(text) {
-        navigator.clipboard.writeText(text).then(() => {
-            this.showToast('Copied to clipboard! ✓', 'success');
-        }).catch(() => {
-            this.showToast('Failed to copy', 'error');
-        });
+    hasCurrentExerciseRealities() {
+        return Array.isArray(this.currentExercise?.realities) && this.currentExercise.realities.length > 0;
     }
 
     /**
-     * Save reality (placeholder for future)
+     * Check if reflection exists either in saved data or current textarea
      */
-    saveReality(index) {
-        this.showToast('Reality saved to your collection', 'success');
+    hasCurrentExerciseReflection() {
+        const savedReflection = (this.currentExercise?.reflection || '').trim();
+        const draftReflection = (this.reflectionInput?.value || '').trim();
+        return savedReflection.length > 0 || draftReflection.length > 0;
     }
 
     /**
-     * Share reality (placeholder for future)
+     * Open and label reflection section as required
      */
-    shareReality(index) {
-        this.showToast('Share feature coming soon', 'info');
+    openRequiredReflectionSection() {
+        if (!this.reflectionContent || !this.reflectionToggle) {
+            return;
+        }
+
+        this.reflectionContent.style.display = 'block';
+        this.reflectionToggle.classList.add('open');
+
+        const toggleText = this.reflectionToggle.querySelector('.toggle-text');
+        if (toggleText) {
+            toggleText.textContent = 'Your Reflection (Required)';
+        }
+    }
+
+    /**
+     * Prevent leaving the exercise until required reflection is provided
+     */
+    ensureReflectionCompletionBeforeLeaving() {
+        if (!this.hasCurrentExerciseRealities()) {
+            return true;
+        }
+
+        if (!this.hasCurrentExerciseReflection()) {
+            this.outputSection.style.display = 'block';
+            this.openRequiredReflectionSection();
+            this.reflectionInput?.focus();
+            this.showToast('Reflection is required before leaving this exercise.', 'warning');
+            return false;
+        }
+
+        if ((this.currentExercise?.reflection || '').trim().length === 0) {
+            const reflectionDraft = this.reflectionInput.value.trim();
+            this.currentExercise = dataManager.updateExercise(this.currentExercise.id, {
+                reflection: reflectionDraft,
+                status: 'completed'
+            });
+        }
+
+        return true;
     }
 
     /**
@@ -470,10 +494,16 @@ class SoluluApp {
      */
     toggleReflection() {
         const isOpen = this.reflectionContent.style.display !== 'none';
+
+        if (isOpen && this.hasCurrentExerciseRealities() && !this.hasCurrentExerciseReflection()) {
+            this.showToast('Reflection is required before closing this section.', 'warning');
+            return;
+        }
+
         this.reflectionContent.style.display = isOpen ? 'none' : 'block';
         this.reflectionToggle.classList.toggle('open');
         this.reflectionToggle.querySelector('.toggle-text').textContent =
-            isOpen ? 'Expand to Add Your Reflection' : 'Your Reflection';
+            isOpen ? 'Expand to Add Required Reflection' : 'Your Reflection (Required)';
     }
 
     /**
@@ -513,6 +543,10 @@ class SoluluApp {
      * Create new exercise
      */
     createNewExercise() {
+        if (!this.ensureReflectionCompletionBeforeLeaving()) {
+            return;
+        }
+
         this.autoSaveExercise(); // Save current before creating new
         this.currentExercise = dataManager.createNewExercise();
         this.loadCurrentExercise();
@@ -524,6 +558,10 @@ class SoluluApp {
      * Handle back to list
      */
     handleBackToList() {
+        if (!this.ensureReflectionCompletionBeforeLeaving()) {
+            return;
+        }
+
         this.autoSaveExercise();
         this.openExercisesModal();
     }
@@ -532,6 +570,10 @@ class SoluluApp {
      * Open exercises modal
      */
     openExercisesModal() {
+        if (!this.ensureReflectionCompletionBeforeLeaving()) {
+            return;
+        }
+
         this.exercisesModal.classList.add('active');
 
         if (this.searchInput) {
@@ -661,6 +703,10 @@ class SoluluApp {
      * Select exercise from list
      */
     selectExercise(exerciseId) {
+        if (!this.ensureReflectionCompletionBeforeLeaving()) {
+            return;
+        }
+
         this.autoSaveExercise();
         dataManager.setCurrentExerciseId(exerciseId);
         this.loadCurrentExercise();
@@ -673,6 +719,12 @@ class SoluluApp {
      */
     switchTab(tabButton) {
         const tabName = tabButton.getAttribute('data-tab');
+
+        const activeTab = document.querySelector('.tab-content.active')?.id;
+        if (activeTab === 'cbt-exercise' && tabName !== 'cbt-exercise' && !this.ensureReflectionCompletionBeforeLeaving()) {
+            return;
+        }
+
         this.activateTab(tabName, tabName);
     }
 
@@ -690,6 +742,10 @@ class SoluluApp {
      * Return to Mental Gym
      */
     openMentalGym() {
+        if (!this.ensureReflectionCompletionBeforeLeaving()) {
+            return;
+        }
+
         this.activateTab('mental-gym', 'mental-gym');
     }
 

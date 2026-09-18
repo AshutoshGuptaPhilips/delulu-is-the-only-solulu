@@ -77,12 +77,60 @@ class AIReality {
      * Build display content from structured alternative fields
      */
     composeRealityContent(alt) {
-        return [
-            alt.alternativeView || '',
-            alt.evidence ? `Evidence: ${alt.evidence}` : '',
-            alt.gentleReframe ? `Reframe: ${alt.gentleReframe}` : '',
-            alt.nextStep ? `Next step: ${alt.nextStep}` : ''
-        ].filter(Boolean).join('\n\n');
+        const lines = [];
+        const primaryLine = this.createCompactLine(
+            alt.alternativeView || alt.gentleReframe || alt.evidence || ''
+        );
+
+        if (primaryLine) {
+            lines.push(primaryLine);
+        }
+
+        if (alt.nextStep) {
+            lines.push(this.createCompactLine(`Next: ${alt.nextStep}`));
+        } else if (alt.gentleReframe) {
+            lines.push(this.createCompactLine(alt.gentleReframe));
+        } else if (alt.evidence) {
+            lines.push(this.createCompactLine(alt.evidence));
+        }
+
+        const compactContent = lines.filter(Boolean).slice(0, 2).join('\n');
+        return compactContent || this.toOneOrTwoLineText(`${alt.alternativeView || ''} ${alt.gentleReframe || ''}`);
+    }
+
+    /**
+     * Create one compact line from longer text
+     */
+    createCompactLine(text) {
+        const normalized = String(text || '').replace(/\s+/g, ' ').trim();
+        if (!normalized) {
+            return '';
+        }
+
+        const sentenceMatches = normalized.match(/[^.!?]+[.!?]?/g) || [];
+        const sentence = sentenceMatches.find(part => part.trim().length > 0);
+        return sentence ? sentence.trim() : normalized;
+    }
+
+    /**
+     * Keep text to one or two concise lines
+     */
+    toOneOrTwoLineText(text) {
+        const normalized = String(text || '').replace(/\s+/g, ' ').trim();
+        if (!normalized) {
+            return '';
+        }
+
+        const sentenceMatches = normalized.match(/[^.!?]+[.!?]?/g);
+        if (!sentenceMatches || sentenceMatches.length === 0) {
+            return normalized;
+        }
+
+        return sentenceMatches
+            .slice(0, 2)
+            .map(line => line.trim())
+            .filter(Boolean)
+            .join('\n');
     }
 
     /**
@@ -99,25 +147,25 @@ class AIReality {
                         id: 1,
                         title: 'AI Interpretation of Your Thought',
                         type: 'ai_interpretation',
-                        content: this.generateAIInterpretation(event, emotion, interpretation)
+                        content: this.toOneOrTwoLineText(this.generateAIInterpretation(event, emotion, interpretation))
                     },
                     {
                         id: 2,
                         title: 'Alternative Perspective: Neutral View',
                         type: 'alternate',
-                        content: this.generateNeutralPerspective(event, emotion, interpretation)
+                        content: this.toOneOrTwoLineText(this.generateNeutralPerspective(event, emotion, interpretation))
                     },
                     {
                         id: 3,
                         title: 'Alternative Perspective: Positive Reframe',
                         type: 'alternate',
-                        content: this.generatePositivePerspective(event, emotion, interpretation)
+                        content: this.toOneOrTwoLineText(this.generatePositivePerspective(event, emotion, interpretation))
                     },
                     {
                         id: 4,
                         title: 'Alternative Perspective: Contextual View',
                         type: 'alternate',
-                        content: this.generateContextualPerspective(event, emotion, interpretation)
+                        content: this.toOneOrTwoLineText(this.generateContextualPerspective(event, emotion, interpretation))
                     }
                 ];
 

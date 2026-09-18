@@ -73,6 +73,7 @@ function buildUserPrompt(input, examples, outputSchema, rubric) {
     '',
     'Requirements:',
     '- Provide one item with type="ai_interpretation" and three with type="alternate".',
+    '- Keep each alternative concise: 1 to 2 short lines total.',
     '- Keep each nextStep concrete and short.',
     '- Avoid diagnosis or certainty language.',
     '- Use plausible, emotionally safe reframes.'
